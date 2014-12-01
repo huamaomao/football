@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <!--  赛程 -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="@dimen/title_team_head_height"
+                  android:background="@color/spinner_title_bg"
+                  android:padding="20px"
+                  android:orientation="horizontal">
+        <com.weixuan.shenxin.view.SpinnerView android:id="@id/spinner_team"
+                                           android:background="@drawable/round_spinner_bg"
+                                           android:layout_width="0px"
+                                           android:layout_weight="1"
+                                           android:layout_marginRight="20px"
+                                           android:layout_height="match_parent" />
+        <com.weixuan.shenxin.view.SpinnerView android:id="@id/spinner_round"
+                                           android:background="@drawable/round_spinner_bg"
+                                           android:layout_width="0px"
+                                           android:layout_weight="1"
+                                           android:layout_marginRight="20px"
+                                           android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="@dimen/title_head_height"
+                android:orientation="horizontal"
+                android:background="@drawable/schedule_title_bg">
+        <TextView android:text="@string/title_round" style="@style/schedule_title"  android:layout_weight="0.6" android:singleLine="false"/>
+       <include layout="@layout/public_divider_view" />
+        <TextView android:text="@string/title_date"   style="@style/schedule_title" />
+        <include layout="@layout/public_divider_view" />
+        <TextView android:text="@string/title_home_court"   style="@style/schedule_title"  android:layout_weight="0.7" />
+        <include layout="@layout/public_divider_view" />
+        <TextView android:text="@string/title_score"   style="@style/schedule_title" />
+        <include layout="@layout/public_divider_view" />
+        <TextView android:text="@string/title_visiting_court"    style="@style/schedule_title"  android:layout_weight="0.7"  />
+    </LinearLayout>
+   <include layout="@layout/public_listview" />
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="match_parent">
+    <!-- 直播-->
+    <FrameLayout android:id="@id/fl_m_content" android:layout_width="match_parent" android:layout_height="0px" android:layout_weight="1">
+    </FrameLayout>
+    <RadioGroup android:id="@id/rg_group_m"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_title_height"
+                android:divider="@android:color/white"
+                android:background="@drawable/title_bg"
+                android:orientation="horizontal" android:scrollbars="none">
+        <RadioButton android:id="@id/rbtn_left_menu_0"
+                     style="@style/rb_choose_tab"
+                     android:text="@string/title_live_starting"
+                     android:drawableTop="@drawable/s_live_starting"      />
+        <RadioButton android:id="@id/rbtn_left_menu_2"  style="@style/rb_choose_tab" android:text="@string/title_card"
+                     android:drawableTop="@drawable/s_live_data"  />
+        <RadioButton android:id="@id/rbtn_left_menu_1"  style="@style/rb_choose_tab" android:text="@string/title_lanqiu"
+                     android:checked="true"
+                     android:drawableTop="@drawable/s_live_lanqiu"       />
+
+    </RadioGroup>
+</LinearLayout>

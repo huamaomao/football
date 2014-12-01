@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<at.technikum.mti.fancycoverflow.FancyCoverFlow
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:fcf="http://schemas.android.com/apk/res-auto"
+		android:id="@id/fancyCoverFlow"
+		android:background="@drawable/football_team"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_gravity="bottom"
+		android:gravity="bottom"
+		fcf:maxRotation="0"
+		fcf:scaleDownGravity="0.5"
+		fcf:unselectedAlpha="0.8"
+		fcf:unselectedScale="0.3"
+		/>

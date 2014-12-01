@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		  package="com.weixuan.shenxin"
+		  android:versionCode="1"
+		  android:versionName="1.0">
+	<uses-sdk android:minSdkVersion="14"/>
+	<application android:name=".ui.FootballApplication" android:label="@string/app_name"
+				 android:theme="@style/AppTheme"
+				 android:icon="@drawable/team_shenxin_icon"
+				>
+		<activity android:name=".ui.WelcomeActivity"
+				  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+				  android:launchMode="singleTask" android:screenOrientation="portrait"
+				>
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity android:name=".ui.MainActivity" android:launchMode="singleTask"
+				  android:screenOrientation="portrait"></activity>
+		<activity android:name=".ui.TeamPlayerActivity"     android:theme="@style/AppBackTheme"
+				  android:launchMode="singleTask"
+				  android:screenOrientation="portrait"></activity>
+		<activity android:name=".ui.NewsDetailActivity"   android:theme="@style/AppBackTheme"
+				  android:launchMode="singleTask"
+				  android:screenOrientation="portrait"></activity>
+		<activity android:name=".ui.LiveActivity"  android:theme="@style/AppBackTheme"
+				  android:launchMode="singleTask" android:screenOrientation="portrait"></activity>
+	</application>
+
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<supports-screens
+			android:anyDensity="true"
+			android:largeScreens="true"
+			android:normalScreens="false"
+			android:smallScreens="false"
+			android:resizeable="true"/>
+</manifest>

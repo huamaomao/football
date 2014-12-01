@@ -1,0 +1,5 @@
+include ':csl_shenxin';
+include ':libraries:FlowLibrary';
+include ':libraries:ImageLibrary';
+include ':libraries:LiteLibrary';
+include ':libraries:VitamioLibrary';

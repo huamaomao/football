@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/live_bg"
+              android:layout_height="match_parent">
+    <LinearLayout
+            android:background="@color/lineup_bg"
+            android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:padding="20px"
+            android:layout_height="@dimen/title_team_head_height">
+        <TextView
+                android:text="主教练："
+                style="@style/style_team_row_a_right"/>
+
+        <TextView
+                android:id="@id/tv_item_0"
+                style="@style/style_team_row_a_left"/>
+
+        <TextView
+                android:text="主裁判："
+                style="@style/style_team_row_a_right"/>
+
+        <TextView
+                android:id="@id/tv_item_1"
+                style="@style/style_team_row_a_left"/>
+
+        <TextView
+                android:text="阵容："
+                style="@style/style_team_row_a_right"/>
+
+        <TextView
+                android:id="@id/tv_item_2"
+                style="@style/style_team_row_a_left"/>
+
+    </LinearLayout>
+    <com.weixuan.shenxin.view.FormationView
+            android:id="@+id/fl_view"
+            android:background="@drawable/icon_football_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+</LinearLayout>

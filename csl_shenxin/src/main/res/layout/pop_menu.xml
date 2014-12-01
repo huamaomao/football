@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@id/ls_data"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:padding="20px"
+          android:verticalSpacing="6dp"
+          android:horizontalSpacing="6dp"
+          android:focusable="true"
+          android:numColumns="3"
+          android:listSelector="@android:color/transparent"
+          android:background="@android:color/white"
+          android:divider="@android:color/transparent"
+          android:cacheColorHint="@android:color/transparent"
+          android:alpha="1"
+          android:scrollbars="none"/>
+

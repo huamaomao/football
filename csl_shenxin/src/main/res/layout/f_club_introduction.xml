@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                             android:orientation="vertical"
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent">
+<RadioGroup android:id="@id/rg_group"
+            android:layout_width="match_parent" android:layout_height="@dimen/title_team_head_height"
+            android:background="@color/spinner_title_bg"
+            android:orientation="horizontal" android:scrollbars="none">
+    <RadioButton android:id="@id/rbtn_left_menu_0"  style="@style/rb_a_team" android:text="@string/title_on_shenxin" />
+    <RadioButton android:id="@id/rbtn_left_menu_1"  style="@style/rb_a_team" android:text="@string/title_honour"/>
+    <RadioButton android:id="@id/rbtn_left_menu_2"  style="@style/rb_a_team" android:text="@string/title_bolton_fans_club"/>
+</RadioGroup>
+<FrameLayout android:id="@id/fl_m_content" android:layout_width="match_parent" android:layout_height="match_parent"></FrameLayout>
+</LinearLayout>

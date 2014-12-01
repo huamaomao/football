@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/list_item_style">
+    <TextView android:id="@id/tv_item_0" style="@style/list_item"  />
+    <TextView  android:id="@id/tv_item_1" style="@style/list_item" />
+    <TextView  android:id="@id/tv_item_2" style="@style/list_item" />
+</LinearLayout>

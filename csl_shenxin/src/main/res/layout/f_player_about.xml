@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <FrameLayout
+            android:id="@id/fl_news_content"
+            android:background="@drawable/shen_bg"
+            android:layout_width="match_parent"
+            android:layout_height="325dp">
+
+        <ImageView
+                android:src="@drawable/player_yangjiawei"
+                android:layout_gravity="left|bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        <TableLayout
+                android:layout_width="wrap_content"
+                android:minWidth="100dp"
+                android:paddingLeft="20px"
+                android:layout_height="match_parent"
+                android:showDividers="middle"
+                android:divider="@drawable/about_divier"
+                android:dividerPadding="2px"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:alpha="0.9"
+                android:paddingRight="30px"
+                android:layout_gravity="right"
+                android:background="@drawable/about_bg"
+                android:orientation="horizontal">
+
+            <TableRow>
+
+                <TextView
+                       style="@style/style_info_right"
+                        android:text="@string/title_english_name"/>
+
+                <TextView
+                        android:id="@id/tv_item_0"
+                        style="@style/style_info_left"
+                        android:textColor="@android:color/white"/>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        style="@style/style_info_right"
+                        android:text="@string/title_nationality"/>
+                <TextView
+                        android:id="@id/tv_item_1"
+                        style="@style/style_info_left" />
+            </TableRow>
+            <TableRow>
+
+                <TextView
+                        style="@style/style_info_right"
+                        android:text="@string/title_chuohao"/>
+
+                <TextView
+                        android:id="@id/tv_item_2"
+                        style="@style/style_info_left" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        style="@style/style_info_right"
+                        android:text="@string/title_hright"/>
+
+                <TextView
+                        android:id="@id/tv_item_3"
+                        style="@style/style_info_left"/>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        style="@style/style_info_right"
+                        android:text="@string/title_weight"/>
+
+                <TextView
+                        android:id="@id/tv_item_4"
+                        style="@style/style_info_left"/>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        style="@style/style_info_right"
+                        android:text="@string/title_birthday"/>
+
+                <TextView
+                        android:id="@id/tv_item_5"
+                        style="@style/style_info_left"/>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        style="@style/style_info_right"
+                        android:text="@string/title_age"/>
+
+                <TextView
+                        android:id="@id/tv_item_6"
+                        style="@style/style_info_left"/>
+            </TableRow>
+
+
+
+            <TableRow>
+
+                <TextView
+                        style="@style/style_info_right"
+                        android:text="@string/title_location_"/>
+
+                <TextView
+                        android:id="@id/tv_item_8"
+                        style="@style/style_info_left"/>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        style="@style/style_info_right"
+                        android:text="@string/title_midtarsal"/>
+
+                <TextView
+                        android:id="@id/tv_item_9"
+                        style="@style/style_info_left"/>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                        style="@style/style_info_right"
+                        android:text="@string/title_jersey_number"/>
+
+                <TextView
+                        android:id="@id/tv_item_10"
+                        style="@style/style_info_left"/>
+            </TableRow>
+
+        </TableLayout>
+    </FrameLayout>
+
+    <TextView android:id="@id/tv_item_11"
+            android:background="@drawable/schedule_title_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+</LinearLayout>

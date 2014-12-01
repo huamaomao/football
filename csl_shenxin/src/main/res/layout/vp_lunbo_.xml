@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="120dip">
+
+    <com.weixuan.shenxin.view.CustomViewPager
+            android:id="@id/vp_lunbo"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            />
+
+    <RadioGroup android:id="@id/rg_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:clickable="false"
+                android:focusable="false"
+                android:clipChildren="false"
+                android:layout_marginLeft="50px"
+                android:layout_marginBottom="100px"
+                android:orientation="horizontal" android:scrollbars="none">
+        <RadioButton android:id="@id/rbtn_left_menu_0"  style="@style/lunbo_page_item" />
+        <RadioButton android:id="@id/rbtn_left_menu_1"  style="@style/lunbo_page_item"/>
+       <!-- <RadioButton android:id="@id/rbtn_left_menu_2"  style="@style/lunbo_page_item" />-->
+    </RadioGroup>
+</FrameLayout>

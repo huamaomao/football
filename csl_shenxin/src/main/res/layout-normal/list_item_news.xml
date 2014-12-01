@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/list_item_style"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <ImageView
+            android:id="@id/iv_item_0"
+            android:scaleType="centerCrop"
+            style="@style/img_icon"
+
+            />
+
+    <TextView
+            android:id="@id/tv_item_0"
+            android:textSize="@dimen/font_size_16"
+            android:layout_toRightOf="@id/iv_item_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:lines="2"
+            android:textColor="@android:color/white"/>
+    <TextView
+            android:id="@id/tv_item_1"
+            android:layout_toRightOf="@id/iv_item_0"
+            android:layout_below="@id/tv_item_0"
+            android:layout_marginTop="10px"
+            android:layout_marginLeft="20px"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:text="来源："
+            android:textSize="@dimen/font_size_12"
+            android:alpha="0.3"
+            android:textColor="@android:color/white"/>
+
+    <TextView
+            android:id="@id/tv_item_2"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_marginTop="10px"
+            android:layout_below="@id/tv_item_0"
+
+            android:gravity="left"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/font_size_12"
+            android:alpha="0.3"
+            android:textColor="@android:color/white"/>
+
+</RelativeLayout>

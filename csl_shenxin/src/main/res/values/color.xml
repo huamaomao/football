@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="left_menu_bg0">#005087</color><!--左菜单背景色 -->
+    <color name="blue_">#0061a4</color>
+    <color name="left_list_fc">#ff055505</color><!-- 左边listview item 颜色 -->
+    <color name="left_menu_divider">#ff023c00</color><!-- 左边listview item 颜色 -->
+    <color name="team_title_fc">#044b13</color><!-- 一线阵容  title  颜色 -->
+    <color name="spinner_item_bg">#fff9f9f9</color>
+    <color name="white">#ffffffff</color>
+    <color name="left_color">#dbededed</color>
+    <color name="white_a">#aae9e9e9</color>
+    <color name="white_d">#fcd2d2d2</color>
+    <color name="white_1">#ffececec</color>
+    <color name="white_0">#ffc8c8c8</color>
+    <color name="shenbg">#0d1b10</color>
+    <color name="lineup_bg">#ff0b6913</color>
+    <color name="list_view_item_gray">#ff2f552f</color>
+    <color name="green_0">#182d1e</color>
+    <color name="red">#ffd10108</color>
+    <color name="yellow">#ffe3e11e</color>
+    <color name="green">#ff0b680a</color>
+    <color name="blue">#4a8ae9</color>
+    <color name="spinner_title">#ff183018</color>
+    <color name="spinner_title_bg">#ff052a05</color>  <!--- ff154f14 -->
+    <color name="spinner_title_tab">#ff173a1c</color>
+</resources>

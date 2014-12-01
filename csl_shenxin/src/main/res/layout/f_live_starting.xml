@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+              android:orientation="horizontal"
+              android:background="@drawable/live_bg"
+              android:layout_height="match_parent">
+    <!-- 首发-->
+    <com.weixuan.shenxin.view.PullToRefreshListView android:id="@id/ls_data"
+              android:layout_width="0px"
+              android:layout_weight="1"
+                android:scrollbars="none"
+              android:layout_height="match_parent" />
+    <View android:layout_width="1px" android:layout_height="match_parent" android:background="@drawable/live_divider" />
+    <com.weixuan.shenxin.view.PullToRefreshListView android:id="@id/ls_team"
+              android:scrollbars="none"
+              android:layout_width="0px"
+              android:layout_weight="1"
+              android:layout_height="match_parent" />
+</LinearLayout>

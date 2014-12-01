@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">上海申鑫</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="empty">无 数 据</string>
+    <string name="app_title_name">上海申鑫</string>
+    <string name="title_news_detail">新闻详细</string>
+
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+        <!-- 菜单 -->
+    <string name="left_menu_0">赛事直播</string>
+    <string name="left_menu_1">新闻/公告</string>
+    <string name="left_menu_2">赛程</string>
+    <string name="left_menu_3">俱乐部</string>
+    <string name="left_menu_4">球队阵容</string>
+    <string name="left_menu_5">竞猜</string>
+    <string name="left_menu_6">票务/商城</string>
+    <string name="left_menu_7">球迷互动</string>
+    <string name="left_menu_8">我的账户</string>
+
+    <!--标题 -->
+    <string name="title_shouye">首页</string>
+    <string name="title_matchanalysis">赛事分析</string>
+    <string name="title_explain">实力对比</string>
+    <string name="title_a_team">一线阵容</string>
+    <string name="title_coaching">教练组</string>
+    <string name="title_player_ranking">球员排行</string>
+
+    <string name="title_first_list">赛事直播</string>
+    <string name="title_live_starting">首发</string>
+    <string name="title_lanqiu">实况数据</string>
+    <string name="title_live_data">文字直播</string>
+
+    <string name="title_game_stats">比赛数据</string>
+    <string name="title_records">履历</string>
+
+
+
+    <!-- 赛事分析  选择 -->
+    <string name="rb_choose_1">进攻对比</string>
+    <string name="rb_choose_2">防守对比</string>
+    <string name="rb_choose_3">常规对比</string>
+    <string name="rb_choose_4">进攻数据</string>
+    <string name="rb_choose_5">防守数据</string>
+    <string name="rb_choose_6">常规数据</string>
+    <string name="round">轮次：第%1$s轮</string>
+
+    <string name="rb_tab_1">交战历史</string>
+    <string name="rb_tab_2">实力对比</string>
+    <string name="rb_tab_3">近期战绩</string>
+    <string name="rb_tab_4">积分榜</string>
+
+    <string name="vs">双方历史共交战12次，申鑫胜4次 平五次 负三次</string>
+    <string name="title_event_Result">赛果</string>
+    <string name="title_event">赛事</string>
+    <string name="title_season">赛季</string>
+    <string name="title_round">轮次</string>
+    <string name="title_date">日期</string>
+    <string name="title_time">时间</string>
+    <string name="title_home_court">主场</string>
+    <string name="title_visiting_court">客场</string>
+    <string name="title_home_team">主队</string>
+    <string name="title_visiting_team">客队</string>
+    <string name="title_score">比分</string>
+
+    <string name="title_ranking">排行</string>
+    <string name="title_team">球队</string>
+    <string name="title_ronda">场次</string>
+    <string name="title_win">胜</string>
+    <string name="title_flat">平</string>
+    <string name="title_defeat">负</string>
+    <string name="title_jinshiqiu">净胜球</string>
+    <string name="title_integral">积分</string>
+
+    <string name="title_regular">常规</string>
+    <string name="title_attack">进攻</string>
+    <string name="title_defend">防守</string>
+    <string name="title_stamina">体能</string>
+    <string name="title_appear">出场</string>
+    <string name="title_dribbl">过人</string>
+    <string name="title_pass">传球</string>
+    <!-- 一线阵容-->
+    <string name="title_card">首发阵容</string>
+    <string name="title_forward">前锋</string>
+    <string name="title_midfield">中场</string>
+    <string name="title_guard">后卫</string>
+    <string name="title_cesar">门将</string>
+
+    <string name="title_player">球员</string>
+    <string name="title_rank">排名</string>
+    <string name="title_shoot">射门</string>
+    <string name="title_shots_on_goal">射正球门</string>
+    <string name="title_header">头球</string>
+    <string name="title_playing_time">出场时间</string>
+    <string name="title_own_goal">乌龙球</string>
+    <string name="title_reserves">预备队</string>
+    <string name="title_coaching_staff">教练组</string>
+    <string name="title_description">简介</string>
+    <string name="title_the_team_culture">球队文化</string>
+    <string name="title_bolton_fans_club">球迷会</string>
+
+    <string name="title_on_shenxin">关于申鑫</string>
+    <string name="title_famous_people">著名人物</string>
+    <string name="title_honour">精彩瞬间</string>
+    <string name="title_chinese_team">中文队名:</string>
+    <string name="title_foreign_team">外文队名:</string>
+    <string name="title_sports">运动项目:</string>
+    <string name="title_compete_for_the_event">角逐赛事:</string>
+    <string name="title_district">所属地区:</string>
+    <string name="title_formed">成立时间:</string>
+    <string name="title_stadium">主场馆:</string>
+    <string name="title_galleryful">容纳人数:</string>
+    <string name="title_owner">拥有者:</string>
+    <string name="title_capello">现任主教练:</string>
+    <string name="title_history_of_the_manager">历史主教练:</string>
+    <string name="title_base_on_football">基地足球</string>
+    <string name="title_compete_for_the_base">基地足校</string>
+    <string name="title_business">商务</string>
+    <string name="title_team_history">球队历史</string>
+
+
+    <string name="title_history_list">历史名单</string>
+    <string name="title_cue_list">出场榜</string>
+    <string name="title_scoring_list">进球榜</string>
+
+    <string name="title_number">号码</string>
+    <string name="title_name">姓名</string>
+    <string name="title_location">位置</string>
+    <string name="title_effect_time">效力时间</string>
+    <string name="title_cumulative_score">累计进球</string>
+
+    <string name="title_super">中超</string>
+    <string name="title_other_tournament">其他赛事</string>
+    <string name="title_play_list">出场榜单</string>
+    <string name="title_number_of_appearances">出场数</string>
+    <string name="title_year_of_validity">效力年份</string>
+    <string name="title_average_exit">平均出场</string>
+    <string name="title_scoring_list_0">进球榜单</string>
+
+    <string name="title_english_name">英文名：</string>
+    <string name="title_nationality">国籍：</string>
+    <string name="title_birthplace">出生地：</string>
+    <string name="title_chuohao">绰号：</string>
+    <string name="title_hright">身高：</string>
+    <string name="title_weight">体重：</string>
+    <string name="title_birthday">生日：</string>
+    <string name="title_age">年龄：</string>
+    <string name="title_location_">位置：</string>
+    <string name="title_midtarsal">左右脚：</string>
+    <string name="title_jersey_number">球衣号码：</string>
+
+    <string name="club_jianjie">
+        上海申鑫足球俱乐部前身是上海衡源足球俱乐部2004年根据国内足球发展趋势，
+        俱乐部根据自身状况，整合了上海精文足球学校、八一队U19队、
+        以及部分江西足球资源，迁入江西南昌，成立南昌衡源足球俱乐部，
+        成为江西历史上的首个职业足球俱乐部。<br/>
+
+        上海申鑫足球俱乐部建设的基本原则是把足球推向市场，
+        为提高当地足球技术水平，促进中国足球的改革与发展做出贡献。
+        从2004年承办了乙级联赛的开幕式起步，
+        历经了冲甲狂欢、保级的喜悦、冲超失利的苦涩，2009年终成正果，
+        成功升入中超。在中超开疆扩土。经过两年的中超洗礼，俱乐部在中超站稳脚跟。  <br/>
+
+        2012年，由于俱乐部发展需要，引入新的投资伙伴，征得各方同意后，
+        球队迁回上海，更名为上海申鑫足球俱乐部，
+        这一举措适应了中国足球改革发展的需要，有利于足球俱乐部进一步向职业化、社会化、实体化发展。  <br/>
+
+        2013赛季，申鑫在艰难中坚定前行，踏踏实实走完了在上海的第二个赛季
+        ，最终以联赛第七的成绩，力压同城中超兄弟申花和上港，成为2013赛季中超联赛上海足球版图上的第一名。   <br/>
+
+        未来申鑫要扎根上海，球队还需要更加努力，
+        申鑫还有很多需要去拼去做的事情。申鑫将用三到五年时间力争跻身中超排名前列，获得亚冠资格。
+        申鑫将从俱乐部管理、梯队青训建设、球迷互动、商务开发，
+        等多个环节加强俱乐部职业化进程。为此俱乐部还有很多要为之努力的目标，希望未来球队能和大家并肩前行，为广大球迷，
+        为上海这座城市，带来更多的足球荣誉。
+    </string>
+    <string name="club_wenhua">
+        《It’s time》词：徐国良 曲：丁菲飞 \n  \n
+        飞天空是那样蔚蓝太阳照耀大地我们手拉手 \n 肩并着肩 \n
+        等待哨声响起\n
+        奔跑在绿茵场上 \n
+        那歌声多么嘹亮 \n
+        十一颗心凝聚成一种力量 \n
+        势不可挡 \n
+        曾经流过失败的泪那是成长的代价\n
+        今天我们已经准备好 \n
+        去追逐一生的梦想\n
+        It’s time，It’s time \n
+        现在就要出发 \n
+        没有什么能够把我们阻挡 \n
+        It’s time，It’s time \n
+        这是胜利在呼唤 \n
+        让生命去绽放 绚丽的光芒 \n
+    </string>
+    <string name="club_txt">
+        2005年中国足球乙级联赛冠军 \n  \n
+        2008年中国足球甲级联赛季军 \n \n
+        2009年中国足球甲级联赛亚军  \n   \n
+        2012年上海国际足球邀请赛冠军  \n
+    </string>
+</resources>
