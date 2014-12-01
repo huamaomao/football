@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <FrameLayout android:id="@id/fl_m_content"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1">
+
+    </FrameLayout>
+    <RadioGroup android:id="@id/rg_group_m"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_title_height"
+                android:divider="@android:color/white"
+                android:background="@drawable/title_bg"
+                android:orientation="horizontal" android:scrollbars="none">
+        <RadioButton android:id="@id/rbtn_left_menu_0"  style="@style/rb_choose_tab" android:text="@string/title_description"
+                     android:drawableTop="@drawable/s_player_aboout"      />
+        <RadioButton android:id="@id/rbtn_left_menu_1"  style="@style/rb_choose_tab" android:text="@string/title_game_stats"
+                     android:checked="true"
+                     android:drawableTop="@drawable/s_player_game_stats"       />
+        <RadioButton android:id="@id/rbtn_left_menu_2"  style="@style/rb_choose_tab" android:text="@string/title_honour"
+                     android:drawableTop="@drawable/s_player_records_honor"  />
+        <RadioButton android:id="@id/rbtn_left_menu_3"  style="@style/rb_choose_tab" android:text="@string/title_records"
+                     android:drawableTop="@drawable/s_player_record"  />
+    </RadioGroup>
+</LinearLayout>

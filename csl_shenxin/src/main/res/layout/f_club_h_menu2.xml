@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="@dimen/title_head_height"
+                  android:orientation="horizontal"
+                  android:background="@drawable/schedule_title_bg">
+        <TextView android:text="@string/title_rank" style="@style/schedule_title"  />
+        <include layout="@layout/public_divider_view" />
+        <TextView android:text="@string/title_name"   style="@style/schedule_title" />
+        <include layout="@layout/public_divider_view" />
+        <TextView android:text="@string/title_number_of_appearances"   style="@style/schedule_title"  />
+    </LinearLayout>
+    <include  layout="@layout/public_listview"/>
+</LinearLayout>

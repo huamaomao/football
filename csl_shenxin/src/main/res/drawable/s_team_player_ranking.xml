@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 赛事分析 -->
+    <item
+            android:state_checked="false"
+           android:drawable="@drawable/team_player_ranking_n"/>
+    <item
+            android:state_checked="true"
+            android:drawable="@drawable/team_player_ranking_s"/>
+
+</selector>

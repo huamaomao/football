@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent" android:layout_height="@dimen/title_head_height"
+            android:orientation="horizontal"
+            android:background="@drawable/title_vs">
+    <TextView android:text="@string/title_event" style="@style/team_title"  android:layout_weight="1"/>
+    <include  layout="@layout/public_divider_view"/>
+    <TextView android:text="@string/title_season" style="@style/team_title" android:layout_weight="1"/>
+    <include  layout="@layout/public_divider_view"/>
+    <TextView  android:text="@string/title_round" style="@style/team_title" android:layout_weight="1"/>
+    <include  layout="@layout/public_divider_view"/>
+    <TextView  android:text="@string/title_time" style="@style/team_title" android:layout_weight="1.8"/>
+    <include  layout="@layout/public_divider_view"/>
+    <TextView  android:text="@string/title_home_team" style="@style/team_title"  android:layout_width="@dimen/item_team_icon_width"/>
+    <include  layout="@layout/public_divider_view"/>
+    <TextView android:text="@string/title_score" style="@style/team_title" android:layout_weight="1"/>
+    <include  layout="@layout/public_divider_view"/>
+    <TextView  android:text="@string/title_visiting_team" style="@style/team_title"  android:layout_width="@dimen/item_team_icon_width"/>
+</LinearLayout>

@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+
+}
+
+android {
+    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            jniLibs.srcDirs = ['libs']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+        }
+
+    }
+    /*project(':VitamioLibrary').getProjectDir()*/
+    task copyNativeLibs(type: Copy) {
+        from(new File(project.name, 'libs')) { include '**/*.so' }
+        into new File(buildDir, 'native-libs')
+    }
+
+    tasks.withType(JavaCompile){
+        compileTask -> compileTask.dependsOn copyNativeLibs
+    }
+
+    clean.dependsOn 'cleanCopyNativeLibs'
+
+    tasks.withType( com.android.build.gradle.tasks.PackageApplication){
+        pkgTask -> pkgTask.jniFolders = new HashSet<File>()
+            pkgTask.jniFolders.add(new File(buildDir,'native-libs'))
+    }
+}
+

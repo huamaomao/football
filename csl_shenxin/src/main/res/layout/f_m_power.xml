@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <!-- 实力对比-->
+    <RadioGroup android:id="@id/rg_group_m"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" android:scrollbars="none">
+        <RadioButton android:id="@id/rbtn_title_0" style="@style/rb_choose" android:text="@string/rb_choose_1" android:checked="true"/>
+        <View android:layout_width="1px" android:layout_height="match_parent" android:background="@drawable/live_divider"/>
+        <RadioButton  android:id="@id/rbtn_title_1" style="@style/rb_choose" android:text="@string/rb_choose_2" />
+        <View android:layout_width="1px" android:layout_height="match_parent" android:background="@drawable/live_divider"/>
+        <RadioButton  android:id="@id/rbtn_title_2"  style="@style/rb_choose" android:text="@string/rb_choose_3" />
+    </RadioGroup>
+    <include layout="@layout/public_listview" />
+</LinearLayout>

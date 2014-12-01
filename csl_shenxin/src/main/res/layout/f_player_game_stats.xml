@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RadioGroup
+            android:id="@id/rg_group"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_team_head_height"
+            android:background="@color/spinner_title_bg"
+            android:orientation="horizontal"
+            android:scrollbars="none">
+        <RadioButton
+                android:id="@id/rbtn_left_menu_0"
+                style="@style/rb_a_team"
+                android:text="@string/title_regular"/>
+
+        <RadioButton
+                android:id="@id/rbtn_left_menu_1"
+                style="@style/rb_a_team"
+                android:text="@string/title_attack"/>
+
+        <RadioButton
+                android:id="@id/rbtn_left_menu_2"
+                style="@style/rb_a_team"
+                android:text="@string/title_defend"/>
+
+        <com.weixuan.shenxin.view.SpinnerView android:id="@id/spinner_team"
+                                           android:background="@drawable/round_spinner_bg"
+                                           android:layout_width="0px"
+                                           android:layout_weight="1"
+                                           android:layout_margin="20px"
+                                           android:layout_marginRight="20px"
+                                           android:layout_height="match_parent" />
+    </RadioGroup>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_head_height"
+            android:orientation="horizontal"
+            android:background="@drawable/title_vs">
+
+        <TextView
+                style="@style/team_title"
+                android:text="@string/title_round"
+                android:layout_weight="1"/>
+
+        <include layout="@layout/public_divider_view"/>
+
+        <TextView
+                android:id="@id/tv_item_0"
+                android:text="@string/title_appear"
+                style="@style/team_title"
+                android:layout_weight="1"/>
+
+        <include layout="@layout/public_divider_view"/>
+
+        <TextView
+                android:id="@id/tv_item_1"
+                android:text="@string/title_time"
+                style="@style/team_title"
+                android:layout_weight="1"/>
+
+        <include layout="@layout/public_divider_view"/>
+
+        <TextView
+                android:id="@id/tv_item_2"
+                android:text="@string/title_pass"
+                style="@style/team_title"
+                android:layout_weight="1"/>
+
+        <include layout="@layout/public_divider_view"/>
+
+        <TextView
+                android:id="@id/tv_item_3"
+                android:text="@string/title_dribbl"
+                style="@style/team_title"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+    <com.weixuan.shenxin.view.PullToRefreshListView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 android:id="@id/ls_data"
+                                                 android:background="@drawable/shen_bg"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_weight="1"
+                                                 android:layout_height="0px"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_head_height"
+            android:orientation="horizontal"
+            android:background="@color/green_0">
+
+        <TextView
+                android:text="合计"
+                style="@style/team_title"
+                android:layout_weight="1"/>
+
+        <TextView
+                android:id="@id/tv_item_4"
+                android:text="0"
+                style="@style/team_title"
+                android:layout_weight="1"/>
+
+        <TextView
+                android:id="@id/tv_item_5"
+                android:text="0"
+                style="@style/team_title"
+                android:layout_weight="1"/>
+
+        <TextView
+                android:id="@id/tv_item_6"
+                android:text="0"
+                style="@style/team_title"
+                android:layout_weight="1"/>
+
+        <TextView
+                android:id="@id/tv_item_7"
+                android:text="0"
+                style="@style/team_title"
+                android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

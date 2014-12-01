@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- RadioGroup  id -->
+    <item name="rg_group" type="id" />
+    <!-- RadioGroup RadioButton  id -->
+    <item name="rbtn_left_menu_0" type="id" />
+    <item name="rbtn_left_menu_1" type="id" />
+    <item name="rbtn_left_menu_2" type="id" />
+    <item name="rbtn_left_menu_3" type="id" />
+    <item name="rbtn_left_menu_4" type="id" />
+    <item name="rbtn_left_menu_5" type="id" />
+    <item name="rbtn_left_menu_6" type="id" />
+    <item name="rbtn_left_menu_7" type="id" />
+    <item name="rbtn_left_menu_8" type="id" />
+    <item name="rbtn_left_menu_9" type="id" />
+    <item name="rbtn_left_menu_10" type="id" />
+    <!-- 赛事分析   id -->
+    <item name="fl_m_content" type="id" />
+    <item name="fl_news_content" type="id" />
+    <item name="fl_view" type="id" />
+    <!-- RadioGroup  id -->
+    <item name="rg_group_m" type="id" />
+    <!-- RadioGroup RadioButton  id -->
+    <item name="rbtn_title_0" type="id" />
+    <item name="rbtn_title_1" type="id" />
+    <item name="rbtn_title_2" type="id" />
+    <item name="title_vs" type="id" />
+    <!-- Spinner   id -->
+    <item name="spinner_team" type="id" />
+    <item name="spinner_round" type="id" />
+
+    <!-- 标题id   textview-->
+    <item name="tv_title" type="id"/>
+    <!-- 轮播 类型id   textview-->
+    <item name="tv_type" type="id" />
+    <item name="tv_spinner" type="id" />
+    <item name="tv_benlun" type="id" />
+    <!-- 轮播 球队 对阵球队id   textview-->
+    <item name="tv_benlun_against0" type="id" />
+    <item name="tv_benlun_against1" type="id" />
+    <item name="tv_benlun_date" type="id" />
+    <item name="tv_benlun_score0" type="id" />
+    <item name="tv_benlun_score1" type="id" />
+    <item name="tv_content" type="id" />
+
+    <!-- 轮播 球队 对阵球队icon id   imageView-->
+    <item name="iv_against_icon0" type="id" />
+    <item name="iv_against_icon1" type="id" />
+
+    <!-- 轮播 球队 page PagerTabStrip-->
+    <item name="pts_page" type="id" />
+
+    <!-- 轮播id -->
+    <item name="vp_lunbo" type="id"/>
+    <!-- 轮播页 -->
+    <item name="ll_lunbo_page" type="id" />
+    <item name="ll_lunbo" type="id" />
+    <item name="ll_lunbo_center" type="id" />
+
+    <!-- list view -->
+    <item name="ls_data" type="id" />
+    <item name="ls_team" type="id" />
+    <item name="ls_round" type="id" />
+
+    <!--刷新控件id -->
+    <item name="srl_refresh" type="id" />
+
+    <!--一线阵容 title -->
+    <item name="tv_team_year" type="id" />
+    <item name="tv_team_name0" type="id" />
+    <item name="tv_team_name1" type="id" />
+    <item name="tv_team_score" type="id" />
+    <item name="tv_team_round" type="id" />
+    <!-- page id -->
+    <item name="page_0" type="id" />
+    <item name="page_1" type="id" />
+
+
+    <!-- listview item 公用 -->
+    <!-- textView id -->
+    <item name="tv_item_0" type="id" />
+    <item name="tv_item_1" type="id" />
+    <item name="tv_item_2" type="id" />
+    <item name="tv_item_3" type="id" />
+    <item name="tv_item_4" type="id" />
+    <item name="tv_item_5" type="id" />
+    <item name="tv_item_6" type="id" />
+    <item name="tv_item_7" type="id" />
+    <item name="tv_item_8" type="id" />
+    <item name="tv_item_9" type="id" />
+    <item name="tv_item_10" type="id" />
+    <item name="tv_item_11" type="id" />
+    <!-- imageView id   view 共用-->
+    <item name="iv_item_0" type="id" />
+    <item name="iv_item_1" type="id" />
+    <item name="iv_item_2" type="id" />
+
+   <!-- View  -->
+    <item name="view_home" type="id" />
+    <item name="view_visiting" type="id" />
+    <item name="viewpage" type="id" />
+    <item name="include_view" type="id" />
+    <item name="include_view_0" type="id" />
+    
+    <item name="pts_title"  type="id" />
+    <item name="fancyCoverFlow" type="id"/>
+    <item name="navigation_drawer" type="id"/>
+    <item name="container" type="id"/>
+    <item name="drawer_layout" type="id"/>
+    <item name="switch_id"  type="id"/>
+    <!--action id -->
+    <item name="action_spinner"  type="id"/>
+
+</resources>

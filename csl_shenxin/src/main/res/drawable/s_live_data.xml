@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 文字直播 -->
+    <item
+            android:state_checked="false"
+           android:drawable="@drawable/live_data_n"/>
+    <item
+            android:state_checked="true"
+            android:drawable="@drawable/live_data_s"/>
+
+</selector>

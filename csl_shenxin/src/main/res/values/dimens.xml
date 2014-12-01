@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+
+
+    <integer name="config_slideAnimTime">300</integer>
+    <dimen name="item_team_icon_width_list">58dip</dimen>
+    <dimen name="item_team_icon_width_title">10dp</dimen>
+    <dimen name="item_team_icon_width">18dip</dimen>
+    <dimen name="item_team_icon_width_score">30dip</dimen>
+
+    <dimen name="popmenu_width">100.0dip</dimen>
+    <dimen name="popmenu_yoff">5.0dip</dimen>
+    <dimen name="dip2pix">1.0dip</dimen>
+
+    <dimen name="text_bg_height">80px</dimen><!--- textview 球队 高度 宽度-->
+    <dimen name="text_bg_width">30px</dimen><!--- textview 球队 高度 宽度-->
+
+    <dimen name="slidingmenu_offset">180dip</dimen><!--- 左边菜单宽度-->
+    <dimen name="app_title_height">60dip</dimen><!-- 应用标题高度 -->
+    <dimen name="shadow_width">20dp</dimen><!--设置阴影图片的宽度   -->
+
+    <!--轮播  -->
+    <dimen name="lunbo_margin">20dip</dimen>
+    <dimen name="lunbo_icon_margin_left">120dip</dimen>
+
+    <dimen name="lunbo_height">100dip</dimen>
+
+    <dimen name="title_head_height">40dp</dimen>
+    <dimen name="title_team_head_height">50dp</dimen>
+    <dimen name="dropDownVerticalOffset">0dp</dimen>
+    <!--首页文字宽度   -->
+   <dimen name="news_width">280dip</dimen>
+
+    <!-- 文字大小  -->
+
+    <dimen name="font_size_7">7dp</dimen>
+    <dimen name="font_size_8">8dp</dimen>
+    <dimen name="font_size_9">9dp</dimen>
+    <dimen name="font_size_10">10dp</dimen>
+    <dimen name="font_size_11">11dp</dimen>
+    <dimen name="font_size_12">12dp</dimen>
+    <dimen name="font_size_13">13dp</dimen>
+    <dimen name="font_size_14">14dp</dimen>
+    <dimen name="font_size_15">15dp</dimen>
+    <dimen name="font_size_16">16dp</dimen>
+    <dimen name="font_size_17">17dp</dimen>
+    <dimen name="font_size_18">18dp</dimen>
+    <dimen name="font_size_19">19dp</dimen>
+    <dimen name="font_size_20">20dp</dimen>
+    <dimen name="font_size_21">21dp</dimen>
+    <dimen name="font_size_22">22dp</dimen>
+    <dimen name="font_size_23">23dp</dimen>
+    <dimen name="font_size_24">24dp</dimen>
+    <dimen name="font_size_25">25dp</dimen>
+    <dimen name="font_size_26">26dp</dimen>
+    <dimen name="font_size_27">27dp</dimen>
+    <dimen name="font_size_28">28dp</dimen>
+    <dimen name="font_size_29">29dp</dimen>
+    <dimen name="font_size_30">30dp</dimen>
+    <dimen name="font_size_31">31dp</dimen>
+    <dimen name="font_size_32">32dp</dimen>
+    <dimen name="font_size_33">33dp</dimen>
+    <dimen name="font_size_34">34dp</dimen>
+    <dimen name="font_size_35">35dp</dimen>
+
+</resources>

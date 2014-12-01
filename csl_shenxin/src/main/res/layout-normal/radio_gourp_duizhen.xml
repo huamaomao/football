@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@id/rg_group"
+            android:layout_width="match_parent" android:layout_height="@dimen/title_team_head_height"
+            android:background="@color/spinner_title_bg"
+            android:paddingLeft="10px"
+            android:paddingRight="10px"
+            android:orientation="horizontal" android:scrollbars="none">
+<RadioButton android:id="@id/rbtn_left_menu_0"  style="@style/rb_a_team" android:text="@string/title_regular" />
+<RadioButton android:id="@id/rbtn_left_menu_1"  style="@style/rb_a_team" android:text="@string/title_attack"/>
+<RadioButton android:id="@id/rbtn_left_menu_2"  style="@style/rb_a_team" android:text="@string/title_defend"/>
+<!--<RadioButton android:id="@id/rbtn_left_menu_3"  style="@style/rb_a_team" android:text="@string/title_stamina"/>-->
+</RadioGroup>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+               android:orientation="horizontal"
+               style="@style/style_ww"
+               android:layout_span="3" >
+    <TextView android:id="@id/tv_item_0"
+              android:text="6"
+              android:textSize="@dimen/font_size_17"
+              android:layout_width="26dp"
+              android:layout_height="26dp"
+              android:gravity="center"
+              style="@style/style_ww"
+              android:textColor="@color/left_list_fc"
+              android:background="@drawable/shape_scoreboad"/>
+    <TextView android:id="@id/tv_item_1"
+              android:text="卫"
+              android:textSize="@dimen/font_size_15"
+              style="@style/style_ww"
+              android:layout_marginLeft="15px"
+              android:textColor="@android:color/white"
+              android:padding="3dp"
+              android:paddingBottom="2dp"
+              android:paddingRight="2dp"
+              android:background="@drawable/rectangle_greed"/>
+    <TextView android:id="@id/tv_item_2"
+              android:text="乔尼"
+              android:textSize="@dimen/font_size_15"
+              android:layout_marginLeft="5dp"
+              android:textColor="@android:color/white" style="@style/style_ww"
+            />
+    <ImageView android:id="@id/iv_item_0"
+             android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_football"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@drawable/shen_bg"
+              android:layout_height="match_parent">
+    <TableLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content" android:showDividers="beginning"
+                android:divider="@drawable/ls_divider" android:clickable="false" android:focusableInTouchMode="false"
+                  android:orientation="horizontal">
+            <TableRow >
+                <TextView
+                           android:layout_width="120dp" android:textSize="45px"
+                          android:textColor="@color/team_title_fc"
+                          android:padding="10px"
+                          android:gravity="center_vertical|right"
+                          android:text="@string/title_chinese_team"/>
+                <TextView   android:id="@id/tv_item_0"
+                            android:gravity="center_vertical|left"
+                           android:textSize="45px"
+                           android:padding="10px"
+                           android:layout_width="match_parent"
+                           android:textColor="@android:color/white" />
+            </TableRow>
+            <TableRow >
+                <TextView
+                           android:layout_width="80dp" android:textSize="45px"
+                          android:textColor="@color/team_title_fc"
+                          android:padding="10px"
+                          android:gravity="center_vertical|right"
+                          android:text="@string/title_foreign_team"/>
+                <TextView  android:id="@id/tv_item_1"
+                           android:gravity="center_vertical|left"
+                           android:textSize="45px"
+                           android:padding="10px"
+                           android:layout_width="match_parent"
+                           android:textColor="@android:color/white" />
+            </TableRow>
+
+            <TableRow >
+                <TextView
+                          android:layout_width="80dp" android:textSize="45px"
+                          android:textColor="@color/team_title_fc"
+                          android:padding="10px"
+                          android:gravity="center_vertical|right"
+                          android:text="@string/title_district"/>
+                <TextView  android:id="@id/tv_item_3"
+                           android:gravity="center_vertical|left"
+                           android:textSize="45px"
+                           android:padding="10px"
+                           android:layout_width="match_parent"
+                           android:textColor="@android:color/white" />
+            </TableRow>
+            <TableRow >
+                <TextView android:layout_width="80dp" android:textSize="45px"
+                          android:textColor="@color/team_title_fc"
+                          android:padding="10px"
+                          android:gravity="center_vertical|right"
+                          android:text="@string/title_formed"/>
+                <TextView  android:id="@id/tv_item_4"
+                            android:gravity="center_vertical|left"
+                           android:textSize="45px"
+                           android:padding="10px"
+                           android:layout_width="match_parent"
+                           android:textColor="@android:color/white" />
+            </TableRow>
+        <TableRow >
+            <TextView android:layout_width="80dp" android:textSize="45px"
+                      android:textColor="@color/team_title_fc"
+                      android:padding="10px"
+                      android:gravity="center_vertical|right"
+                      android:text="@string/title_stadium"/>
+            <TextView android:id="@id/tv_item_5"
+                        android:gravity="center_vertical|left"
+                       android:textSize="45px"
+                       android:padding="10px"
+                       android:layout_width="match_parent"
+                       android:textColor="@android:color/white" />
+        </TableRow>
+        <TableRow >
+            <TextView android:layout_width="80dp" android:textSize="45px"
+                      android:textColor="@color/team_title_fc"
+                      android:padding="10px"
+                      android:gravity="center_vertical|right"
+                      android:text="@string/title_galleryful"/>
+            <TextView  android:id="@id/tv_item_6"
+                    android:gravity="center_vertical|left"
+                       android:textSize="45px"
+                       android:padding="10px"
+                       android:layout_width="match_parent"
+                       android:textColor="@android:color/white" />
+        </TableRow>
+        <TableRow >
+            <TextView android:layout_width="80dp" android:textSize="45px"
+                      android:textColor="@color/team_title_fc"
+                      android:padding="10px"
+                      android:gravity="center_vertical|right"
+                      android:text="@string/title_owner"/>
+            <TextView  android:id="@id/tv_item_7"
+                        android:gravity="center_vertical|left"
+                       android:textSize="45px"
+                       android:padding="10px"
+                       android:layout_width="match_parent"
+                       android:textColor="@android:color/white" />
+        </TableRow>
+        <TableRow >
+            <TextView android:layout_width="80dp" android:textSize="45px"
+                      android:textColor="@color/team_title_fc"
+                      android:padding="10px"
+                      android:gravity="center_vertical|right"
+                      android:text="@string/title_capello"/>
+            <TextView  android:id="@id/tv_item_8"
+                        android:gravity="center_vertical|left"
+                       android:textSize="45px"
+                       android:padding="10px"
+                       android:layout_width="match_parent"
+                       android:textColor="@android:color/white" />
+        </TableRow>
+    </TableLayout>
+    <TextView android:id="@id/tv_content"
+              android:textColor="@android:color/white"
+              android:textSize="@dimen/font_size_14"
+              android:layout_height="0px"
+              android:layout_weight="1"
+              android:padding="40px"
+              android:layout_width="match_parent"
+            />
+</LinearLayout>

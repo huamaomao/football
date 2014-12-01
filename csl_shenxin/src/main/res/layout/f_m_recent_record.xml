@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <!-- 近期战绩 -->
+    <RadioGroup android:id="@id/rg_group_m"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" android:scrollbars="none">
+        <RadioButton android:id="@id/rbtn_title_0" style="@style/rb_choose" android:checked="true"/>
+        <RadioButton  android:id="@id/rbtn_title_1" style="@style/rb_choose"  />
+    </RadioGroup>
+    <LinearLayout
+                  android:layout_width="match_parent" android:layout_height="@dimen/title_head_height"
+                  android:orientation="horizontal"
+                  android:background="@drawable/title_vs">
+        <TextView android:text="@string/title_event_Result" style="@style/team_title" android:layout_weight="1"/>
+        <include  layout="@layout/public_divider_view"/>
+        <TextView android:text="@string/title_season" style="@style/team_title"  android:layout_weight="1"/>
+        <include  layout="@layout/public_divider_view"/>
+        <TextView  android:text="@string/title_round" style="@style/team_title" android:layout_weight="1"/>
+        <include  layout="@layout/public_divider_view"/>
+        <TextView  android:text="@string/title_time" style="@style/team_title" android:layout_weight="1.8"/>
+        <include  layout="@layout/public_divider_view"/>
+        <TextView  android:text="@string/title_home_team" style="@style/team_title"  android:layout_weight="1.4"/>
+        <include  layout="@layout/public_divider_view"/>
+        <TextView android:text="@string/title_score" style="@style/team_title" android:layout_weight="1"/>
+        <include  layout="@layout/public_divider_view"/>
+        <TextView  android:text="@string/title_visiting_team" style="@style/team_title" android:layout_weight="1.4"/>
+    </LinearLayout>
+   <include layout="@layout/public_listview" />
+</LinearLayout>
