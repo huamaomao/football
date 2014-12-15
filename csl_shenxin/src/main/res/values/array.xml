@@ -83,5 +83,19 @@
         <item>第29轮</item>
         <item>第30轮</item>
     </string-array>
+    <integer-array name="shangwu_list">
+        <item>@drawable/icon_1</item>
+        <item>@drawable/icon_2</item>
+        <item>@drawable/icon_3</item>
+        <item>@drawable/icon_4</item>
+        <item>@drawable/icon_5</item>
+        <item>@drawable/icon_6</item>
+        <item>@drawable/icon_7</item>
+        <item>@drawable/icon_8</item>
+        <item>@drawable/icon_9</item>
+        <item>@drawable/icon_10</item>
+        <item>@drawable/icon_11</item>
+        <item>@drawable/icon_12</item>
+    </integer-array>
 
 </resources>

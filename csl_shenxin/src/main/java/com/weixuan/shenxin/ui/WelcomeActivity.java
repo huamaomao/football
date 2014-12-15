@@ -17,6 +17,7 @@ import com.weixuan.shenxin.service.FileService;
 import com.weixuan.shenxin.util.Dict;
 import com.weixuan.shenxin.util.RequestUtil;
 import com.weixuan.shenxin.util.Util;
+import io.vov.vitamio.LibsChecker;
 
 public class WelcomeActivity extends BaseActivity{
 
@@ -78,6 +79,7 @@ public class WelcomeActivity extends BaseActivity{
                         });
                     }
                     requestData();
+                    LibsChecker.checkVitamioLibs(WelcomeActivity.this);
                     Thread.sleep(2000);
                 }catch (Exception e){
                     application.errorMessage(e);

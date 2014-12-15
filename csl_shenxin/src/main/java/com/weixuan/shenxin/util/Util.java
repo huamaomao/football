@@ -131,15 +131,13 @@ public class Util {
      * @param type
      *           动画
      */
-    public static void openActivity(Class<?> pClass, Bundle pBundle,Activity activity,int type) {
+    public static void openActivity(Class<?> pClass, Bundle pBundle,Activity activity,ActivityModel type) {
         Intent intent = new Intent(activity, pClass);
         if (pBundle != null) {
             intent.putExtras(pBundle);
         }
-        activity.startActivity(intent);
-        switch (type){
+        switch (type.value){
             case 0:
-
                 break;
             case 1:
                 activity.overridePendingTransition(R.anim.slide_t,R.anim.slide_out_right);
@@ -151,6 +149,7 @@ public class Util {
                 activity.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
                 break;
         }
+        activity.startActivity(intent);
     }
 
 

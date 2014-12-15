@@ -102,7 +102,7 @@ public class ImageAdapter extends BaseAdapter
     @Override
     public int getCount()
     {
-        return Integer.MAX_VALUE;
+        return mImageIds.length;
     }
     
     @Override
@@ -120,7 +120,7 @@ public class ImageAdapter extends BaseAdapter
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        return mImages[position % mImages.length];
+        return mImages[position];
     }
     /* 函数段end */
 }

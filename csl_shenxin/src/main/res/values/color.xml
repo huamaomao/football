@@ -23,4 +23,6 @@
     <color name="spinner_title">#ff183018</color>
     <color name="spinner_title_bg">#ff052a05</color>  <!--- ff154f14 -->
     <color name="spinner_title_tab">#ff173a1c</color>
+
+    <color name="progressbar_color">#AA000000</color>
 </resources>

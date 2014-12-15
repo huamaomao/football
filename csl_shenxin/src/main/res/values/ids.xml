@@ -111,4 +111,14 @@
     <!--action id -->
     <item name="action_spinner"  type="id"/>
 
+
+    <item name="playSeekBar"  type="id"/>
+    <item name="mylrc"  type="id"/>
+    <item name="probar" type="id"/>
+    <item name="buffer" type="id"/>
+    <item name="centerLayout" type="id"/>
+    <item name="view_load" type="id" />
+    <item name="panelControl" type="id" />
+    <!-- gridView -->
+    <item name="grid_view" type="id" />
 </resources>

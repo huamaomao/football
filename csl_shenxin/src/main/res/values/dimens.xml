@@ -36,6 +36,11 @@
     <!--首页文字宽度   -->
    <dimen name="news_width">280dip</dimen>
 
+
+    <!--播放器 -->
+    <dimen name="player_progressbar_height">9.0dip</dimen>
+    <dimen name="player_bottombar_height">45dip</dimen>
+
     <!-- 文字大小  -->
 
     <dimen name="font_size_7">7dp</dimen>

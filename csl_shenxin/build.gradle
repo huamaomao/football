@@ -19,7 +19,8 @@ repositories {
         url "file://F:\\androidLibs\\android\\m2repository"
     }*/
     maven{
-        url "https://github.com/BlossomHua/androidLibs"
+       // url "https://github.com/BlossomHua/androidLibs"
+        url "file://F:\\androidLibs\\android\\m2repository"
     }
 }
 
@@ -27,7 +28,7 @@ android {
     compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
     buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
     defaultConfig {
-        applicationId "com.weixuan.football"
+        applicationId "com.weixuan.shenxin"
         compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
         buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
         versionCode Integer.parseInt(project.VERSION_CODE)
@@ -97,6 +98,7 @@ android {
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
     compile 'com.alibaba:fastjson:1.1.41'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.android.support:support-v13:21.+'

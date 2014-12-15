@@ -1,7 +1,6 @@
 package com.weixuan.shenxin.test;
 
 import com.alibaba.fastjson.JSON;
-
 import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,10 +11,25 @@ import java.util.List;
  */
 public class Test {
    
-   /* public static void main(String[] arg){
+   public static void main(String[] arg){
+     /*  ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+       ScriptEngine scriptEngine = scriptEngineManager.getEngineByName("javascript");
+       Object o = null;
+       try {
+           if (scriptEngine!=null) {
+               //o = scriptEngine.eval(s);
+               o = scriptEngine.eval("12+(0.7657-0.70)/(0.80-0.70)*12");
+               System.out.println("eval:==="+o);
+//		        double d = Double.parseDouble(o.toString());
+           }
+       } catch (ScriptException e) {
+           e.printStackTrace();
+       }*/
+
+   }
         //System.out.println(2014-2000);
 
-      *//*  RecentGameTeam gameTeam = new RecentGameTeam();
+      /*  RecentGameTeam gameTeam = new RecentGameTeam();
         System.out.println(gameTeam.getTeamBId());
         FragmentTransaction transaction;
        transaction.setCustomAnimations()*//*
@@ -27,21 +41,10 @@ public class Test {
         System.out.println(DateUtil.timeDifference("2014-09-15","19:00:00"));
 
 
-    }*/
+  */
 
     public static void sort(List ls,final String method ){
-        Collections.sort(ls, new Comparator() {
-            public int compare(Object a, Object b) {
-                int ret = 0;
-                try {
-                   Field field1= a.getClass().getDeclaredField(method);
-                   Field field2= a.getClass().getDeclaredField(method);
-                    ret=Integer.valueOf(field1.get(a).toString()).compareTo(Integer.valueOf(field2.get(b).toString()));
-                } catch (Exception ne) {
-                }
-                return ret;
-            }
-        });
+
     }
 
     static  class  User{

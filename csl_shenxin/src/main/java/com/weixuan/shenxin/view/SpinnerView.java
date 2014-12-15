@@ -55,7 +55,6 @@ public class SpinnerView extends FrameLayout {
     }
     private void initView() {
         textView = new TextView(getContext());
-        textView.setText("哈尔滨毅腾");
         textView.setTextSize(17f);
         textView.setGravity(Gravity.CENTER);
         textView.setTextColor(getResources().getColor(R.color.white));
