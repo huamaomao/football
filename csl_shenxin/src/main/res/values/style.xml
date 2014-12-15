@@ -17,12 +17,18 @@
         <item name="android:homeAsUpIndicator">@drawable/icon_back</item>
         <item name="android:icon">@null</item>
     </style>
+    <!-- seekbar  time -->
+    <style name="progress_time_color">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:alpha">0.8</item>
+    </style>
+
+
 
     <style name="Widget.Styled.ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:displayOptions">showTitle</item>
         <item name="android:background">@color/blue_</item>
     </style>
-
 
     <style name="MyDialogStyle">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -331,6 +337,15 @@
     <style name="popupAnimation" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/pup_in</item>
         <item name="android:windowExitAnimation">@anim/pup_out</item>
+    </style>
+    <!-- ProgressBar-->
+    <style name="progressBarStyle">
+        <item name="android:layout_width">64.0dip</item>
+        <item name="android:layout_height">64.0dip</item>
+    </style>
+    <style name="progressBarDownStyle">
+        <item name="android:layout_width">24.0dip</item>
+        <item name="android:layout_height">24.0dip</item>
     </style>
 
 </resources>

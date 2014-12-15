@@ -17,6 +17,7 @@
 package io.vov.vitamio;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
 /**
@@ -36,16 +37,17 @@ import android.content.Intent;
 public final class LibsChecker {
   public static final String FROM_ME = "fromVitamioInitActivity";
 
-  public static final boolean checkVitamioLibs(Activity ctx) {
-    if (!Vitamio.isInitialized(ctx) && !ctx.getIntent().getBooleanExtra(FROM_ME, false)) {
-      Intent i = new Intent();
+  public static final boolean checkVitamioLibs(Context ctx) {
+    if (!Vitamio.isInitialized(ctx)) {
+      /*Intent i = new Intent();
       i.setClassName(Vitamio.getVitamioPackage(), "io.vov.vitamio.activity.InitActivity");
       i.putExtras(ctx.getIntent());
       i.setData(ctx.getIntent().getData());
       i.putExtra("package", ctx.getPackageName());
       i.putExtra("className", ctx.getClass().getName());
       ctx.startActivity(i);
-      ctx.finish();
+      ctx.finish();*/
+      Vitamio.initialize(ctx,ctx.getResources().getIdentifier("libarm", "raw", ctx.getPackageName()));
       return false;
     }
     return true;

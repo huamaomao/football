@@ -5,23 +5,68 @@
               android:background="@drawable/live_bg"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-<TextView android:padding="20px"
-          android:layout_marginTop="6dp"
-          android:gravity="center_horizontal"
-          android:textSize="@dimen/font_size_16"
-          android:textColor="@android:color/white"
-          android:text="@string/club_wenhua"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"/>
-<Switch android:id="@id/switch_id"
-        android:layout_gravity="center_horizontal"
-        android:textOff="@string/stop"
-        android:textOn="@string/playing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-<ImageView android:id="@id/iv_item_0"
+    <LinearLayout
+          android:layout_alignParentTop="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+        <include layout="@layout/video_view"
+                />
+    </LinearLayout>
+    <com.vxfc.shenxin.view.LyricView
+            android:id="@+id/mylrc"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            />
+
+
+    <ImageButton android:id="@id/iv_item_0"
+               android:visibility="gone"
            android:layout_gravity="center_horizontal"
            android:src="@drawable/icon_video_play"
             android:layout_width="wrap_content"
            android:layout_height="wrap_content"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/panelControl"
+                    android:background="@color/mediacontroller_bg"
+                    android:alpha="0.8"
+                    android:layout_gravity="center_vertical" android:orientation="horizontal"
+                    android:padding="6px"
+                    android:layout_width="fill_parent" android:layout_height="40dip">
+        <ImageButton android:id="@id/iv_item_1"
+                   android:background="@drawable/mediacontroller_button"
+                    android:src="@drawable/mediacontroller_play"
+                     android:focusable="true"
+                     android:clickable="true"
+                     android:layout_width="@dimen/player_bottombar_height"
+                     android:layout_height="@dimen/player_bottombar_height"
+                     android:layout_marginLeft="3dip"  />
+        <TextView android:id="@id/tv_item_0"
+                android:textSize="@dimen/font_size_12"
+                  android:gravity="left|center"
+                  style="@style/progress_time_color"
+                  android:layout_width="40dip" android:layout_height="27dip"
+                  android:layout_marginRight="14dip"
+                  android:layout_alignParentRight="true" />
+        <TextView android:id="@id/tv_item_1"
+                  android:textSize="@dimen/font_size_12"
+                  android:gravity="left|center"
+                  style="@style/progress_time_color"
+                  android:layout_width="35dip"
+                  android:text="0"
+                  android:layout_height="27dip"
+                  android:layout_toRightOf="@id/iv_item_1"
+                 />
+        <SeekBar android:id="@id/playSeekBar"
+                 android:focusable="false"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 style="@style/MediaController_SeekBar"
+                 android:layout_toLeftOf="@id/tv_item_0"
+                 android:layout_toRightOf="@id/tv_item_1"
+                 android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
 </LinearLayout>

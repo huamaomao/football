@@ -1,41 +1,48 @@
+apply plugin: 'com.android.application'
+apply plugin: 'idea'
+
 buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        maven{
+            credentials {
+                username 'admin'
+                password 'admin123'
+            }
+            url "http://114.80.68.147:9999/nexus/content/repositories/thirdparty"
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.13.0'
+        classpath 'com.android.tools.build:gradle:0.14.2'
     }
     tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
 
 }
-apply plugin: 'com.android.application'
-apply plugin: 'idea'
-
 repositories {
     jcenter()
     mavenCentral()
-   /* maven{
-        url "file://F:\\androidLibs\\android\\m2repository"
-    }*/
     maven{
-        url "https://github.com/BlossomHua/androidLibs"
+        credentials {
+            username 'admin'
+            password 'admin123'
+        }
+        url "http://114.80.68.147:9999/nexus/content/repositories/thirdparty"
     }
 }
-
 android {
     compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
     buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
     defaultConfig {
-        applicationId "com.weixuan.football"
+        applicationId "com.weixuan.shenxin"
         compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
         buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
     }
- /* sourceSets {
+ /*sourceSets {
         main {
-            manifest.srcFile 'AndroidManifest.xml'
+            manifest.srcFile 'src/mainAndroidManifest.xml'
             java.srcDirs = ['src/java']
             resources.srcDirs = ['src']
             aidl.srcDirs = ['src']
@@ -69,7 +76,7 @@ android {
 
     buildTypes {
         release {
-            runProguard false
+            runProguard true
             proguardFiles 'proguard-project.txt'
             signingConfig  signingConfigs.myConfig
         }
@@ -81,12 +88,8 @@ android {
             packageNameSuffix ".playstore"
         }*/
     }
-    sourceSets {
-        hiapk.setRoot('build-types/hiapk')
-        playstore.setRoot('build-types/playstore')
-    }
 
-   /* productFlavors {
+  /*  productFlavors {
         playstore {
             packageName='com.weixuan.team.play'
         }
@@ -97,11 +100,13 @@ android {
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
     compile 'com.alibaba:fastjson:1.1.41'
     compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.android.support:support-v13:21.+'
+    compile 'com.android.support:support-v13:21'
     compile project(':libraries:FlowLibrary')
     compile project(':libraries:ImageLibrary')
     compile project(':libraries:LiteLibrary')
     compile project(':libraries:VitamioLibrary')
+
 }

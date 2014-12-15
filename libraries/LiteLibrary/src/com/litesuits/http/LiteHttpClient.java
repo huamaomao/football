@@ -45,7 +45,7 @@ public abstract class LiteHttpClient {
     public static final int DEFAULT_MAX_REDIRECT_TIMES = 10;
     public static final int DEFAULT_HTTP_PORT          = 80;
     public static final int DEFAULT_HTTPS_PORT         = 443;
-    public static final int DEFAULT_TIMEOUT            = 6000;
+    public static final int DEFAULT_TIMEOUT            = 3000;//超时时间;
     public static final int DEFAULT_BUFFER_SIZE        = 4096;
 
     private static final String TAG                  = LiteHttpClient.class.getSimpleName();

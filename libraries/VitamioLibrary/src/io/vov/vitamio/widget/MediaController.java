@@ -38,9 +38,7 @@ import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-
 import java.lang.reflect.Method;
-
 import io.vov.vitamio.utils.Log;
 import io.vov.vitamio.utils.StringUtils;
 
@@ -97,6 +95,9 @@ public class MediaController extends FrameLayout {
   private AudioManager mAM;
   private OnShownListener mShownListener;
   private OnHiddenListener mHiddenListener;
+
+  private  boolean flag;
+
   @SuppressLint("HandlerLeak")
   private Handler mHandler = new Handler() {
     @Override
@@ -172,8 +173,15 @@ public class MediaController extends FrameLayout {
     initController(context);
   }
 
+  public MediaController(Context context,boolean flag) {
+    super(context);
+    this.flag=flag;
+    if (!mFromXml && initController(context))
+      initFloatingWindow();
+  }
   public MediaController(Context context) {
     super(context);
+    this.flag=false;
     if (!mFromXml && initController(context))
       initFloatingWindow();
   }
@@ -334,14 +342,18 @@ public class MediaController extends FrameLayout {
       if (mFromXml) {
         setVisibility(View.VISIBLE);
       } else {
+        //flag
         int[] location = new int[2];
-
         mAnchor.getLocationOnScreen(location);
-        Rect anchorRect = new Rect(location[0], location[1], location[0] + mAnchor.getWidth(), location[1] + mAnchor.getHeight());
-
+        Rect anchorRect = new Rect(location[0], location[1], location[0] + mAnchor.getWidth(),  + mAnchor.getHeight());
         mWindow.setAnimationStyle(mAnimStyle);
-        setWindowLayoutType();
-        mWindow.showAtLocation(mAnchor, Gravity.NO_GRAVITY, anchorRect.left, anchorRect.bottom);
+        if (flag){
+          mWindow.showAsDropDown(mAnchor, 0, -location[1]);
+        }else {
+          setWindowLayoutType();
+          mWindow.showAtLocation(mAnchor, Gravity.NO_GRAVITY, anchorRect.left, anchorRect.bottom);
+        }
+
       }
       mShowing = true;
       if (mShownListener != null)

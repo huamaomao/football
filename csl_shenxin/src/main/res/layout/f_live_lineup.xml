@@ -36,7 +36,7 @@
                 style="@style/style_team_row_a_left"/>
 
     </LinearLayout>
-    <com.weixuan.shenxin.view.FormationView
+    <com.vxfc.shenxin.view.FormationView
             android:id="@+id/fl_view"
             android:background="@drawable/icon_football_bg"
             android:layout_width="match_parent"

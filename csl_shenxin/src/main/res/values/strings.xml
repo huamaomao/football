@@ -199,6 +199,9 @@
         2009年中国足球甲级联赛亚军  \n   \n
         2012年上海国际足球邀请赛冠军  \n
     </string>
+    <!-- 登陆  注册-->
+    <string name="login">登陆</string>
+    <string name="register">注册</string>
 
     <string name="playing">播放中</string>
     <string name="stop">已停止</string>

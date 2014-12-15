@@ -6,25 +6,6 @@
 -verbose
 -optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
 
--keep public class com.weixuan.shenxin.util.*
--keep public class * extends android.app.Activity
--keep public class * extends android.app.Application
--keep public class * extends android.app.Service
--keep public class * extends android.content.BroadcastReceiver
--keep public class * extends android.content.ContentProvider
--keep public class * extends android.app.backup.BackupAgentHelper
--keep public class * extends android.preference.Preference
--keep public class com.android.vending.licensing.ILicensingService
-
-
-# For Vitamio classes
--keep public class io.vov.vitamio.MediaPlayer { *; }
--keep public class io.vov.vitamio.IMediaScannerService { *; }
--keep public class io.vov.vitamio.MediaScanner { *; }
--keep public class io.vov.vitamio.MediaScannerClient { *; }
--keep public class io.vov.vitamio.VitamioLicense { *; }
--keep public class io.vov.vitamio.Vitamio { *; }
--keep public class io.vov.vitamio.MediaMetadataRetriever { *; }
 
 -keepclasseswithmembernames class * {
     native <methods>;
@@ -52,10 +33,13 @@
   public static final android.os.Parcelable$Creator *;
 }
 
-
-#-libraryjars   libs/android-support-v13.jar
-#-libraryjars   libs/fastjson-1.1.41.jar
-#-libraryjars   libs/nineoldandroid.jar
+-keep public class com.vxfc.shenxin.util.**{ *; }
+-keep public class com.vxfc.shenxin.**{ *; }
+-keep class com.alibaba.fastjson.** { *; }
+-keep class com.litesuits.http.** { *; }
+-keep class com.litesuits.android.** { *; }
+-keep class com.nostra13.universalimageloader.** { *; }
+-keep public class io.vov.vitamio.** { *; }
 
 -dontwarn android.support.v4.**
 -keep class android.support.v4.** { *; }
@@ -63,3 +47,21 @@
 -keep public class * extends android.support.v4.**
 -keep public class * extends android.app.Fragment
 -dontwarn com.alibaba.fastjson.**
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+-keep public class com.android.vending.licensing.ILicensingService
+
+
+# For Vitamio classes
+-keep public class io.vov.vitamio.MediaPlayer { *; }
+-keep public class io.vov.vitamio.IMediaScannerService { *; }
+-keep public class io.vov.vitamio.MediaScanner { *; }
+-keep public class io.vov.vitamio.MediaScannerClient { *; }
+-keep public class io.vov.vitamio.VitamioLicense { *; }
+-keep public class io.vov.vitamio.Vitamio { *; }
+-keep public class io.vov.vitamio.MediaMetadataRetriever { *; }
