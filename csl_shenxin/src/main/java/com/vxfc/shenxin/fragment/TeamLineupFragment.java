@@ -10,7 +10,7 @@ import android.widget.RadioGroup;
 import at.technikum.mti.fancycoverflow.FancyCoverFlow;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.TeamFancyCoverFlowAdapter;
-import com.vxfc.shenxin.view.FormationView;
+import com.vxfc.shenxin.widget.FormationView;
 
 import java.util.List;
 /****

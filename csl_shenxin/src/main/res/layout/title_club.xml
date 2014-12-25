@@ -20,7 +20,7 @@
               android:layout_centerVertical="true"
               android:layout_width="wrap_content"
               android:layout_height="match_parent"/>
-    <com.vxfc.shenxin.view.SpinnerView
+    <com.vxfc.shenxin.widget.SpinnerView
             android:id="@id/spinner_round"
             android:visibility="gone"
             android:background="@drawable/s_club_history_spinner"

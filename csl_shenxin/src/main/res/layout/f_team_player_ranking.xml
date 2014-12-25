@@ -9,13 +9,13 @@
                   android:background="@color/spinner_title_bg"
                   android:padding="20px"
                   android:orientation="horizontal">
-        <com.vxfc.shenxin.view.SpinnerView android:id="@id/spinner_round"
+        <com.vxfc.shenxin.widget.SpinnerView android:id="@id/spinner_round"
                                            android:background="@drawable/round_spinner_bg"
                                            android:layout_width="0px"
                                            android:layout_weight="1"
                                            android:layout_marginRight="20px"
                                            android:layout_height="match_parent" />
-        <com.vxfc.shenxin.view.SpinnerView android:id="@id/spinner_team"
+        <com.vxfc.shenxin.widget.SpinnerView android:id="@id/spinner_team"
                                            android:background="@drawable/round_spinner_bg"
                                            android:layout_width="0px"
                                            android:layout_weight="1"

@@ -15,8 +15,8 @@ import com.vxfc.shenxin.entity.FistPlayerVo;
 import com.vxfc.shenxin.entity.RecentGameTeam;
 import com.vxfc.shenxin.ui.TeamPlayerActivity;
 import com.vxfc.shenxin.util.RequestUtil;
-import com.vxfc.shenxin.view.PullToRefreshBase;
-import com.vxfc.shenxin.view.PullToRefreshListView;
+import com.vxfc.shenxin.widget.PullToRefreshBase;
+import com.vxfc.shenxin.widget.PullToRefreshListView;
 
 import java.util.ArrayList;
 import java.util.List;

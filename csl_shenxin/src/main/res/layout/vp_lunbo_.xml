@@ -3,7 +3,7 @@
              android:layout_width="fill_parent"
              android:layout_height="120dip">
 
-    <com.vxfc.shenxin.view.CustomViewPager
+    <com.vxfc.shenxin.widget.CustomViewPager
             android:id="@id/vp_lunbo"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"

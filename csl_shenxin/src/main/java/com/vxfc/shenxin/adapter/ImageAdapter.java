@@ -17,7 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import com.vxfc.shenxin.util.BitmapScaleDownUtil;
-import com.vxfc.shenxin.view.GalleryFlow;
+import com.vxfc.shenxin.widget.GalleryFlow;
 
 /**
  * @function GalleryFlow适配器

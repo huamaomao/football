@@ -6,15 +6,18 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
       <!-- <item name="android:actionBarSize">@dimen/app_title_height</item>-->
+        <item name="android:icon">@drawable/team_shenxin_icon</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
        <item name="android:homeAsUpIndicator">@drawable/team_shenxin_menu</item>
+        <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
     </style>
 
     <style name="AppBackTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
         <item name="android:homeAsUpIndicator">@drawable/icon_back</item>
+        <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
         <item name="android:icon">@null</item>
     </style>
     <!-- seekbar  time -->
@@ -23,6 +26,11 @@
         <item name="android:alpha">0.8</item>
     </style>
 
+
+    <style name="MenuTextStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
+    </style>
 
 
     <style name="Widget.Styled.ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
@@ -331,6 +339,15 @@
         <item name="android:layout_width">wrap_content</item>
     </style>
 
+
+
+    <style name="loginStyle">
+        <item name="android:layout_height">40dip</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">15dip</item>
+        <item name="android:layout_marginRight">15dip</item>
+        <item name="android:layout_marginTop">3dip</item>
+    </style>
 
 
 

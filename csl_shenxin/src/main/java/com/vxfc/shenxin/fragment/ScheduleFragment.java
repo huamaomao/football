@@ -19,7 +19,7 @@ import com.vxfc.shenxin.entity.RecentGameTeam;
 import com.vxfc.shenxin.ui.LiveActivity;
 import com.vxfc.shenxin.ui.MainActivity;
 import com.vxfc.shenxin.util.*;
-import com.vxfc.shenxin.view.SpinnerView;
+import com.vxfc.shenxin.widget.SpinnerView;
 
 import java.util.*;
 

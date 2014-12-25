@@ -13,7 +13,7 @@ import com.vxfc.shenxin.adapter.ListPlayerRankingAdapater;
 import com.vxfc.shenxin.entity.PlayerRankingVo;
 import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.Util;
-import com.vxfc.shenxin.view.SpinnerView;
+import com.vxfc.shenxin.widget.SpinnerView;
 
 import java.util.ArrayList;
 import java.util.List;

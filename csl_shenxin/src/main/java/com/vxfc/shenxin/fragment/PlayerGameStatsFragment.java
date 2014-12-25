@@ -18,7 +18,7 @@ import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.Team;
 import com.vxfc.shenxin.util.Util;
 import com.vxfc.shenxin.util.ViewHolderHelp;
-import com.vxfc.shenxin.view.SpinnerView;
+import com.vxfc.shenxin.widget.SpinnerView;
 
 import java.util.List;
 

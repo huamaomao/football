@@ -27,7 +27,7 @@
                 style="@style/rb_a_team"
                 android:text="@string/title_defend"/>
 
-        <com.vxfc.shenxin.view.SpinnerView android:id="@id/spinner_team"
+        <com.vxfc.shenxin.widget.SpinnerView android:id="@id/spinner_team"
                                            android:background="@drawable/round_spinner_bg"
                                            android:layout_width="0px"
                                            android:layout_weight="1"
@@ -80,7 +80,7 @@
                 android:layout_weight="1"/>
     </LinearLayout>
 
-    <com.vxfc.shenxin.view.PullToRefreshListView xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.vxfc.shenxin.widget.PullToRefreshListView xmlns:android="http://schemas.android.com/apk/res/android"
                                                  android:id="@id/ls_data"
                                                  android:background="@drawable/shen_bg"
                                                  android:layout_width="match_parent"

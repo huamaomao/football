@@ -14,7 +14,7 @@ import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.ui.VideoPlayerActivity;
 import com.vxfc.shenxin.util.ActivityModel;
 import com.vxfc.shenxin.util.Util;
-import com.vxfc.shenxin.view.LyricView;
+import com.vxfc.shenxin.widget.LyricView;
 import io.vov.vitamio.LibsChecker;
 import io.vov.vitamio.utils.StringUtils;
 import io.vov.vitamio.widget.MediaController;

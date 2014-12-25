@@ -201,7 +201,12 @@
     </string>
     <!-- 登陆  注册-->
     <string name="login">登陆</string>
+    <string name="msg_tel">请输入手机号</string>
+    <string name="msg_pwd">请输入密码（6-16位）</string>
     <string name="register">注册</string>
+    <string name="skip_login">跳过登陆</string>
+    <string name="msg_3rd">第三方登陆</string>
+
 
     <string name="playing">播放中</string>
     <string name="stop">已停止</string>

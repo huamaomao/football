@@ -108,5 +108,6 @@ dependencies {
     compile project(':libraries:ImageLibrary')
     compile project(':libraries:LiteLibrary')
     compile project(':libraries:VitamioLibrary')
-
+    compile project(':libraries:CommonLibrary')
+    compile project(':libraries:ThirdpartyLibrary')
 }

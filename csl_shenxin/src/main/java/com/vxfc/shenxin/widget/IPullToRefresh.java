@@ -1,4 +1,4 @@
-package com.vxfc.shenxin.view;
+package com.vxfc.shenxin.widget;
 
 import android.view.View;
 

@@ -121,4 +121,17 @@
     <item name="panelControl" type="id" />
     <!-- gridView -->
     <item name="grid_view" type="id" />
+
+    <!-- login-->
+    <item name="et_tel"  type="id"/>
+    <item name="btn_login"  type="id"/>
+    <item name="btn_skiplogin"  type="id"/>
+    <item name="et_pwd"  type="id"/>
+
+    <!-- imageButton-->
+    <item name="ib_1"  type="id"/>
+    <item name="ib_2"  type="id"/>
+    <item name="ib_3"  type="id"/>
+    <item name="ib_4"  type="id"/>
+
 </resources>

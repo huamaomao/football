@@ -4,8 +4,8 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.view.PullToRefreshBase;
-import com.vxfc.shenxin.view.PullToRefreshListView;
+import com.vxfc.shenxin.widget.PullToRefreshBase;
+import com.vxfc.shenxin.widget.PullToRefreshListView;
 public abstract class BaseListFragment extends BaseFragment {
     protected PullToRefreshListView pullListView=null;
     protected ListView listView=null;

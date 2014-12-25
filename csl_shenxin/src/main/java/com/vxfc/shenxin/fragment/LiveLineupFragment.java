@@ -16,7 +16,7 @@ import com.vxfc.shenxin.ui.TeamPlayerActivity;
 import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.Team;
 import com.vxfc.shenxin.util.Util;
-import com.vxfc.shenxin.view.FormationView;
+import com.vxfc.shenxin.widget.FormationView;
 
 import java.util.HashMap;
 import java.util.Map;

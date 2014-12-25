@@ -1,0 +1,7 @@
+<menu  xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".LoginActivity" >
+    <item   android:title="手机号注册" android:showAsAction="ifRoom"
+            android:textSize="@dimen/font_size_20"   />
+
+</menu>

@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.RadioGroup;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.util.Util;
-import com.vxfc.shenxin.view.SpinnerView;
+import com.vxfc.shenxin.widget.SpinnerView;
 /****
  * 新闻/公告
  *
