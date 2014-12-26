@@ -11,10 +11,13 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.vxfc.shenxin.R;
+import com.vxfc.shenxin.util.ActivityModel;
 import com.vxfc.shenxin.util.Dict;
+import com.vxfc.shenxin.util.Util;
 
 public class BaseActivity extends FragmentActivity {
     protected FootballApplication application;
@@ -34,6 +37,34 @@ public class BaseActivity extends FragmentActivity {
         actionBar.setIcon(null);
         actionBar.setLogo(null);
         actionBar.setTitle(str);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home)
+        {
+            onHomeClick();
+            return true;
+        }else if (item.getItemId()!=0){
+            onMenuItemSelected(item.getItemId());
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /***
+     * home
+     */
+    protected void onHomeClick(){
+        toMainActity();
+    }
+
+    /***
+     * action  item onclick
+     * @param id
+     */
+    protected void onMenuItemSelected(int id){
+
     }
 
     protected   void  requestData(){
@@ -116,15 +147,13 @@ public class BaseActivity extends FragmentActivity {
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (keyCode==KeyEvent.KEYCODE_BACK){
-            openMainActity();
+            toMainActity();
         }
         return super.onKeyUp(keyCode, event);
     }
 
-    protected void  openMainActity(){
-        openActivityRight(MainActivity.class);
-        overridePendingTransition(R.anim.slide_t,R.anim.slide_out_right);
-        finish();
+    protected void  toMainActity(){
+        Util.openActivity(MainActivity.class,null,this, ActivityModel.ACTIVITY_MODEL_3);
     }
 
 }

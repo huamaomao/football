@@ -6,4 +6,5 @@ package com.vxfc.common.view;
 public interface IView {
      void showLoading();
      void hideLoading();
+     void toMainActivity();
 }

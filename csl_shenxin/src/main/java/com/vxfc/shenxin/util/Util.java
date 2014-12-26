@@ -97,28 +97,16 @@ public class Util {
 
     /************************************************View 控制  method ******************************************************************/
 
-    /**
-     * 通过类名启动activity
-     *
-     */
-    public static void openActivity(Class<?> pClass,Activity activity) {
-        openActivity(pClass, null,activity);
+    public static void openActivity(Class<?> pClass,Activity activity,ActivityModel model){
+        openActivity(pClass,null,activity,model,false);
     }
 
-    /**
-     * 通过类名启动activity
-     *
-     * @param pClass
-     *            要启动的类
-     * @param pBundle
-     *            要传递的参数
-     */
-    public static void openActivity(Class<?> pClass, Bundle pBundle,Activity activity) {
-        Intent intent = new Intent(activity, pClass);
-        if (pBundle != null) {
-            intent.putExtra(Dict.BUNDLE, pBundle);
-        }
-        activity.startActivity(intent);
+    public static void openActivity(Class<?> pClass,Activity activity){
+        openActivity(pClass,null,activity,ActivityModel.ACTIVITY_MODEL_0,false);
+    }
+
+    public static void openActivity(Class<?> pClass, Bundle pBundle,Activity activity,ActivityModel type) {
+        openActivity(pClass,null,activity,type,false);
     }
 
     /**
@@ -130,8 +118,10 @@ public class Util {
      *            要传递的参数
      * @param type
      *           动画
+     * @param flag
+     *          是否finish
      */
-    public static void openActivity(Class<?> pClass, Bundle pBundle,Activity activity,ActivityModel type) {
+    public static void openActivity(Class<?> pClass, Bundle pBundle,Activity activity,ActivityModel type,boolean flag) {
         Intent intent = new Intent(activity, pClass);
         if (pBundle != null) {
             intent.putExtras(pBundle);
@@ -150,6 +140,9 @@ public class Util {
                 break;
         }
         activity.startActivity(intent);
+        if (flag){
+            activity.finish();
+        }
     }
 
 

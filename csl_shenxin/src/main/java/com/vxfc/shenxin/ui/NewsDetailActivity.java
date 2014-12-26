@@ -73,15 +73,6 @@ public class NewsDetailActivity extends BaseActivity {
         tv_content.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home)
-        {
-            openMainActity();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     protected void requestData() {

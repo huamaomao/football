@@ -100,7 +100,7 @@ public class LiveActivity extends BaseActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home)
         {
-          openMainActity();
+          toMainActity();
             return true;
         }
         return super.onOptionsItemSelected(item);

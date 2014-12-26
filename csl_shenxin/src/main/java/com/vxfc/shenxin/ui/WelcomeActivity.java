@@ -40,7 +40,7 @@ public class WelcomeActivity extends BaseActivity{
     @Override
     protected void onResume() {
         super.onResume();
-        Util.openActivity(LoginActivity.class,null,this, ActivityModel.ACTIVITY_MODEL_3);
+        Util.openActivity(ChooseActivity.class,null,this, ActivityModel.ACTIVITY_MODEL_0);
     }
 
     class CheckLoginTask implements Runnable{

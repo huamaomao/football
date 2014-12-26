@@ -10,6 +10,13 @@ public class LoginPresenter {
         this.loginView=loginView;
     }
 
-    
+    /***
+     * 登陆
+     * @param tel
+     * @param pwd
+     */
+    public void login(String tel,String pwd){
+
+    }
 
 }
