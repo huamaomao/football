@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+    <Button style="@style/loginStyle"
+            android:id="@id/btn_login"
+            android:layout_marginTop="100dip"
+            android:background="@drawable/s_btn_login" android:text="@string/login"/>
+    <Button style="@style/loginStyle"
+            android:id="@id/btn_register"
+            android:layout_marginTop="30px"
+            android:background="@drawable/s_btn_login" android:text="@string/register"/>
+    <Button style="@style/loginStyle"
+            android:id="@id/btn_skip_login"
+            android:clickable="true"
+            android:layout_marginTop="30px"
+            android:background="@drawable/s_btn_login" android:text="@string/skip_login"/>
+
+
+    <GridLayout android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:columnCount="3"
+                android:layout_margin="15dip"
+                android:layout_gravity="center_horizontal">
+        <TextView android:layout_columnSpan="3"
+                  android:textSize="@dimen/font_size_14"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_marginBottom="20px"
+                  android:text="@string/msg_3rd"/>
+        <ImageButton android:id="@id/ib_1" android:background="@drawable/s_btn_login"
+                     android:src="@drawable/icon_qq"/>
+        <ImageButton android:id="@id/ib_2" android:background="@drawable/s_btn_login"
+                     android:layout_marginLeft="40px"
+                     android:layout_marginRight="40px"
+                     android:src="@drawable/icon_weixin"/>
+        <ImageButton android:id="@id/ib_3"
+                     android:background="@drawable/s_btn_login"
+                     android:src="@drawable/icon_sina"/>
+    </GridLayout>
+</LinearLayout>

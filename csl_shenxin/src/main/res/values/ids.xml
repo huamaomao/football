@@ -125,8 +125,12 @@
     <!-- login-->
     <item name="et_tel"  type="id"/>
     <item name="btn_login"  type="id"/>
-    <item name="btn_skiplogin"  type="id"/>
+    <item name="btn_send"  type="id"/>
+    <item name="btn_register"  type="id"/>
+    <item name="btn_skip_login"  type="id"/>
     <item name="et_pwd"  type="id"/>
+    <item name="ll_first" type="id" />
+    <item name="ll_next" type="id" />
 
     <!-- imageButton-->
     <item name="ib_1"  type="id"/>

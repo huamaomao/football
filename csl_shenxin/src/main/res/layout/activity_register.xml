@@ -3,5 +3,47 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <RelativeLayout android:id="@id/ll_first"
+                    style="@style/loginBgStyle"
+                    android:paddingTop="5dip"
+                    android:background="@drawable/shape_login"
+                    android:layout_marginTop="20dip">
 
+        <EditText android:id="@id/et_tel"
+                  android:inputType="phone"
+                  android:maxLength="11"
+                  android:paddingLeft="65px"
+                  android:layout_width="match_parent"
+                  android:layout_height="35dip"
+                  android:hint="@string/msg_tel"
+                />
+        <ImageView android:id="@id/iv_item_0"
+                   android:layout_alignLeft="@id/et_tel"
+                   android:layout_width="45px"
+                   android:layout_marginLeft="16px"
+                   android:layout_height="@dimen/personal_height"
+                   android:src="@drawable/icon_tel"/>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ll_next"
+                    style="@style/loginBgStyle"
+                    android:paddingTop="5dip"
+                    android:background="@drawable/shape_login"
+                    android:layout_marginTop="20dip">
+        <EditText android:id="@id/et_tel"
+                  android:inputType="number"
+                  android:maxLength="4"
+                  android:paddingLeft="65px"
+                  android:layout_width="140dip"
+                  android:layout_height="35dip"
+                  android:hint="@string/msg_tel_code"
+                />
+        <ImageView android:id="@id/iv_item_0"
+                   android:layout_alignLeft="@id/et_tel"
+                   android:layout_width="45px"
+                   android:layout_marginLeft="16px"
+                   android:layout_height="@dimen/personal_height"
+                   android:src="@drawable/icon_tel"/>
+        <Button android:id="@id/btn_send" android:text="@string/send"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </RelativeLayout>
 </LinearLayout>

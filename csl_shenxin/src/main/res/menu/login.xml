@@ -2,8 +2,6 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".LoginActivity" >
     <item android:icon="@drawable/shape_btn_login_write"
-
-          android:title="下一步" android:enabled="false" android:showAsAction="ifRoom"
+          android:title="@string/login" android:enabled="false" android:showAsAction="ifRoom"
             android:textSize="@dimen/font_size_20"   />
-
 </menu>
