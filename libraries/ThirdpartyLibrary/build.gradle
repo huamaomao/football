@@ -8,17 +8,7 @@ android {
     }
 }
 
-repositories {
-    jcenter()
-    mavenCentral()
-    maven{
-        credentials {
-            username 'admin'
-            password 'admin123'
-        }
-        url "http://114.80.68.147:9999/nexus/content/repositories/thirdparty"
-    }
-}
+
 
 dependencies {
     compile 'com.sina.weibo.sdk:weibosdkcore:1'

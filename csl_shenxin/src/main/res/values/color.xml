@@ -9,6 +9,8 @@
     <color name="white">#ffffffff</color>
     <color name="left_color">#dbededed</color>
     <color name="white_a">#aae9e9e9</color>
+    <color name="btn_action">#fff4f4f4</color>
+
     <color name="white_d">#fcd2d2d2</color>
     <color name="white_1">#ffececec</color>
     <color name="white_0">#ffc8c8c8</color>

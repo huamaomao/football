@@ -26,10 +26,9 @@
         <item name="android:alpha">0.8</item>
     </style>
 
-
     <style name="MenuTextStyle">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textSize">@dimen/font_size_14</item>
     </style>
 
 

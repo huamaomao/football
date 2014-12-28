@@ -1,57 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'idea'
-
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-        maven{
-            credentials {
-                username 'admin'
-                password 'admin123'
-            }
-            url "http://114.80.68.147:9999/nexus/content/repositories/thirdparty"
-        }
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.0'
-    }
-    tasks.withType(JavaCompile) { options.encoding = "UTF-8" }
-
-}
-repositories {
-    jcenter()
-    mavenCentral()
-    maven{
-        credentials {
-            username 'admin'
-            password 'admin123'
-        }
-        url "http://114.80.68.147:9999/nexus/content/repositories/thirdparty"
-    }
-}
 android {
     compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
     buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
     defaultConfig {
-        applicationId "com.weixuan.shenxin"
+        applicationId "com.vxfc.shenxin"
         compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
         buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
     }
- /*sourceSets {
-        main {
-            manifest.srcFile 'src/mainAndroidManifest.xml'
-            java.srcDirs = ['src/java']
-            resources.srcDirs = ['src']
-            aidl.srcDirs = ['src']
-            renderscript.srcDirs = ['src']
-            res.srcDirs = ['res']
-            assets.srcDirs = ['assets']
-        }
-        instrumentTest.setRoot('androidTest')
-    }*/
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7

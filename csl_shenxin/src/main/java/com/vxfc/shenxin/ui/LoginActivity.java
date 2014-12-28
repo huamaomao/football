@@ -23,7 +23,7 @@ public class LoginActivity extends BaseActivity implements ILoginView, View.OnCl
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        setBackActionBarTilte("登陆");
+       setBackActionBarTilte("登陆");
         presenter=new LoginPresenter(this);
     }
 

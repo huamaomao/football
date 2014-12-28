@@ -129,8 +129,8 @@
     <item name="btn_register"  type="id"/>
     <item name="btn_skip_login"  type="id"/>
     <item name="et_pwd"  type="id"/>
-    <item name="ll_first" type="id" />
-    <item name="ll_next" type="id" />
+    <item name="rl_first" type="id" />
+    <item name="rl_next" type="id" />
 
     <!-- imageButton-->
     <item name="ib_1"  type="id"/>
@@ -138,4 +138,7 @@
     <item name="ib_3"  type="id"/>
     <item name="ib_4"  type="id"/>
 
+    <!-- actionbar id-->
+    <item name="action_next" type="id" />
+    <item name="action_login" type="id" />
 </resources>
