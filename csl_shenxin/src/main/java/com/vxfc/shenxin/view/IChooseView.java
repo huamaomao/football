@@ -1,9 +1,9 @@
 package com.vxfc.shenxin.view;
 
-/**
- * Created by Hua_ on 2014/12/26.
- */
-public interface IChooseView {
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.vxfc.common.view.IMessageView;
+
+public interface IChooseView extends IMessageView{
     void toLoginActivity();
     void toRegisterActivity();
 }

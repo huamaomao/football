@@ -156,4 +156,14 @@ public class BaseActivity extends FragmentActivity {
         Util.openActivity(MainActivity.class,null,this, ActivityModel.ACTIVITY_MODEL_3);
     }
 
+
+    public void showMsg(String msg){
+        application.msgShow(msg);
+    }
+
+    public void showLongMsg(String msg){
+        application.msgLongShow(msg);
+    }
+
+
 }

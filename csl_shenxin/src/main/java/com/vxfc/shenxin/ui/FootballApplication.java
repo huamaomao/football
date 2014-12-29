@@ -76,6 +76,15 @@ public class FootballApplication extends Application {
      *
      * @param content 提示的内容
      */
+    public void msgLongShow(String content) {
+        Toast.makeText(getApplicationContext(), content, Toast.LENGTH_LONG).show();
+    }
+
+    /**
+     * 提示条
+     *
+     * @param content 提示的内容
+     */
     public void handleToast(String content) {
         Message msg = new Message();
         msg.what = NETWORK_ERROR;

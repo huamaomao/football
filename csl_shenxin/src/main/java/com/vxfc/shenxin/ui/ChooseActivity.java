@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.presenter.ChoosePresenter;
 import com.vxfc.shenxin.util.ActivityModel;
@@ -17,6 +18,8 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
     private ChoosePresenter presenter;
     /***3rd ibtn ****/
     private ImageButton ibtnQQ,ibtnSina,ibtnWeixin;
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,8 +35,8 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
         btnSkipLogin=(Button)findViewById(R.id.btn_skip_login);
         btnRegsiter=(Button)findViewById(R.id.btn_register);
         ibtnQQ=(ImageButton)findViewById(R.id.ib_1);
-        ibtnSina=(ImageButton)findViewById(R.id.ib_2);
-        ibtnWeixin=(ImageButton)findViewById(R.id.ib_3);
+        ibtnSina=(ImageButton)findViewById(R.id.ib_3);
+        ibtnWeixin=(ImageButton)findViewById(R.id.ib_2);
 
         btnSkipLogin.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
@@ -41,6 +44,9 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
         ibtnSina.setOnClickListener(this);
         ibtnWeixin.setOnClickListener(this);
         btnRegsiter.setOnClickListener(this);
+
+
+
     }
 
 
@@ -57,11 +63,14 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
             case R.id.btn_register:
                 toRegisterActivity();
                 break;
-            case R.id.ib_1:
+            case R.id.ib_1:/**qq***/
+                presenter.login(SHARE_MEDIA.QQ);
                 break;
-            case R.id.ib_2:
+            case R.id.ib_2:/**weixin***/
+                presenter.login(SHARE_MEDIA.WEIXIN);
                 break;
-            case R.id.ib_3:
+            case R.id.ib_3:/**sina***/
+                presenter.login(SHARE_MEDIA.SINA);
                 break;
 
             default:
@@ -77,5 +86,15 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
     @Override
     public void toRegisterActivity() {
         Util.openActivity(RegisterActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_2,true);
+    }
+
+    @Override
+    public void msgShow(String msg) {
+        msgShow(msg);
+    }
+
+    @Override
+    public void msgLongShow(String msg) {
+        msgLongShow(msg);
     }
 }
