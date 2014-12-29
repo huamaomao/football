@@ -58,14 +58,16 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
     compile 'com.alibaba:fastjson:1.1.41'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.android.support:support-v13:21'
+    compile 'com.tencent.qq:openSdk:2.2.2'
+    compile 'com.tencent.stat:statSdk:1.0'
     compile project(':libraries:FlowLibrary')
     compile project(':libraries:ImageLibrary')
     compile project(':libraries:LiteLibrary')
     compile project(':libraries:VitamioLibrary')
     compile project(':libraries:CommonLibrary')
     compile project(':libraries:ThirdpartyLibrary')
+    compile project(':libraries:WeiboLibrary')
 }
