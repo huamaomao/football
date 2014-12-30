@@ -10,11 +10,7 @@ import java.io.FileOutputStream;
  * Created by Hua on 2014/8/18.
  */
 public class FileService {
-
-
     private Context context;
-
-
 
     public FileService(Context context){
         this.context=context;
@@ -53,7 +49,7 @@ public class FileService {
             res = EncodingUtils.getString(buffer, "UTF-8");
         }
         catch(Exception e){
-            e.printStackTrace();
+           //
         }finally {
             if (fis!=null){
                 try {

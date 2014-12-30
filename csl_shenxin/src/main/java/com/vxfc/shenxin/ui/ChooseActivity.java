@@ -4,9 +4,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import com.sina.weibo.sdk.auth.WeiboAuth;
+import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.presenter.ChoosePresenter;
+import com.vxfc.shenxin.sina.AuthListener;
 import com.vxfc.shenxin.util.ActivityModel;
+import com.vxfc.shenxin.util.Constants;
 import com.vxfc.shenxin.util.Util;
 import com.vxfc.shenxin.view.IChooseView;
 
@@ -17,6 +21,11 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
     private ChoosePresenter presenter;
     /***3rd ibtn ****/
     private ImageButton ibtnQQ,ibtnSina,ibtnWeixin;
+
+    /*******sso* sina*****/
+    private SsoHandler mSsoHandler;
+    private WeiboAuth mWeiboAuth;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,8 +41,8 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
         btnSkipLogin=(Button)findViewById(R.id.btn_skip_login);
         btnRegsiter=(Button)findViewById(R.id.btn_register);
         ibtnQQ=(ImageButton)findViewById(R.id.ib_1);
-        ibtnSina=(ImageButton)findViewById(R.id.ib_2);
-        ibtnWeixin=(ImageButton)findViewById(R.id.ib_3);
+        ibtnSina=(ImageButton)findViewById(R.id.ib_3);
+        ibtnWeixin=(ImageButton)findViewById(R.id.ib_2);
 
         btnSkipLogin.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
@@ -41,6 +50,10 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
         ibtnSina.setOnClickListener(this);
         ibtnWeixin.setOnClickListener(this);
         btnRegsiter.setOnClickListener(this);
+
+        // 创建微博实例
+        mWeiboAuth = new WeiboAuth(this, Constants.SINA_KEY,Constants.REDIRECT_URL, Constants.SCOPE);
+
     }
 
 
@@ -57,11 +70,13 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
             case R.id.btn_register:
                 toRegisterActivity();
                 break;
-            case R.id.ib_1:
+            case R.id.ib_1:/**qq***/
                 break;
-            case R.id.ib_2:
+            case R.id.ib_2:/**weixin***/
                 break;
-            case R.id.ib_3:
+            case R.id.ib_3:/**sina***/
+                mSsoHandler = new SsoHandler(ChooseActivity.this, mWeiboAuth);
+                mSsoHandler.authorize(new AuthListener(this));
                 break;
 
             default:
