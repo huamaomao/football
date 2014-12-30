@@ -339,7 +339,6 @@
     </style>
 
 
-
     <style name="loginStyle">
         <item name="android:layout_height">40dip</item>
         <item name="android:layout_width">match_parent</item>
@@ -347,14 +346,29 @@
         <item name="android:layout_marginRight">15dip</item>
         <item name="android:layout_marginTop">3dip</item>
     </style>
+
+    <style name="loginActivityStyle" parent="style_mm_v">
+        <item name="android:background">@color/bg_color</item>
+    </style>
+
     <style name="loginBgStyle">
-        <item name="android:layout_height">120dip</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginLeft">15dip</item>
         <item name="android:layout_marginRight">15dip</item>
-        <item name="android:layout_marginTop">20dip</item>
+        <item name="android:layout_marginTop">40dip</item>
+        <item name="android:background">@drawable/shape_login</item>
+        <item name="android:padding">30px</item>
     </style>
 
+    <style name="et_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/personal_height</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:paddingLeft">20px</item>
+        <item name="android:textSize">@dimen/font_size_16</item>
+    </style>
 
 
     <style name="popupAnimation" parent="android:Animation">
