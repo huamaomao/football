@@ -1,49 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <RelativeLayout style="@style/loginBgStyle"
-                    android:paddingTop="5dip"
-                  android:background="@drawable/shape_login"
-                  android:layout_marginTop="20dip">
+             style="@style/loginActivityStyle">
 
-        <EditText android:id="@id/et_tel"
-                  android:inputType="phone"
-                  android:maxLength="11"
-                  android:paddingLeft="65px"
-                  android:layout_width="match_parent"
-                  android:layout_height="35dip"
-                  android:hint="@string/msg_tel"
-                />
+    <GridLayout
+        style="@style/loginBgStyle"
+        android:columnCount="2"
+       >
         <ImageView android:id="@id/iv_item_0"
-                   android:layout_alignLeft="@id/et_tel"
-                   android:layout_width="45px"
-                   android:layout_marginLeft="16px"
-                   android:layout_height="@dimen/personal_height"
-                   android:src="@drawable/icon_tel"/>
+            android:layout_width="45px"
+            android:layout_height="@dimen/personal_height"
+            android:src="@drawable/icon_tel"/>
+        <EditText
+            android:id="@id/et_tel"
+            android:inputType="phone"
+            android:maxLength="11"
+            style="@style/et_style"
+            android:hint="@string/msg_tel"
+            />
 
+       <View android:layout_width="match_parent"
+           android:layout_height="2dp"
+           android:layout_marginTop="20px"
+           android:layout_columnSpan="2"
+           android:layout_marginBottom="20px"
+           android:background="@color/spit_color"/>
+
+        <ImageView android:id="@id/iv_item_1"
+            android:layout_below="@id/et_tel"
+            android:layout_alignLeft="@id/et_pwd"
+            android:layout_width="45px"
+            android:src="@drawable/icon_pwd"
+            android:layout_height="@dimen/personal_height"
+            />
 
         <EditText android:id="@id/et_pwd"
-                  android:layout_marginTop="30px"
-                  android:layout_below="@id/et_tel"
-                  android:inputType="textPassword"
-                  android:maxLength="16"
-                  android:paddingLeft="65px"
-                  android:layout_width="match_parent"
-                  android:layout_height="@dimen/personal_height"
-                  android:hint="@string/msg_pwd"
-                />
-        <ImageView android:id="@id/iv_item_1"
-                   android:layout_marginTop="30px"
-                   android:layout_below="@id/et_tel"
-                   android:layout_alignLeft="@id/et_pwd"
-                   android:layout_width="45px"
-                   android:src="@drawable/icon_pwd"
-                   android:layout_marginLeft="16px"
-                   android:layout_height="@dimen/personal_height"
-                   />
-    </RelativeLayout>
+            android:inputType="textPassword"
+            android:maxLength="16"
+            style="@style/et_style"
+            android:hint="@string/msg_pwd"
+            />
 
+
+        </GridLayout>
 
 </LinearLayout>

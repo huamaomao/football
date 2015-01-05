@@ -27,4 +27,6 @@
     <color name="spinner_title_tab">#ff173a1c</color>
 
     <color name="progressbar_color">#AA000000</color>
+
+    <color name="spit_color">#fcd2d2d2</color>
 </resources>

@@ -1,60 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    style="@style/loginActivityStyle">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@id/rl_first"
-        style="@style/loginBgStyle"
-        android:layout_height="55dip"
-        android:layout_marginTop="20dip"
-        android:background="@drawable/shape_login"
-        android:paddingTop="5dip">
+        style="@style/loginBgStyle">
+
+        <ImageView
+            android:id="@id/iv_item_0"
+            android:layout_width="45px"
+            android:layout_height="@dimen/personal_height"
+            android:src="@drawable/icon_tel" />
 
         <EditText
             android:id="@id/et_tel"
-            android:layout_width="match_parent"
-            android:layout_height="35dip"
+            style="@style/et_style"
             android:hint="@string/msg_tel"
             android:inputType="phone"
             android:maxLength="11"
             android:paddingLeft="65px" />
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/rl_next"
+        style="@style/loginBgStyle"
+        android:visibility="gone">
         <ImageView
             android:id="@id/iv_item_0"
             android:layout_width="45px"
             android:layout_height="@dimen/personal_height"
-            android:layout_alignLeft="@id/et_tel"
-            android:layout_marginLeft="16px"
             android:src="@drawable/icon_tel" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@id/rl_next"
-        style="@style/loginBgStyle"
-        android:layout_height="55dip"
-        android:layout_marginTop="20dip"
-        android:background="@drawable/shape_login"
-        android:paddingTop="5dip"
-        android:visibility="gone">
 
         <EditText
             android:id="@id/et_tel"
-            android:layout_width="240dip"
-            android:layout_height="35dip"
+            style="@style/et_style"
             android:hint="@string/msg_tel_code"
+            android:layout_width="260dip"
             android:inputType="number"
-            android:maxLength="4"
-            android:paddingLeft="65px" />
+            android:maxLength="4" />
 
-        <ImageView
-            android:id="@id/iv_item_0"
-            android:layout_width="45px"
-            android:layout_height="@dimen/personal_height"
-            android:layout_alignLeft="@id/et_tel"
-            android:layout_marginLeft="16px"
-            android:src="@drawable/icon_tel" />
 
         <Button
             android:id="@id/btn_send"
@@ -68,5 +54,5 @@
             android:text="@string/send"
             android:textColor="@color/white"
             android:textSize="@dimen/font_size_13" />
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>
