@@ -73,7 +73,6 @@ public class ScheduleFragment extends BaseListFragment {
                 }
             }
         };
-
         setLayoutId(R.layout.f_schedule);
 	}
 
@@ -141,11 +140,9 @@ public class ScheduleFragment extends BaseListFragment {
     protected   void  requestData(){
         final Team team=(Team)spinner_team.getSelectionItem();
         String round=spinner_round.getSelectionIndex()==0?"":String.valueOf(spinner_round.getSelectionIndex());
-
         application.execute(RequestUtil.requestFixtureList(application.getToken().getAccess_token(),team.id.equals(Team.All.id)?null:team.id,round),new HttpModelHandler<String>() {
             @Override
             protected void onSuccess(String data, Response res) {
-                application.msgShow(data);
                 List<RecentGameTeam> temp= JSON.parseArray(data, RecentGameTeam.class);
                 if(team!=null){
                     lsData.clear();
@@ -157,8 +154,6 @@ public class ScheduleFragment extends BaseListFragment {
 
             @Override
             protected void onFailure(HttpException e, Response res) {
-                application.msgShow(res.getHttpStatus()+"===");
-                application.msgShow(e.getMessage()+"------");
                 application.networkErrorMessage(e,res);
                 pullListView.onPullDownRefreshComplete();
             }

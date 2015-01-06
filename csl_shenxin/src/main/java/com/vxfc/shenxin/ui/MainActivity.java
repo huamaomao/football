@@ -83,7 +83,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+        return mNavigationDrawerFragment.onOptionsItemSelected(item);
     }
 
     private int index=0;

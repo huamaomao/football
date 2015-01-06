@@ -7,7 +7,7 @@
     <color name="team_title_fc">#044b13</color><!-- 一线阵容  title  颜色 -->
     <color name="spinner_item_bg">#fff9f9f9</color>
     <color name="white">#ffffffff</color>
-    <color name="left_color">#dbededed</color>
+    <color name="left_color">#ffededed</color>
     <color name="white_a">#aae9e9e9</color>
     <color name="btn_action">#fff4f4f4</color>
 

@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import com.umeng.socialize.bean.SHARE_MEDIA;
+
+import com.tencent.tauth.Tencent;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.presenter.ChoosePresenter;
 import com.vxfc.shenxin.util.ActivityModel;
+import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.Util;
 import com.vxfc.shenxin.view.IChooseView;
 
@@ -45,8 +47,6 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
         ibtnWeixin.setOnClickListener(this);
         btnRegsiter.setOnClickListener(this);
 
-
-
     }
 
 
@@ -64,13 +64,13 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
                 toRegisterActivity();
                 break;
             case R.id.ib_1:/**qq***/
-                presenter.login(SHARE_MEDIA.QQ);
+                presenter.login(ChoosePresenter.QQ);
                 break;
             case R.id.ib_2:/**weixin***/
-                presenter.login(SHARE_MEDIA.WEIXIN);
+               presenter.login(ChoosePresenter.WEIXIN);
                 break;
             case R.id.ib_3:/**sina***/
-                presenter.login(SHARE_MEDIA.SINA);
+                presenter.login(ChoosePresenter.SINA);
                 break;
 
             default:
@@ -90,7 +90,7 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
 
     @Override
     public void msgShow(String msg) {
-        msgShow(msg);
+        showMsg(msg);
     }
 
     @Override

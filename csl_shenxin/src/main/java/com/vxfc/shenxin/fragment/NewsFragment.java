@@ -51,7 +51,7 @@ public class NewsFragment extends BaseListFragment {
     protected void requestData() {
         super.requestData();
         page = 0;
-        application.execute(RequestUtil.requestNewList(application.getToken().getAccess_token(), String.valueOf(page)), new HttpModelHandler<String>() {
+        application.execute(RequestUtil.requestNewList(application.getToken().getAccess_token(), String.valueOf(page),application.teamId), new HttpModelHandler<String>() {
             @Override
             protected void onSuccess(String data, Response res) {
                 List<News> temp = JSON.parseArray(data, News.class);
@@ -83,7 +83,7 @@ public class NewsFragment extends BaseListFragment {
     @Override
     protected void requestMoreLoadingData() {
         page++;
-        application.execute(RequestUtil.requestNewList(application.getToken().getAccess_token(), String.valueOf(page)), new HttpModelHandler<String>() {
+        application.execute(RequestUtil.requestNewList(application.getToken().getAccess_token(), String.valueOf(page),application.teamId), new HttpModelHandler<String>() {
             @Override
             protected void onSuccess(String data, Response res) {
                 List<News> temp = JSON.parseArray(data, News.class);

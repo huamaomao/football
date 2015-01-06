@@ -86,9 +86,9 @@ public class RequestUtil {
      * @param userToken   授权码
      * @return 请求对象
      */
-    public static Request requestNewList(String userToken,String page){
+    public static Request requestNewList(String userToken,String page,String teamId){
         return new Request(Util.jointUrl(UrlApi.NEW_LIST,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get).
-                addUrlParam(Dict.ACCESS_TOKEN, userToken).addUrlParam(Dict.PAGE,page);
+                addUrlParam(Dict.ACCESS_TOKEN, userToken).addUrlParam(Dict.PAGE,page).addUrlParam(Dict.TEAM_ID,teamId);
     }
 
     /*****

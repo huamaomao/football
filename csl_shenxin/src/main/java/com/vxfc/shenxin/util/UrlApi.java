@@ -6,15 +6,15 @@ package com.vxfc.shenxin.util;
  */
 public interface UrlApi {
     enum IP{
-        S("http://vxfc.com.cn:9999//"),L("http://192.168.2.110:8089/");
+        S("http://vxfc.com.cn:9999/"),L("http://192.168.2.110:8089/");
         public String value;
         private IP(String value){
             this.value=value;
         }
     }
     final static String SERVER_IP =IP.S.value;
-    final static String WEB_MODEL_BASE = "base-web";
-    final static String WEB_MODEL_CSL = "csl-web";
+    final static String WEB_MODEL_BASE = "base-authorize";
+    final static String WEB_MODEL_CSL = "csl-api-server";
     final static String AUTHORIZE = "authorize";//获取授权码接口
     final static String ACCESS_TOKEN = "access_token";//通过刷新码刷新授权码接口
     final static String LOGIN = "login";//用户登录

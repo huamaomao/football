@@ -11,5 +11,5 @@ android {
 
 
 dependencies {
-    compile 'com.sina.weibo.sdk:weibosdkcore:1'
+
 }

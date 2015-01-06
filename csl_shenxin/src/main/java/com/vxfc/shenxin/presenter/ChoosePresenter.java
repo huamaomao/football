@@ -6,107 +6,76 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.bean.SocializeEntity;
-import com.umeng.socialize.bean.StatusCode;
-import com.umeng.socialize.controller.UMServiceFactory;
-import com.umeng.socialize.controller.UMSocialService;
-import com.umeng.socialize.controller.listener.SocializeListeners;
-import com.umeng.socialize.exception.SocializeException;
+import com.tencent.connect.UserInfo;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
+import com.vxfc.common.util.Log;
 import com.vxfc.shenxin.util.Constants;
 import com.vxfc.shenxin.view.IChooseView;
 
 import java.util.Map;
 
 public class ChoosePresenter {
-    private IChooseView chooseView;
+    public static final int QQ=1;
+    public static final int WEIXIN=2;
+    public static final int SINA=3;
 
-    /*******整个平台的Controller, 负责管理整个SDK的配置、操作等处理*****/
-    private UMSocialService mController = UMServiceFactory.getUMSocialService(Constants.DESCRIPTOR);
+    private IChooseView chooseView;
 
     public ChoosePresenter(IChooseView chooseView){
         this.chooseView=chooseView;
     }
 
-    /**
-     * 授权。如果授权成功，则获取用户信息</br>
-     */
-    public void login(final SHARE_MEDIA platform) {
-        mController.doOauthVerify((Activity)chooseView, platform, new SocializeListeners.UMAuthListener() {
 
-            @Override
-            public void onStart(SHARE_MEDIA platform) {
-            }
+    public void login(int type){
+        switch (type){
+            case QQ:
+                final Tencent tencent=Tencent.createInstance(Constants.APP_KEY_QQ,(Activity)chooseView);
+                tencent.login((Activity)chooseView,Constants.SCOPE_QQ,new IUiListener() {
+                    @Override
+                    public void onComplete(Object o) {
+                        Log.i(o);
+                        chooseView.msgShow("授权成功");
 
-            @Override
-            public void onError(SocializeException e, SHARE_MEDIA platform) {
-            }
+                        UserInfo info = new UserInfo((Activity)chooseView,tencent.getQQToken());
+                        info.getUserInfo(new IUiListener() {
+                            @Override
+                            public void onComplete(Object o) {
+                                Log.i(o);
+                            }
 
-            @Override
-            public void onComplete(Bundle value, SHARE_MEDIA platform) {
-                String uid = value.getString("uid");
-                if (!TextUtils.isEmpty(uid)) {
-                    getUserInfo(platform);
-                } else {
-                    chooseView.msgLongShow("授权失败");
-                }
-            }
+                            @Override
+                            public void onError(UiError uiError) {
+                                Log.i(uiError);
+                            }
 
-            @Override
-            public void onCancel(SHARE_MEDIA platform) {
-                chooseView.msgLongShow("取消授权");
-            }
-        });
+                            @Override
+                            public void onCancel() {
+                                Log.i("onCancel");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(UiError uiError) {
+                        Log.i(uiError);
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        chooseView.msgShow("取消授权");
+                    }
+                });
+                break;
+            case WEIXIN:
+
+                break;
+            case  SINA:
+
+                break;
+            default:
+                break;
+        }
     }
-
-    /**
-     * 注销本次登录</br>
-     */
-    public void logout(final SHARE_MEDIA platform) {
-        mController.deleteOauth((Activity)chooseView, platform, new SocializeListeners.SocializeClientListener() {
-
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onComplete(int status, SocializeEntity entity) {
-                String showText = "解除"+platform.toString()+"平台授权成功";
-                if (status != StatusCode.ST_CODE_SUCCESSED) {
-                    showText = "解除"+platform.toString()+"平台授权失败[" + status + "]";
-                }
-                chooseView.msgShow(showText);
-            }
-        });
-    }
-
-    /**
-     * 获取授权平台的用户信息</br>
-     */
-    private void getUserInfo(SHARE_MEDIA platform) {
-        mController.getPlatformInfo((Activity)chooseView, platform, new SocializeListeners.UMDataListener() {
-
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onComplete(int status, Map<String, Object> info) {
-//                String showText = "";
-//                if (status == StatusCode.ST_CODE_SUCCESSED) {
-//                    showText = "用户名：" + info.get("screen_name").toString();
-//                    Log.d("#########", "##########" + info.toString());
-//                } else {
-//                    showText = "获取用户信息失败";
-//                }
-                if ( info != null ) {
-                    chooseView.msgShow(info.toString());
-                }
-            }
-        });
-    }
-
-
 }

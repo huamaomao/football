@@ -42,6 +42,7 @@ public  interface Dict {
 
     final String cache_image_news="/ShenXin/image/news";
 
+    public static final String APP_ID="com.vxfc.shenxin";
 
 
 
