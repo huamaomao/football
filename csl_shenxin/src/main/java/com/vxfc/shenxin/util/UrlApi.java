@@ -48,5 +48,5 @@ public interface UrlApi {
     final static String playerRecord = "playerRecord";//球员履历
     final static String images="images";
 
-    final static String imageUrl=SERVER_IP+"csl-web/images?path=";
+    final static String imageUrl=SERVER_IP+WEB_MODEL_CSL+"/images?path=";
 }

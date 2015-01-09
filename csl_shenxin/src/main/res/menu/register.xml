@@ -2,9 +2,10 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".RegisterActivity" >
     <item android:id="@id/action_next"
-            android:icon="@drawable/shape_btn_action"
-
-          android:title="下一步"  android:showAsAction="ifRoom|withText"
+            android:icon="@null"
+            android:enabled="false"
+          android:title="下一步"
+        android:showAsAction="withText|ifRoom"
              />
 
 </menu>

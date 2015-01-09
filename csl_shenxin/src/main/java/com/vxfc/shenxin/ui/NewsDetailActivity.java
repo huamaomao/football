@@ -148,9 +148,12 @@ public class NewsDetailActivity extends BaseActivity {
                });
               return null;
            }
+            int width=tv_item_1.getMeasuredWidth();
+            int height=(width/drawable.getIntrinsicWidth())*drawable.getIntrinsicHeight();
+            drawable.getIntrinsicHeight();
+            drawable.getIntrinsicWidth();
             drawable.setTargetDensity(getResources().getDisplayMetrics());
-            drawable.setBounds(0, 0,(int)(drawable.getIntrinsicWidth()*1.2),
-                    (int)(drawable.getIntrinsicHeight()*1.2));
+            drawable.setBounds(0, 0,width,height);
             return drawable;
         }
     };

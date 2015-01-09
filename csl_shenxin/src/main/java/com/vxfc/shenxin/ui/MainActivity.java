@@ -104,17 +104,7 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onNavigationItemSelected(int i, long l) {
-        application.msgShow("onNavigationItemSelected==="+i);
+
         return false;
     }
-   /* public void  setLiveMenu(){
-        rgGroup.check(R.id.rbtn_left_menu_0);
-        final   MainActivity activity =(MainActivity)getActivity();
-        Bundle bundle=new Bundle();
-        bundle.putSerializable(Dict.SERIALIZABLE,application.getGameTeam());
-        NewsMainFragment fragment= (NewsMainFragment)activity.turnToFragment(getFragmentManager(), NewsMainFragment.class, bundle);
-        fragment.setNewsTab(0);
-        fragment.setTitle(R.string.title_first_list);
-    }*/
-
 }

@@ -48,7 +48,7 @@ public class FootballApplication extends Application {
     };
 
     public static void initImageLoader(Context context) {
-        File cacheDir = StorageUtils.getOwnCacheDirectory(context, "weixuan/Cache");
+        File cacheDir = StorageUtils.getOwnCacheDirectory(context, "vxfc/Cache");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
                 .threadPriority(Thread.NORM_PRIORITY - 2)
                 .denyCacheImageMultipleSizesInMemory()
@@ -99,10 +99,6 @@ public class FootballApplication extends Application {
         client= LiteHttpClient.getInstance(getApplicationContext());
         client.config(getApplicationContext(),true,true,false,true);
         asyncExecutor=HttpAsyncExecutor.newInstance(client);
-        if(false) {
-            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyDialog().build());
-            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyDeath().build());
-        }
         initImageLoader(getApplicationContext());
     }
 
