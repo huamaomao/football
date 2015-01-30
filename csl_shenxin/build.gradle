@@ -40,17 +40,19 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled  true
+            minifyEnabled true
             proguardFiles 'proguard-project.txt'
-            signingConfig  signingConfigs.myConfig
+            signingConfig signingConfigs.myConfig
         }
-
         /*hiapk {
             packageNameSuffix ".hiapk"
         }
         playstore {
             packageNameSuffix ".playstore"
         }*/
+        debug {
+            signingConfig signingConfigs.myConfig
+        }
     }
 
   /*  productFlavors {
