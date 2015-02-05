@@ -1,22 +1,27 @@
 package com.litesuits.http.request;
 
+import android.net.Uri;
 import com.litesuits.android.log.Log;
 import com.litesuits.http.LiteHttpClient;
 import com.litesuits.http.data.Consts;
+import com.litesuits.http.data.NameValuePair;
 import com.litesuits.http.exception.HttpClientException;
 import com.litesuits.http.exception.HttpClientException.ClientException;
+import com.litesuits.http.listener.HttpListener;
 import com.litesuits.http.parser.DataParser;
 import com.litesuits.http.parser.StringParser;
-import com.litesuits.http.request.content.AbstractBody;
+import com.litesuits.http.request.content.HttpBody;
 import com.litesuits.http.request.param.HttpMethod;
 import com.litesuits.http.request.param.HttpParam;
 import com.litesuits.http.request.query.AbstractQueryBuilder;
 import com.litesuits.http.request.query.JsonQueryBuilder;
+import com.litesuits.http.utils.UriUtil;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URLEncoder;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map.Entry;
 
 /**
@@ -27,58 +32,112 @@ import java.util.Map.Entry;
  */
 public class Request {
     private static final String TAG = Request.class.getSimpleName();
-    protected Abortable                                              abort;
-    private   String                                                 url;
+    /**
+     * you can give an id to a request
+     */
+    private long id;
+    /**
+     * custom tag of request
+     */
+    private Object tag;
+    /**
+     * request abort
+     */
+    protected Abortable abort;
+    /**
+     * url of http request
+     */
+    private String url;
+
     /**
      * add custom header to request.
      */
-    private   LinkedHashMap<String, String>                          headers;
-    /**
-     * intelligently translate java object into mapping(k=v) parameters
-     */
-    private   HttpParam                                              paramModel;
+    private LinkedHashMap<String, String> headers;
     /**
      * key value parameters
      */
-    private   LinkedHashMap<String, String>                          paramMap;
+    private LinkedHashMap<String, String> paramMap;
+
+    /**
+     * intelligently translate java object into mapping(k=v) parameters
+     */
+    private HttpParam paramModel;
     /**
      * when parameter's value is complex, u can chose one buider, default mode
      * is build value into json string.
      */
-    private   AbstractQueryBuilder                                   queryBuilder;
+    private AbstractQueryBuilder queryBuilder;
+
     /**
      * defaul method is get(GET).
      */
-    private   HttpMethod                                             method;
-    private String charSet       = Consts.DEFAULT_CHARSET;
-    private int    retryMaxTimes = LiteHttpClient.DEFAULT_MAX_RETRY_TIMES;
+    private HttpMethod method;
+    /**
+     * charset of request
+     */
+    private String charSet = Consts.DEFAULT_CHARSET;
+    /**
+     * max number of retry..
+     */
+    private int retryMaxTimes = LiteHttpClient.DEFAULT_MAX_RETRY_TIMES;
+    /**
+     * http inputsream parser
+     */
     private DataParser<?> dataParser;
-    private AbstractBody  httpBody;
+    /**
+     * body of post,put..
+     */
+    private HttpBody httpBody;
+    /**
+     * a callback of start,retry,redirect,loading,end,etc.
+     */
+    private HttpListener httpListener;
 
 
     public Request(String url) {
-        this(url, (HttpParam) null);
+        this(url, null);
     }
 
     public Request(String url, HttpParam paramModel) {
-        this(url, paramModel, new StringParser());
+        this(url, paramModel, new StringParser(), null, null);
     }
 
-    public Request(String url, DataParser<?> parser) {
-        this(url, null, parser);
-    }
-
-    public Request(String url, HttpParam paramModel, DataParser<?> parser) {
-        this(url, paramModel, HttpMethod.Get, parser);
+    public Request(String url, HttpParam paramModel, DataParser<?> parser, HttpBody httpBody, HttpMethod method) {
         if (url == null) throw new RuntimeException("Url Cannot be Null.");
-    }
-
-    public Request(String url, HttpParam paramModel, HttpMethod method, DataParser<?> parser) {
         this.url = url;
         this.paramModel = paramModel;
-        this.method = method;
-        this.dataParser = parser;
         this.queryBuilder = new JsonQueryBuilder();
+        setMethod(method);
+        setDataParser(parser);
+        setHttpBody(httpBody);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Object getTag() {
+        return tag;
+    }
+
+    public void setTag(Object tag) {
+        this.tag = tag;
+    }
+
+    public Request addHeader(List<NameValuePair> nps) {
+        if (nps != null) {
+            if (headers == null) {
+                headers = new LinkedHashMap<String, String>();
+            }
+            for (NameValuePair np : nps) {
+                headers.put(np.getName(), np.getValue());
+            }
+        }
+        return this;
     }
 
     public Request addHeader(String key, String value) {
@@ -94,14 +153,26 @@ public class Request {
     /**
      * 获取消息体
      */
-    public AbstractBody getHttpBody() {
+    public HttpBody getHttpBody() {
         return httpBody;
     }
 
     /**
-     * 设置消息体
+     * 设置消息体：默认POST方式
      */
-    public Request setHttpBody(AbstractBody httpBody) {
+    public Request setHttpBody(HttpBody httpBody) {
+        if (httpBody != null) {
+            return setHttpBody(httpBody, HttpMethod.Post);
+        } else {
+            return this;
+        }
+    }
+
+    /**
+     * 设置消息体与请求方式
+     */
+    public Request setHttpBody(HttpBody httpBody, HttpMethod method) {
+        setMethod(method);
         this.httpBody = httpBody;
         return this;
     }
@@ -130,7 +201,7 @@ public class Request {
 
     /**
      * if your url like this "http://tb.cn/i3.html" .
-     * you can setUrl("http://tb.cn/") then addUrlSuffix("i3.html") anywhere.
+     * you can setUrl("http://tb.cn/") then addUrlSuffix("i3.html").
      *
      * @param suffix
      * @throws HttpClientException
@@ -147,18 +218,39 @@ public class Request {
     public String getUrl() throws HttpClientException {
         // check raw url
         if (url == null) throw new HttpClientException(ClientException.UrlIsNull);
-        if (paramMap == null && paramModel == null) {
-            return url;
-        }
+
         try {
-            StringBuilder sb = new StringBuilder(url);
-            sb.append(url.contains("?") ? "&" : "?");
+            StringBuilder sb = new StringBuilder();
+            if (url.contains("?")) {
+                Uri uri = Uri.parse(url);
+                Uri.Builder builder = uri.buildUpon();
+                builder.query(null);
+                for (String key : UriUtil.getQueryParameterNames(uri)) {
+                    for (String value : UriUtil.getQueryParameters(uri, key)) {
+                        builder.appendQueryParameter(key, value);
+                    }
+                }
+                if (Log.isPrint) Log.d(TAG, "param url origin: " + uri);
+                uri = builder.build();
+                if (Log.isPrint) Log.d(TAG, "param url encode: " + uri);
+                sb.append(uri);
+            } else {
+                sb.append(url);
+            }
+            if (paramMap == null && paramModel == null) {
+                return sb.toString();
+            }
+            if (url.contains("?")) {
+                sb.append("&");
+            } else {
+                sb.append("?");
+            }
             LinkedHashMap<String, String> map = getBasicParams();
             int i = 0, size = map.size();
             for (Entry<String, String> v : map.entrySet()) {
                 sb.append(URLEncoder.encode(v.getKey(), charSet)).append("=").append(URLEncoder.encode(v.getValue(), charSet)).append(++i == size ? "" : "&");
             }
-            if (Log.isPrint) Log.i(TAG, "Request url: " + sb.toString());
+            //if (Log.isPrint) Log.v(TAG, "lite request url: " + sb.toString());
             return sb.toString();
         } catch (Exception e) {
             throw new HttpClientException(e);
@@ -223,7 +315,11 @@ public class Request {
     }
 
     public Request setMethod(HttpMethod method) {
-        this.method = method;
+        if (method != null) {
+            this.method = method;
+        } else {
+            this.method = HttpMethod.Get;
+        }
         return this;
     }
 
@@ -250,7 +346,11 @@ public class Request {
     }
 
     public Request setDataParser(DataParser<?> dataParser) {
-        this.dataParser = dataParser;
+        if (dataParser != null) {
+            this.dataParser = dataParser;
+        } else {
+            this.dataParser = new StringParser();
+        }
         return this;
     }
 
@@ -260,6 +360,15 @@ public class Request {
 
     public void abort() {
         if (abort != null) abort.abort();
+    }
+
+    public HttpListener getHttpListener() {
+        return httpListener;
+    }
+
+    public void setHttpListener(HttpListener httpListener) {
+        this.httpListener = httpListener;
+        if (dataParser != null) dataParser.setHttpReadingListener(httpListener);
     }
 
     @Override

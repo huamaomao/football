@@ -2,7 +2,6 @@ package com.litesuits.http.request.content;
 
 import com.litesuits.http.data.Consts;
 import com.litesuits.http.data.Json;
-import com.litesuits.http.request.param.HttpParam;
 
 /**
  * @author MaTianyu
@@ -10,16 +9,20 @@ import com.litesuits.http.request.param.HttpParam;
  */
 public class JsonBody extends StringBody {
 
-    public JsonBody(HttpParam param) {
+    public JsonBody(Object param) {
         this(param, Consts.DEFAULT_CHARSET);
     }
 
-    public JsonBody(HttpParam param, String charset) {
-        super(handleString(param), Consts.MIME_TYPE_JSON, charset);
+    public JsonBody(String param) {
+        this(param, Consts.DEFAULT_CHARSET);
     }
 
-    private static String handleString(HttpParam param) {
-        return Json.get().toString(param);
+    public JsonBody(String json, String charset) {
+        super(json, Consts.MIME_TYPE_JSON, charset);
+    }
+
+    public JsonBody(Object param, String charset) {
+        super(Json.get().toJson(param), Consts.MIME_TYPE_JSON, charset);
     }
 
     @Override

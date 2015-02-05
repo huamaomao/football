@@ -1,6 +1,7 @@
 package com.litesuits.http.request.content.multi;
 
 import com.litesuits.http.data.Consts;
+import com.litesuits.http.utils.StringCodingUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -9,30 +10,27 @@ import java.nio.charset.Charset;
 
 /**
  * 抽象上传类
+ *
  * @author MaTianyu
  * @date 14-7-29
  */
-public abstract  class AbstractPart {
+public abstract class AbstractPart {
 
-    public static final Charset charset                  = Charset.forName(Consts.DEFAULT_CHARSET);
-    public static final byte[]  CR_LF                    = ("\r\n").getBytes(charset);
-    public static final byte[]  TRANSFER_ENCODING_BINARY = "Content-Transfer-Encoding: binary\r\n".getBytes(charset);
-    public static final byte[]  TRANSFER_ENCODING_8BIT   = "Content-Transfer-Encoding: 8bit\r\n".getBytes(charset);
+    protected static final Charset infoCharset = BoundaryCreater.charset;
+    public static final byte[] CR_LF = StringCodingUtils.getBytes("\r\n",infoCharset);
+    public static final byte[] TRANSFER_ENCODING_BINARY =
+            StringCodingUtils.getBytes("Content-Transfer-Encoding: binary\r\n", infoCharset );
+    public static final byte[] TRANSFER_ENCODING_8BIT =
+            StringCodingUtils.getBytes("Content-Transfer-Encoding: 8bit\r\n", infoCharset);
 
 
-    public String key;
-    public String fileName;
-    public String contentType;
-    public byte[] header;
+    protected String key;
+    public    byte[] header;
+    protected String mimeType = Consts.MIME_TYPE_OCTET_STREAM;
 
-    protected AbstractPart(String key) {
+    protected AbstractPart(String key,String mimeType) {
         this.key = key;
-    }
-
-    protected AbstractPart(String key, String fileName, String contentType) {
-        this.key = key;
-        this.fileName = fileName;
-        this.contentType = contentType;
+        if(mimeType != null) this.mimeType = mimeType;
     }
 
     //此方法需要被调用以产生header（开发者无需自己调用，Entity会调用它）
@@ -40,9 +38,8 @@ public abstract  class AbstractPart {
         ByteArrayOutputStream headerStream = new ByteArrayOutputStream();
         try {
             headerStream.write(boundaryLine);
-            headerStream.write(createContentDisposition(key, fileName));
-            if (contentType == null) contentType = Consts.MIME_TYPE_OCTET_STREAM;
-            headerStream.write(createContentType(contentType));
+            headerStream.write(createContentDisposition());
+            headerStream.write(createContentType());
             headerStream.write(getTransferEncoding());
             headerStream.write(CR_LF);
             header = headerStream.toByteArray();
@@ -52,15 +49,9 @@ public abstract  class AbstractPart {
         return header;
     }
 
-    private byte[] createContentType(String type) {
-        return ("Content-Type: " + type + "\r\n").getBytes(charset);
-    }
+    protected abstract byte[] createContentType();
 
-    private byte[] createContentDisposition(final String key, final String fileName) {
-        String dis = "Content-Disposition: form-data; name=\"" + key;
-        return fileName == null ? (dis + "\"\r\n").getBytes(charset)
-                : (dis + "\"; filename=\"" + fileName + "\"\r\n").getBytes(charset);
-    }
+    protected abstract byte[] createContentDisposition();
 
     public abstract long getTotalLength() throws IOException;
 

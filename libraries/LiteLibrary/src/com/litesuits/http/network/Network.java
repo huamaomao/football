@@ -171,6 +171,7 @@ public class Network {
 		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (connectivity != null) {
 			NetworkInfo in = connectivity.getActiveNetworkInfo();
+			Log.i(TAG, "-------------$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-------------");
 			Log.i(TAG, "getActiveNetworkInfo: " + in);
 			NetworkInfo[] info = connectivity.getAllNetworkInfo();
 			if (info != null) {

@@ -1,6 +1,5 @@
 package com.litesuits.http.response.handler;
 
-import com.litesuits.android.log.Log;
 import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.response.Response;
 
@@ -15,15 +14,13 @@ public abstract class HttpModelHandler<Model> {
 
 	protected abstract void onFailure(HttpException e, Response res);
 
-	public HttpModelHandler<Model> handleModelData(Model json, Response res) {
+	public HttpModelHandler<Model> handleModelData(Model data, Response res) {
 		if (res != null) {
 			HttpException he = res.getException();
-            //
-            Log.d("json",json);
 			if (he != null) {
 				onFailure(he, res);
 			} else {
-				onSuccess(json, res);
+				onSuccess(data, res);
 			}
 		}
 		return this;

@@ -1,6 +1,5 @@
 package com.litesuits.http.impl.apache;
 
-import android.content.Context;
 import android.os.NetworkOnMainThreadException;
 import com.litesuits.android.log.Log;
 import com.litesuits.http.LiteHttpClient;
@@ -12,9 +11,11 @@ import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.exception.HttpNetException;
 import com.litesuits.http.exception.HttpServerException;
 import com.litesuits.http.exception.HttpServerException.ServerException;
+import com.litesuits.http.listener.HttpListener;
 import com.litesuits.http.parser.DataParser;
 import com.litesuits.http.parser.StringParser;
 import com.litesuits.http.request.Request;
+import com.litesuits.http.request.content.HttpBody;
 import com.litesuits.http.request.param.HttpMethod;
 import com.litesuits.http.request.param.HttpParam;
 import com.litesuits.http.response.InternalResponse;
@@ -55,15 +56,14 @@ import java.util.Map.Entry;
  */
 public class ApacheHttpClient extends LiteHttpClient {
     private static String TAG = ApacheHttpClient.class.getSimpleName();
-    ;
     private DefaultHttpClient mHttpClient;
     private HttpContext       mHttpContext;
     public static final int     DEFAULT_KEEP_LIVE         = 30000;
     public static final int     DEFAULT_MAX_CONN_PER_ROUT = 128;
     public static final int     DEFAULT_MAX_CONN_TOTAL    = 512;
     public static final boolean TCP_NO_DELAY              = true;
-    private static ApacheHttpClient    instance;
-    private        ConnectRetryHandler retryHandler;
+    //private static ApacheHttpClient    instance;
+    private ConnectRetryHandler retryHandler;
 
     private ApacheHttpClient(int retrySleep, boolean forceRetry) {
         retryHandler = new ConnectRetryHandler(retrySleep, forceRetry);
@@ -71,19 +71,17 @@ public class ApacheHttpClient extends LiteHttpClient {
         mHttpClient = createApacheHttpClient(createHttpParams());
     }
 
-    public synchronized static ApacheHttpClient getInstance(Context context, int retrySleep, boolean forceRetry) {
-        if (instance == null) {
-            if (context != null) appContext = context.getApplicationContext();
-            instance = new ApacheHttpClient(retrySleep, forceRetry);
-        }
-        return instance;
+    public synchronized static ApacheHttpClient createInstance(int retrySleep, boolean forceRetry) {
+        //if (instance == null) {
+        //    if (context != null) appContext = context.getApplicationContext();
+        //    instance = new ApacheHttpClient(retrySleep, forceRetry);
+        //}
+        //return instance;
+        return new ApacheHttpClient(retrySleep, forceRetry);
     }
 
     /**
-     * initialize HttpParams , initialize settings such as total
-     * connextions,timeout ...
-     *
-     * @return BasicHttpParams
+     * initialize HttpParams , initialize settings such as total connextions,timeout ...
      */
     private BasicHttpParams createHttpParams() {
         BasicHttpParams params = new BasicHttpParams();
@@ -95,7 +93,7 @@ public class ApacheHttpClient extends LiteHttpClient {
         HttpConnectionParams.setSoTimeout(params, DEFAULT_TIMEOUT);
         HttpConnectionParams.setSocketBufferSize(params, DEFAULT_BUFFER_SIZE);
         HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-        HttpProtocolParams.setUserAgent(params, String.format("Lite %s ( http://litesuits.com )", "1.0"));
+        HttpProtocolParams.setUserAgent(params, USER_AGENT);
         // settingOthers(params);
         return params;
     }
@@ -188,14 +186,6 @@ public class ApacheHttpClient extends LiteHttpClient {
      */
     private ThreadSafeClientConnManager createClientConnManager(BasicHttpParams httpParams) {
         SchemeRegistry schemeRegistry = new SchemeRegistry();
-        // Android had a bug where HTTPS made reverse DNS lookups (fixed in Ice Cream Sandwich)
-        // http://code.google.com/p/android/issues/detail?id=13117
-        //SocketFactory socketFactory = null;
-        //if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-        //    socketFactory = new MyLayeredSocketFactory();
-        //} else {
-        //    socketFactory = SSLSocketFactory.getSocketFactory();
-        //}
         SSLSocketFactory socketFactory = MySSLSocketFactory.getFixedSocketFactory();
         schemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), DEFAULT_HTTP_PORT));
         schemeRegistry.register(new Scheme("https", socketFactory, DEFAULT_HTTPS_PORT));
@@ -205,11 +195,22 @@ public class ApacheHttpClient extends LiteHttpClient {
 	/*----------------------------------  public method  ------------------------------------------*/
 
     @Override
+    public Response executeUnsafely(Request request) throws HttpException {
+        Response res = execute(request);
+        if (res.getException() != null) throw res.getException();
+        return res;
+    }
+
+    @Override
     public Response execute(Request request) {
-        final InternalResponse innerResponse = getInternalResponse();
+        final InternalResponse innerResponse = getInternalResponse(request);
         if (request == null) return innerResponse;
         try {
-            if (innerResponse.getExecuteListener() != null) innerResponse.getExecuteListener().onStart();
+            if (request.getHttpListener() != null) request.getHttpListener().onStart(request);
+            if (innerResponse.getHttpInnerListener() != null) innerResponse.getHttpInnerListener().onStart(request);
+            if (getCommonHeader() != null) {
+                request.addHeader(getCommonHeader());
+            }
             innerResponse.setRequest(request);
             innerResponse.setDataParser(request.getDataParser());
             readDataWithRetries(request, innerResponse);
@@ -230,9 +231,8 @@ public class ApacheHttpClient extends LiteHttpClient {
             }
             innerResponse.setException(ex);
         } finally {
-            if (innerResponse.getExecuteListener() != null) {
-                innerResponse.getExecuteListener().onEnd();
-            }
+            if (innerResponse.getHttpInnerListener() != null) innerResponse.getHttpInnerListener().onEnd(innerResponse);
+            if (request.getHttpListener() != null) request.getHttpListener().onEnd(innerResponse);
             final HttpException e = innerResponse.getException();
             if (e != null) {
                 Log.e(TAG, "http connect error, stack trace as fllows :");
@@ -244,11 +244,11 @@ public class ApacheHttpClient extends LiteHttpClient {
 
     @Override
     public <T> T execute(String uri, DataParser<T> parser, HttpMethod method) {
-        execute(new Request(uri, parser).setMethod(method));
+        execute(new Request(uri).setDataParser(parser).setMethod(method));
         return parser.getData();
     }
 
-    public HttpResponse execute(HttpUriRequest req) throws ClientProtocolException, IOException {
+    public HttpResponse execute(HttpUriRequest req) throws IOException {
         return mHttpClient.execute(req);
     }
 
@@ -264,7 +264,7 @@ public class ApacheHttpClient extends LiteHttpClient {
 
     @Override
     public <T> T get(String uri, HttpParam model, Class<T> claxx) {
-        Response res = execute(new Request(uri, model, HttpMethod.Get, new StringParser()));
+        Response res = execute(new Request(uri, model, new StringParser(), null, HttpMethod.Get));
         return res.getObject(claxx);
     }
 
@@ -280,7 +280,7 @@ public class ApacheHttpClient extends LiteHttpClient {
 
     @Override
     public <T> T put(String uri, HttpParam model, Class<T> claxx) {
-        Response res = execute(new Request(uri, model, HttpMethod.Put, new StringParser()));
+        Response res = execute(new Request(uri, model, new StringParser(), null, HttpMethod.Put));
         return res.getObject(claxx);
     }
 
@@ -296,8 +296,17 @@ public class ApacheHttpClient extends LiteHttpClient {
 
     @Override
     public <T> T post(String uri, HttpParam model, Class<T> claxx) {
-        Response res = execute(new Request(uri, model, HttpMethod.Post, new StringParser()));
-        return res.getObject(claxx);
+        return post(uri, model, null, claxx);
+    }
+
+    @Override
+    public <T> T post(String uri, HttpBody body, Class<T> claxx) {
+        return post(uri, null, body, claxx);
+    }
+
+    @Override
+    public <T> T post(String uri, HttpParam model, HttpBody body, Class<T> claxx) {
+        return execute(new Request(uri, model, new StringParser(), body, HttpMethod.Post)).getObject(claxx);
     }
 
     @Override
@@ -318,14 +327,14 @@ public class ApacheHttpClient extends LiteHttpClient {
 
     @Override
     public <T> T delete(String uri, HttpParam model, Class<T> claxx) {
-        Response res = execute(new Request(uri, model, HttpMethod.Delete, new StringParser()));
+        Response res = execute(new Request(uri, model, new StringParser(), null, HttpMethod.Delete));
         return res.getObject(claxx);
     }
 
 	/*----------------------------------  private method  ------------------------------------------*/
 
     private HttpUriRequest createApacheRequest(Request request) throws HttpClientException {
-        String rawUri = request.getRawUrl();
+        //String rawUri = request.getRawUrl();
         HttpEntityEnclosingRequestBase entityRequset = null;
         switch (request.getMethod()) {
             case Get:
@@ -366,7 +375,7 @@ public class ApacheHttpClient extends LiteHttpClient {
      * @throws HttpServerException
      * @throws InterruptedException
      */
-    private void readDataWithRetries(Request request, InternalResponse innerResponse) throws HttpNetException, HttpClientException, HttpServerException,
+    private void readDataWithRetries(Request request, InternalResponse innerResponse) throws HttpException,
             InterruptedException {
         final HttpUriRequest req = createApacheRequest(request);
         // update header
@@ -387,16 +396,19 @@ public class ApacheHttpClient extends LiteHttpClient {
         HttpResponse response = null;
         IOException cause = null;
         boolean retry = true;
+        HttpListener listener = request.getHttpListener();
         while (retry) {
             try {
                 cause = null;
                 if (!Thread.currentThread().isInterrupted()) {
                     innerResponse.setTryTimes(++times);
                     // start
-                    if (Log.isPrint) Log.v(TAG, "http connect  to " + req.getURI());
-                    if (doStatistics) innerResponse.getExecuteListener().onPreConnect();
+                    if (Log.isPrint) Log.v(TAG, "lite http request: " + req.getURI());
+                    if (listener != null) listener.onPreConnect(request);
+                    if (doStatistics) innerResponse.getHttpInnerListener().onPreConnect(request);
                     response = mHttpClient.execute(req);
-                    if (doStatistics) innerResponse.getExecuteListener().onAfterConnect();
+                    if (doStatistics) innerResponse.getHttpInnerListener().onAfterConnect(request);
+                    if (listener != null) listener.onAfterConnect(request);
                     // status
                     StatusLine status = response.getStatusLine();
                     HttpStatus httpStatus = new HttpStatus(status.getStatusCode(), status.getReasonPhrase());
@@ -408,7 +420,7 @@ public class ApacheHttpClient extends LiteHttpClient {
                         for (int i = 0; i < headers.length; i++) {
                             String name = headers[i].getName();
                             String value = headers[i].getValue();
-                            if ("Content-Length".equals(name)) {
+                            if ("Content-Length".equalsIgnoreCase(name)) {
                                 innerResponse.setContentLength(Long.parseLong(value));
                             }
                             hs[i] = new com.litesuits.http.data.NameValuePair(name, value);
@@ -427,15 +439,19 @@ public class ApacheHttpClient extends LiteHttpClient {
                             // length
                             long len = innerResponse.getContentLength();
                             DataParser<?> parser = innerResponse.getDataParser();
+                            parser.setRequest(request);
+                            parser.setHttpReadingListener(request.getHttpListener());
                             if (!Thread.currentThread().isInterrupted()) {
-                                if (doStatistics) innerResponse.getExecuteListener().onPreRead();
-                                parser.readInputStream(entity.getContent(), (int) len, charSet);
-                                if (doStatistics) innerResponse.getExecuteListener().onAfterRead();
+                                if (listener != null) listener.onPreRead(request);
+                                if (doStatistics) innerResponse.getHttpInnerListener().onPreRead(request);
+                                parser.readInputStream(entity.getContent(), len, charSet);
+                                if (doStatistics) innerResponse.getHttpInnerListener().onAfterRead(request);
                                 innerResponse.setReadedLength(parser.getReadedLength());
+                                if (listener != null) listener.onAfterRead(request);
                             } else {
                                 if (Log.isPrint) Log.w(TAG, "DataParser readInputStream :currentThread isInterrupted ");
                             }
-                            //if (Log.isPrint) Log.v(TAG, "http response is " + parser.getData());
+                            if (Log.isPrint) Log.v(TAG, "lite http response: " + parser.getData());
                         }
                     } else if (status.getStatusCode() <= 399) {
                         // redirect
@@ -444,7 +460,7 @@ public class ApacheHttpClient extends LiteHttpClient {
                             Header locationHeader = response.getFirstHeader(Consts.REDIRECT_LOCATION);
                             if (locationHeader != null) {
                                 String location = locationHeader.getValue();
-                                if (location != null && !location.isEmpty()) {
+                                if (location != null && location.length() > 0) {
                                     if (!location.toLowerCase().startsWith("http")) {
                                         URI uri = new URI(request.getUrl());
                                         URI redirect = new URI("http", uri.getHost(), location, null);
@@ -453,6 +469,7 @@ public class ApacheHttpClient extends LiteHttpClient {
                                     innerResponse.setRedirectTimes(innerResponse.getRedirectTimes() + 1);
                                     request.setUrl(location);
                                     if (Log.isPrint) Log.i(TAG, "Redirect to : " + location);
+                                    if (listener != null) listener.onRedirect(request);
                                     readDataWithRetries(request, innerResponse);
                                     return;
                                 }
@@ -478,8 +495,7 @@ public class ApacheHttpClient extends LiteHttpClient {
                 throw new HttpClientException(e);
             } catch (IllegalStateException e) {
                 // for apache http client. if url is illegal, it usually raises
-                // an exception as
-                // "IllegalStateException: Scheme 'xxx' not registered."
+                // an exception as "IllegalStateException: Scheme 'xxx' not registered."
                 throw new HttpClientException(e);
             } catch (IOException e) {
                 cause = e;
@@ -489,6 +505,9 @@ public class ApacheHttpClient extends LiteHttpClient {
                 // http://code.google.com/p/android/issues/detail?id=5255
                 cause = new IOException("HttpClient execute NullPointerException");
                 retry = retryHandler.retryRequest(cause, times, retryTimes, mHttpContext, appContext);
+            }
+            if (retry) {
+                if (listener != null) listener.onRetry(request, retryTimes, times);
             }
         }
         if (cause != null) throw new HttpNetException(cause);
@@ -513,7 +532,7 @@ public class ApacheHttpClient extends LiteHttpClient {
                     for (final NameValuePair param : params) {
                         if (param.getName().equalsIgnoreCase("charset")) {
                             String s = param.getValue();
-                            if (s != null && !s.isEmpty()) { return s; }
+                            if (s != null && s.length() > 0) { return s; }
                         }
                     }
                 }
