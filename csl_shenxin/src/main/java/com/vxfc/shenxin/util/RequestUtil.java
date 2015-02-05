@@ -8,31 +8,6 @@ import com.litesuits.http.request.param.HttpMethod;
  */
 public class RequestUtil {
 
-
-    /*****
-     * Token 过期验证
-     * @param clientId  用户id
-     * @param refreshToken  刷新授权码
-     * @return 请求对象
-     */
-    public static Request requestRefreshTokenTask(String clientId,String refreshToken){
-        return new Request(Util.jointUrl(UrlApi.ACCESS_TOKEN,UrlApi.WEB_MODEL_BASE)).setMethod(HttpMethod.Get).
-                addUrlParam(Dict.CLIENT_ID,clientId)
-                .addUrlParam(Dict.REFRESH_TOKEN,refreshToken);
-    }
-
-    /***
-     * 授权码请求
-     * @return 请求对象
-     */
-    public static Request requestUserToken(){
-        return  new Request(Util.jointUrl(UrlApi.AUTHORIZE,UrlApi.WEB_MODEL_BASE)).setMethod(HttpMethod.Get).
-                addUrlParam(Dict.CLIENT_ID, Dict.USER_NAME)
-                .addUrlParam(Dict.SIGN, Dict.SIGN_CODE).
-                        addUrlParam(Dict.REDIRECT_URI, Dict.URL).
-                        addUrlParam(Dict.STATE, "1234");
-    }
-
     /************
      * 请求最近一次比赛信息
      * @param userToken 授权码
@@ -359,7 +334,7 @@ public class RequestUtil {
      * @param year
      * @return
      */
-    public static Request requestFixtureList(String userToken,String team_id,String round){
+    public static Request requestFixtureList(String userToken,String team_id,String round,String year){
         return new Request(Util.jointUrl(UrlApi.fixtureList,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get).
                 addUrlParam(Dict.ACCESS_TOKEN, userToken).
                 addUrlParam(Dict.TEAM_ID,team_id).
@@ -371,5 +346,14 @@ public class RequestUtil {
       return new  Request(Util.jointUrl(UrlApi.images,UrlApi.WEB_MODEL_CSL))
               .addUrlParam(Dict.PATH,path).setMethod(HttpMethod.Get).setDataParser(parser);
     }
+
+    public static Request postRegister(){
+        return new Request("http://192.168.1.104/member-api-server/register").setMethod(HttpMethod.Post).
+                addUrlParam("telphone", "18521569425").
+                addUrlParam("password","888888").
+                addUrlParam("smsCode","88888")
+                .addUrlParam("nickName","花湖");
+    }
+
 
 }

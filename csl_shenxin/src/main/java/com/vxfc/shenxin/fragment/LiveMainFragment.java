@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioGroup;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.entity.RecentGameTeam;
+import com.vxfc.shenxin.model.RecentGameTeam;
 import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.Util;
 

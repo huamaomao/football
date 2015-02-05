@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.entity.FistPlayerVo;
+import com.vxfc.shenxin.model.FistPlayerVo;
 import com.vxfc.shenxin.util.Team;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.vxfc.shenxin.entity;
+package com.vxfc.shenxin.model;
 
 /****
  * 球员历史荣誉

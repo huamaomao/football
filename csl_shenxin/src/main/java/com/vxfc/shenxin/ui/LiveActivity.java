@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.entity.RecentGameTeam;
+import com.vxfc.shenxin.model.RecentGameTeam;
 import com.vxfc.shenxin.fragment.LiveMainFragment;
 import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.Team;

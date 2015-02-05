@@ -6,17 +6,17 @@ package com.vxfc.shenxin.util;
  */
 public interface UrlApi {
     enum IP{
-        S("http://vxfc.com.cn:9999/"),L("http://192.168.2.110:8089/");
+        S("http://vxfc.com.cn:9999/"),L("http://vxfc.net/");
         public String value;
         private IP(String value){
             this.value=value;
         }
     }
     final static String SERVER_IP =IP.S.value;
-    final static String WEB_MODEL_BASE = "base-authorize";
+    final static String WEB_MODEL_MEMBER = "member-api-server";
     final static String WEB_MODEL_CSL = "csl-api-server";
-    final static String AUTHORIZE = "authorize";//获取授权码接口
-    final static String ACCESS_TOKEN = "access_token";//通过刷新码刷新授权码接口
+    //final static String AUTHORIZE = "authorize";//获取授权码接口
+   // final static String ACCESS_TOKEN = "access_token";//通过刷新码刷新授权码接口
     final static String LOGIN = "login";//用户登录
     final static String SMS = "sms";//使用短信验证接口
     final static String REGISTER = "register";//用户注册
@@ -46,7 +46,6 @@ public interface UrlApi {
     final static String playerRankings = "playerRankings";//获取球员排行
     final static String fixtureList = "fixtureList";//赛程列表
     final static String playerRecord = "playerRecord";//球员履历
-    final static String images="images";
+    final static String images=SERVER_IP+WEB_MODEL_CSL;
 
-    final static String imageUrl=SERVER_IP+WEB_MODEL_CSL+"/images?path=";
 }

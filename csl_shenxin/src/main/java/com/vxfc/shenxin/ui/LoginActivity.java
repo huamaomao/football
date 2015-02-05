@@ -6,9 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.litesuits.http.exception.HttpException;
+import com.litesuits.http.response.Response;
+import com.litesuits.http.response.handler.HttpModelHandler;
+import com.vxfc.common.util.Log;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.presenter.LoginPresenter;
 import com.vxfc.shenxin.util.ActivityModel;
+import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.Util;
 import com.vxfc.shenxin.view.ILoginView;
 
@@ -25,6 +31,7 @@ public class LoginActivity extends BaseActivity implements ILoginView, View.OnCl
         setContentView(R.layout.activity_login);
        setBackActionBarTilte("登陆");
         presenter=new LoginPresenter(this);
+
     }
 
     /**********

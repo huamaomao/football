@@ -10,7 +10,7 @@ import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.ListPlayerRankingAdapater;
-import com.vxfc.shenxin.entity.PlayerRankingVo;
+import com.vxfc.shenxin.model.PlayerRankingVo;
 import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.Util;
 import com.vxfc.shenxin.widget.SpinnerView;

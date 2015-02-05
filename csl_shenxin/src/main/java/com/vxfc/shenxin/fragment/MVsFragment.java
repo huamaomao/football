@@ -14,7 +14,7 @@ import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.ListVsAdapater;
-import com.vxfc.shenxin.entity.AgainstHistorical;
+import com.vxfc.shenxin.model.AgainstHistorical;
 import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.Util;
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.entity.News;
+import com.vxfc.shenxin.model.News;
 import com.vxfc.shenxin.util.UrlApi;
 import com.vxfc.shenxin.util.Util;
 import java.util.List;
@@ -70,8 +70,7 @@ public class ListNewsAdapater extends BaseAdapter {
         builder.append(Util.initTextEmpty(news.getFromLocation()));
         holder.tv_item_1.setText(builder.toString());
         holder.tv_item_2.setText(Util.initTextEmpty(news.getCreateTime()));
-
-        ImageLoader.getInstance().displayImage(UrlApi.imageUrl,news.getThumbnailPath(), holder.iv_item_0,R.drawable.team_news);
+        ImageLoader.getInstance().displayImage(UrlApi.images,news.getThumbnailPath(), holder.iv_item_0,R.drawable.team_news);
        // holder.iv_item_0.setImageResource(R.drawable.team_news);
         return convertView;
     }

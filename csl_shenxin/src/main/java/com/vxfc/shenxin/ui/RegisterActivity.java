@@ -1,13 +1,18 @@
 package com.vxfc.shenxin.ui;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.vxfc.common.util.Log;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.presenter.LoginPresenter;
 import com.vxfc.shenxin.presenter.RegisterPresenter;
@@ -18,13 +23,15 @@ import com.vxfc.shenxin.view.IRegisterView;
 
 public class RegisterActivity extends BaseActivity implements IRegisterView{
 
-    private RelativeLayout rlTel,rlCode;
+    private LinearLayout rlTel,rlCode;
     private EditText etTel,etPwd;
     private RegisterPresenter presenter;
     /****标志是否第一步***/
     private boolean flag=true;
     /***3rd ibtn ****/
     private Button btnSend;
+
+    private MenuItem menuItem;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,8 +77,8 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
 	@Override
     protected void initView(){
         etTel=(EditText)findViewById(R.id.et_tel);
-        rlTel=(RelativeLayout)findViewById(R.id.rl_first);
-        rlCode=(RelativeLayout)findViewById(R.id.rl_next);
+        rlTel=(LinearLayout)findViewById(R.id.rl_first);
+        rlCode=(LinearLayout)findViewById(R.id.rl_next);
         btnSend=(Button)findViewById(R.id.btn_send);
         //重发验证码
         btnSend.setOnClickListener(new View.OnClickListener() {
@@ -80,9 +87,23 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
 
             }
         });
+        etTel.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+               if (s.length()==11){
+
+               }
+            }
+        });
     }
-
 
     @Override
     public void errorRegiter(String msg) {

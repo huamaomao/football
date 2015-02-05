@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.entity.PlayerListVo;
+import com.vxfc.shenxin.model.PlayerListVo;
 import com.vxfc.shenxin.util.Team;
 import com.vxfc.shenxin.util.Util;
 import java.util.List;

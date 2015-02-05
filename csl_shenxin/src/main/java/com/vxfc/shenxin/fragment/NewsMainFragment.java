@@ -12,7 +12,7 @@ import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.entity.RecentGameTeam;
+import com.vxfc.shenxin.model.RecentGameTeam;
 import com.vxfc.shenxin.util.*;
 
 import java.util.Timer;

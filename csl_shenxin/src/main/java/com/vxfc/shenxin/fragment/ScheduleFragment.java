@@ -15,7 +15,7 @@ import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.QuickAdapter;
-import com.vxfc.shenxin.entity.RecentGameTeam;
+import com.vxfc.shenxin.model.RecentGameTeam;
 import com.vxfc.shenxin.ui.LiveActivity;
 import com.vxfc.shenxin.ui.MainActivity;
 import com.vxfc.shenxin.util.*;
@@ -140,7 +140,7 @@ public class ScheduleFragment extends BaseListFragment {
     protected   void  requestData(){
         final Team team=(Team)spinner_team.getSelectionItem();
         String round=spinner_round.getSelectionIndex()==0?"":String.valueOf(spinner_round.getSelectionIndex());
-        application.execute(RequestUtil.requestFixtureList(application.getToken().getAccess_token(),team.id.equals(Team.All.id)?null:team.id,round),new HttpModelHandler<String>() {
+        application.execute(RequestUtil.requestFixtureList(application.getToken().getAccess_token(),team.id.equals(Team.All.id)?null:team.id,round,"2014"),new HttpModelHandler<String>() {
             @Override
             protected void onSuccess(String data, Response res) {
                 List<RecentGameTeam> temp= JSON.parseArray(data, RecentGameTeam.class);

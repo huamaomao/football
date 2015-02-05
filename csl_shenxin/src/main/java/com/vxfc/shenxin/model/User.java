@@ -1,4 +1,4 @@
-package com.vxfc.shenxin.entity;
+package com.vxfc.shenxin.model;
 
 /**
  * Created by Hua on 2014/8/2.

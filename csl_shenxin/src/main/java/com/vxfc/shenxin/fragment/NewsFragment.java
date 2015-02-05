@@ -10,7 +10,7 @@ import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.ListNewsAdapater;
-import com.vxfc.shenxin.entity.News;
+import com.vxfc.shenxin.model.News;
 
 import java.util.ArrayList;
 import java.util.List;

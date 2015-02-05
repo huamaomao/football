@@ -51,6 +51,8 @@ android {
             packageNameSuffix ".playstore"
         }*/
         debug {
+            minifyEnabled true
+            proguardFiles 'proguard-project.txt'
             signingConfig signingConfigs.myConfig
         }
     }

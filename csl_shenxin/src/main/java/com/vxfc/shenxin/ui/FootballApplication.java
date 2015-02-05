@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.os.StrictMode;
 import android.widget.Toast;
 import com.litesuits.http.LiteHttpClient;
 import com.litesuits.http.async.HttpAsyncExecutor;
@@ -21,8 +20,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-import com.vxfc.shenxin.entity.RecentGameTeam;
-import com.vxfc.shenxin.entity.Token;
+import com.vxfc.shenxin.model.RecentGameTeam;
+import com.vxfc.shenxin.model.Token;
 import com.vxfc.shenxin.util.Team;
 import java.io.File;
 
@@ -96,7 +95,7 @@ public class FootballApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        client= LiteHttpClient.getInstance(getApplicationContext());
+        client= LiteHttpClient.newApacheHttpClient(getApplicationContext());
         client.config(getApplicationContext(),true,true,false,true);
         asyncExecutor=HttpAsyncExecutor.newInstance(client);
         initImageLoader(getApplicationContext());

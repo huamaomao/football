@@ -5,11 +5,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.litesuits.http.exception.HttpException;
+import com.litesuits.http.response.Response;
+import com.litesuits.http.response.handler.HttpModelHandler;
 import com.tencent.tauth.Tencent;
+import com.vxfc.common.util.Log;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.presenter.ChoosePresenter;
 import com.vxfc.shenxin.util.ActivityModel;
 import com.vxfc.shenxin.util.Dict;
+import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.Util;
 import com.vxfc.shenxin.view.IChooseView;
 
@@ -64,7 +69,18 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
                 toRegisterActivity();
                 break;
             case R.id.ib_1:/**qq***/
-                presenter.login(ChoosePresenter.QQ);
+                application.execute(RequestUtil.postRegister(),new HttpModelHandler<String>() {
+                    @Override
+                    protected void onSuccess(String data, Response res) {
+                        Log.i(data);
+                    }
+
+                    @Override
+                    protected void onFailure(HttpException e, Response res) {
+                        Log.i(e);
+                    }
+                });
+                //presenter.login(ChoosePresenter.QQ);
                 break;
             case R.id.ib_2:/**weixin***/
                presenter.login(ChoosePresenter.WEIXIN);
