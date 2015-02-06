@@ -52,7 +52,7 @@ public class FootballApplication extends Application {
                 .threadPriority(Thread.NORM_PRIORITY - 2)
                 .denyCacheImageMultipleSizesInMemory()
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator())
-                .diskCacheSize(50 * 1024 * 1024) // 50 Mb
+                .diskCacheSize(500 * 1024 * 1024) // 50 Mb
                 .diskCache(new UnlimitedDiskCache(cacheDir))
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
                 .writeDebugLogs() // Remove for release app

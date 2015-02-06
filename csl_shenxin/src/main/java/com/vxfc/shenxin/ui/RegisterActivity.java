@@ -8,34 +8,37 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
-import com.vxfc.common.util.Log;
+import com.vxfc.common.util.ActivityModel;
+import com.vxfc.common.util.Util;
+import com.vxfc.common.util.ViewUtil;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.presenter.LoginPresenter;
 import com.vxfc.shenxin.presenter.RegisterPresenter;
-import com.vxfc.shenxin.util.ActivityModel;
-import com.vxfc.shenxin.util.Util;
-import com.vxfc.shenxin.view.ILoginView;
 import com.vxfc.shenxin.view.IRegisterView;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class RegisterActivity extends BaseActivity implements IRegisterView{
 
-    private LinearLayout rlTel,rlCode;
-    private EditText etTel,etPwd;
+    @InjectView(R.id.rl_first) LinearLayout llTel;
+    @InjectView(R.id.rl_next) LinearLayout llCode;
+    @InjectView(R.id.et_tel) EditText etTel;
+    //@InjectView(R.id.et_pwd)  EditText etPwd;
+
     private RegisterPresenter presenter;
     /****标志是否第一步***/
     private boolean flag=true;
-    /***3rd ibtn ****/
-    private Button btnSend;
 
-    private MenuItem menuItem;
+    @InjectView(R.id.btn_send) Button btnSend;
+
+    private MenuItem nextMenu;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        ButterKnife.inject(this);
         setBackActionBarTilte("注册");
         presenter=new RegisterPresenter(this);
         initView();
@@ -43,7 +46,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
 
     @Override
     protected void onHomeClick() {
-        Util.openActivity(ChooseActivity.class,this,ActivityModel.ACTIVITY_MODEL_1);
+        ViewUtil.openActivity(ChooseActivity.class, this, ActivityModel.ACTIVITY_MODEL_1);
     }
 
     /**********
@@ -59,9 +62,10 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
         switch (id){
             case R.id.action_next:
                 if (flag){
-                    rlTel.setVisibility(View.GONE);
-                    rlCode.setVisibility(View.VISIBLE);
+                    llTel.setVisibility(View.GONE);
+                    llCode.setVisibility(View.VISIBLE);
                     flag=true;
+                    presenter.doRegisterFirst(etTel.getText().toString());
                 }
                 break;
             default:
@@ -72,14 +76,11 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.register, menu);
+        nextMenu=menu.findItem(R.id.action_next);
         return true;
     }
 	@Override
     protected void initView(){
-        etTel=(EditText)findViewById(R.id.et_tel);
-        rlTel=(LinearLayout)findViewById(R.id.rl_first);
-        rlCode=(LinearLayout)findViewById(R.id.rl_next);
-        btnSend=(Button)findViewById(R.id.btn_send);
         //重发验证码
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +100,11 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
             @Override
             public void afterTextChanged(Editable s) {
                if (s.length()==11){
-
+                   if(Util.isMobileNO(s.toString())){
+                       nextMenu.setEnabled(true);
+                   }else{
+                       showMsg("手机格式错误...");
+                   }
                }
             }
         });
@@ -107,11 +112,11 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
 
     @Override
     public void errorRegiter(String msg) {
-        application.msgShow(msg);
+        showMsg(msg);
     }
 
     @Override
     public void toMainActivity() {
-        Util.openActivity(MainActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_2,true);
+        ViewUtil.openActivity(MainActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_2,true);
     }
 }
