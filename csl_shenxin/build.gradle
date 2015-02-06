@@ -33,11 +33,14 @@ android {
         abortOnError false
         // if true, only report errors
         ignoreWarnings true
+        disable 'InvalidPackage'
     }
     dexOptions {
         preDexLibraries = false
     }
-
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
     buildTypes {
         release {
             minifyEnabled true
@@ -51,8 +54,8 @@ android {
             packageNameSuffix ".playstore"
         }*/
         debug {
-            minifyEnabled true
-            proguardFiles 'proguard-project.txt'
+           /* minifyEnabled true
+            proguardFiles 'proguard-project.txt'*/
             signingConfig signingConfigs.myConfig
         }
     }
@@ -73,6 +76,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.android.support:support-v13:21'
     compile 'com.vxfc.3rd:qq_lite:2.8'
+    compile 'com.jakewharton:butterknife:6.1.0'
     /********project***********/
     compile project(':libraries:FlowLibrary')
     compile project(':libraries:ImageLibrary')
