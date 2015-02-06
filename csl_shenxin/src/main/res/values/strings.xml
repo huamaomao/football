@@ -203,7 +203,7 @@
     <string name="login">登 陆</string>
     <string name="msg_tel">请输入手机号</string>
     <string name="msg_pwd">请输入密码（6-16位）</string>
-    <string name="msg_tel_code">请输入手机验证码</string>
+    <string name="msg_tel_code">请输入验证码</string>
     <string name="register">注 册</string>
     <string name="skip_login">跳过登陆</string>
     <string name="msg_3rd">第三方登陆</string>

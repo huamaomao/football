@@ -10,10 +10,10 @@
     <color name="left_color">#ffededed</color>
     <color name="white_a">#aae9e9e9</color>
     <color name="btn_action">#fff4f4f4</color>
-
+    <color name="grey">#ffd2d2d2</color><!-- 灰色-->
     <color name="white_d">#fcd2d2d2</color>
     <color name="white_1">#ffececec</color>
-    <color name="white_0">#ffc8c8c8</color>
+    <color name="white_0">#ff4d9dff</color>
     <color name="shenbg">#0d1b10</color>
     <color name="lineup_bg">#ff0b6913</color>
     <color name="list_view_item_gray">#ff2f552f</color>
