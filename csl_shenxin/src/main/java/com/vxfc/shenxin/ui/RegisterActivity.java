@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.LinearLayout;
 
 import com.vxfc.common.util.ActivityModel;
@@ -23,9 +24,9 @@ import butterknife.InjectView;
 public class RegisterActivity extends BaseActivity implements IRegisterView{
 
     @InjectView(R.id.rl_first) LinearLayout llTel;
-    @InjectView(R.id.rl_next) LinearLayout llCode;
+    @InjectView(R.id.gl_next) GridLayout glNext;
     @InjectView(R.id.et_tel) EditText etTel;
-    //@InjectView(R.id.et_pwd)  EditText etPwd;
+    @InjectView(R.id.et_pwd)  EditText etPwd;
 
     private RegisterPresenter presenter;
     /****标志是否第一步***/
@@ -63,7 +64,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
             case R.id.action_next:
                 if (flag){
                     llTel.setVisibility(View.GONE);
-                    llCode.setVisibility(View.VISIBLE);
+                    glNext.setVisibility(View.VISIBLE);
                     flag=true;
                     presenter.doRegisterFirst(etTel.getText().toString());
                 }

@@ -367,6 +367,8 @@
         <item name="android:singleLine">true</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:paddingLeft">20px</item>
+        <item name="android:paddingBottom">20px</item>
+        <item name="android:paddingTop">20px</item>
         <item name="android:textSize">@dimen/font_size_16</item>
     </style>
 
