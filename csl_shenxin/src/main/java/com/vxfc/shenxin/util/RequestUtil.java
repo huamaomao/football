@@ -3,6 +3,8 @@ package com.vxfc.shenxin.util;
 import com.litesuits.http.parser.BitmapParser;
 import com.litesuits.http.request.Request;
 import com.litesuits.http.request.param.HttpMethod;
+import com.vxfc.shenxin.model.param.NewParam;
+
 /**
  *  请求api
  */
@@ -58,23 +60,21 @@ public class RequestUtil {
 
     /*****
      *  获取新闻列表
-     * @param userToken   授权码
+     * @param newParam
      * @return 请求对象
      */
-    public static Request requestNewList(String userToken,String page,String teamId){
+    public static Request requestNewList(NewParam newParam){
         return new Request(Util.jointUrl(UrlApi.NEW_LIST,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get).
-                addUrlParam(Dict.ACCESS_TOKEN, userToken).addUrlParam(Dict.PAGE,page).addUrlParam(Dict.TEAM_ID,teamId);
+               setParamModel(newParam);
     }
-
     /*****
-     *  获取新闻详细
-     * @param userToken   授权码
-     * @param id   新闻id
+     *  获取下一页新闻列表
+     * @param newParam
      * @return 请求对象
      */
-    public static Request requestNewDetail(String userToken,String id){
-        return new Request(Util.jointUrl(UrlApi.NEW_DETAIL,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get).
-                addUrlParam(Dict.ACCESS_TOKEN, userToken).addUrlParam(Dict.ID,id);
+    public static Request requestNextNewList(NewParam newParam){
+        return new Request(Util.jointUrl(UrlApi.NEXT_NEW_LIST,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get).
+                setParamModel(newParam);
     }
 
     /*****

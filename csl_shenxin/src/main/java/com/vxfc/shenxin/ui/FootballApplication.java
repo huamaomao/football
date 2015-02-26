@@ -67,7 +67,7 @@ public class FootballApplication extends Application {
      * @param content 提示的内容
      */
     public void msgShow(String content) {
-       Toast.makeText(getApplicationContext(), content, Toast.LENGTH_LONG).show();
+       Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT).show();
     }
 
     /**

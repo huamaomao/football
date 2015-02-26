@@ -83,6 +83,5 @@ dependencies {
     compile project(':libraries:LiteLibrary')
     compile project(':libraries:VitamioLibrary')
     compile project(':libraries:CommonLibrary')
-    compile project(':libraries:ThirdpartyLibrary')
     compile project(':libraries:WeiboLibrary')
 }

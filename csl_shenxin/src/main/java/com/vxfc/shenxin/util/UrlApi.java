@@ -24,7 +24,8 @@ public interface UrlApi {
     final static String WAR_HISTORY = "warHistory";//获取两队对战历史
     final static String RECENT_RECORD = "recentRecord";//获取球队历史战绩
     final static String LIST = "integral";//获取积分榜
-    final static String NEW_LIST = "newsList";//取新闻
+    final static String NEW_LIST = "firstPageNewsList";//取新闻
+    final static String NEXT_NEW_LIST = "nextPageNewsList";// 下一页新闻
     final static String NEW_DETAIL = "newsDetail";//新闻详细
     final static String TEAM_PROFILE = "teamProfile";//球队简介
     final static String TEAM_GLORIES = "teamGlories";//球队荣誉

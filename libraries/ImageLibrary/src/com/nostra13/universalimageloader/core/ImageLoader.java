@@ -307,7 +307,7 @@ public class ImageLoader {
         if (uri==null||"".equals(uri)) return;
         StringBuilder builder=new StringBuilder(webUri);
         builder.append(uri);
-        Log.d("image_uri",builder.toString());
+        builder.append("/");
         imageView.setTag(builder.toString());
         displayImage(builder.toString(), new ImageViewAware(imageView), null, null, null);
     }
