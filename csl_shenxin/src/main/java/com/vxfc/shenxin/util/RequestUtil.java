@@ -3,7 +3,9 @@ package com.vxfc.shenxin.util;
 import com.litesuits.http.parser.BitmapParser;
 import com.litesuits.http.request.Request;
 import com.litesuits.http.request.param.HttpMethod;
+import com.vxfc.shenxin.model.param.MemberParam;
 import com.vxfc.shenxin.model.param.NewParam;
+import com.vxfc.shenxin.model.param.SignParam;
 
 /**
  *  请求api
@@ -345,6 +347,92 @@ public class RequestUtil {
     public static Request requestImage(String path,BitmapParser parser){
       return new  Request(Util.jointUrl(UrlApi.images,UrlApi.WEB_MODEL_CSL))
               .addUrlParam(Dict.PATH,path).setMethod(HttpMethod.Get).setDataParser(parser);
+    }
+
+
+    /*********MEMBER  会员****************/
+    /****
+     * 会员注册
+     * @param param
+     * @return
+     */
+    public static Request requestRegister(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.REGISTER,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+             setParamModel(param);
+    }
+    /****
+     * 3rd会员注册
+     * @param param
+     * @return
+     */
+    public static Request requestRegister3rd(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.REGISTER_3RD,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
+    }
+    /****
+     * request sms code
+     * @param param
+     * @return
+     */
+    public static Request requestSms(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.SMS,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
+    }
+    /****
+     * login
+     * @param param
+     * @return
+     */
+    public static Request requestLogin(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.LOGIN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
+    }
+    /****
+     * 用户信息
+     * @param param
+     * @return
+     */
+    public static Request requestMemberInfo(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.MEMBER_INFO,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Get).
+                setParamModel(param);
+    }
+
+    /****
+     * 是否签到
+     * @param param
+     * @return
+     */
+    public static Request requestIsSign(SignParam param) {
+        return new Request(Util.jointUrl(UrlApi.IS_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Get).
+                setParamModel(param);
+    }
+    /****
+     * 签到
+     * @param param
+     * @return
+     */
+    public static Request requestSign(SignParam param) {
+        return new Request(Util.jointUrl(UrlApi.SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
+    }
+
+    /****
+     * 是否主场签到
+     * @param param
+     * @return
+     */
+    public static Request requestIsTeamSign(SignParam param) {
+        return new Request(Util.jointUrl(UrlApi.IS_TEAM_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Get).
+                setParamModel(param);
+    }
+    /****
+     * 主场签到
+     * @param param
+     * @return
+     */
+    public static Request requestTeamSign(SignParam param) {
+        return new Request(Util.jointUrl(UrlApi.TEAM_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
     }
 
     public static Request postRegister(){

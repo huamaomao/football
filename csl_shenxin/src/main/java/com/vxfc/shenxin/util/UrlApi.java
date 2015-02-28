@@ -18,8 +18,19 @@ public interface UrlApi {
     //final static String AUTHORIZE = "authorize";//获取授权码接口
    // final static String ACCESS_TOKEN = "access_token";//通过刷新码刷新授权码接口
     final static String LOGIN = "login";//用户登录
+    final static String MEMBER_INFO = "userIfo";//用户登录
     final static String SMS = "sms";//使用短信验证接口
     final static String REGISTER = "register";//用户注册
+    final static String REGISTER_3RD = "login3rd";//3rd用户注册
+    final static String IS_SIGN = "isSign";//是否签到
+    final static String SIGN = "sign";//签到
+    final static String IS_TEAM_SIGN = "isTeamSign";//签到
+    final static String TEAM_SIGN = "teamSign";//签到
+    final static String PRODUCT_LIST = "productList";//商品列表
+    final static String QUERY_QUIZ = "queryQuiz";//竞猜
+    final static String ADD_QUIZ_MEMBER = "addQuizMember";//竞猜
+    final static String QUERY_QUIZ_LIST = "quizMemberList";//竞猜
+
     final static String RECENTLY = "recently";//获取首页的球队最近一次比赛信息（未开赛倒计时，开赛直播）
     final static String WAR_HISTORY = "warHistory";//获取两队对战历史
     final static String RECENT_RECORD = "recentRecord";//获取球队历史战绩
