@@ -46,6 +46,8 @@ public class FootballApplication extends Application {
         }
     };
 
+
+
     public static void initImageLoader(Context context) {
         File cacheDir = StorageUtils.getOwnCacheDirectory(context, "vxfc/Cache");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
@@ -109,6 +111,7 @@ public class FootballApplication extends Application {
     public void execute(final Request res,final HttpModelHandler<String> UIHandler){
         asyncExecutor.execute(res,UIHandler);
     }
+
     /****
      * 网络请求
      * @param res

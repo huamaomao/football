@@ -37,7 +37,6 @@ public interface UrlApi {
     final static String LIST = "integral";//获取积分榜
     final static String NEW_LIST = "firstPageNewsList";//取新闻
     final static String NEXT_NEW_LIST = "nextPageNewsList";// 下一页新闻
-    final static String NEW_DETAIL = "newsDetail";//新闻详细
     final static String TEAM_PROFILE = "teamProfile";//球队简介
     final static String TEAM_GLORIES = "teamGlories";//球队荣誉
     final static String PLAYER_INFO = "playerInfo";//球员信息
@@ -58,6 +57,9 @@ public interface UrlApi {
     final static String playerRankings = "playerRankings";//获取球员排行
     final static String fixtureList = "fixtureList";//赛程列表
     final static String playerRecord = "playerRecord";//球员履历
-    final static String images=SERVER_IP+WEB_MODEL_CSL;
+    final static String firstTeamPlayer = "firstTeamPlayer";//一线队/预备队接口
+    final static String coachTeamList = "coachTeamList";//教练组接口
+
+    // final static String images=SERVER_IP+WEB_MODEL_CSL;
 
 }

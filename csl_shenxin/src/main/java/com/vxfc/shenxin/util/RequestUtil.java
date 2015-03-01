@@ -3,6 +3,7 @@ package com.vxfc.shenxin.util;
 import com.litesuits.http.parser.BitmapParser;
 import com.litesuits.http.request.Request;
 import com.litesuits.http.request.param.HttpMethod;
+import com.vxfc.shenxin.model.param.ClsParam;
 import com.vxfc.shenxin.model.param.MemberParam;
 import com.vxfc.shenxin.model.param.NewParam;
 import com.vxfc.shenxin.model.param.SignParam;
@@ -342,11 +343,29 @@ public class RequestUtil {
                 addUrlParam(Dict.TEAM_ID,team_id).
                 addUrlParam(Dict.ROUND,round);
     }
-
-
-    public static Request requestImage(String path,BitmapParser parser){
+  /*  public static Request requestImage(String path,BitmapParser parser){
       return new  Request(Util.jointUrl(UrlApi.images,UrlApi.WEB_MODEL_CSL))
               .addUrlParam(Dict.PATH,path).setMethod(HttpMethod.Get).setDataParser(parser);
+    }*/
+
+    /*****
+     * 预备队 一线队
+     * @param param
+     * @return
+     */
+    public static Request requestFirstTeamPlayer(ClsParam param){
+        return new  Request(Util.jointUrl(UrlApi.firstTeamPlayer,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get)
+                .setParamModel(param);
+    }
+
+    /****
+     *教练组
+     * @param param
+     * @return
+     */
+    public static Request requestCoachTeamList(ClsParam param){
+        return new  Request(Util.jointUrl(UrlApi.coachTeamList,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get)
+                .setParamModel(param);
     }
 
 
