@@ -14,7 +14,10 @@ import com.vxfc.shenxin.adapter.ListLiveStartingAdapater;
 import com.vxfc.shenxin.model.FistPlayerVo;
 import com.vxfc.shenxin.model.RecentGameTeam;
 import com.vxfc.shenxin.ui.TeamPlayerActivity;
+import com.vxfc.shenxin.util.ActivityModel;
+import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.RequestUtil;
+import com.vxfc.shenxin.util.Util;
 import com.vxfc.shenxin.widget.PullToRefreshBase;
 import com.vxfc.shenxin.widget.PullToRefreshListView;
 
@@ -89,7 +92,10 @@ public class LiveStartingFragment extends BaseListFragment{
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         FistPlayerVo vo=bData.get(position);
-                        openActivity(TeamPlayerActivity.class,vo.getPlayerId(),vo.getPlayerName());
+                        Bundle bundle=new Bundle();
+                        bundle.putString(Dict.ID,vo.getPlayerId());
+                        bundle.putString(Dict.PLAYER_NAME,vo.getPlayerName());
+                        Util.openActivity(TeamPlayerActivity.class, bundle, getActivity(), ActivityModel.ACTIVITY_MODEL_1);
             }
         });
 
@@ -97,7 +103,10 @@ public class LiveStartingFragment extends BaseListFragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FistPlayerVo vo=aData.get(position);
-                openActivity(TeamPlayerActivity.class,vo.getPlayerId(),vo.getPlayerName());
+                Bundle bundle=new Bundle();
+                bundle.putString(Dict.ID,vo.getPlayerId());
+                bundle.putString(Dict.PLAYER_NAME,vo.getPlayerName());
+                Util.openActivity(TeamPlayerActivity.class, bundle, getActivity(), ActivityModel.ACTIVITY_MODEL_1);
             }
         });
 

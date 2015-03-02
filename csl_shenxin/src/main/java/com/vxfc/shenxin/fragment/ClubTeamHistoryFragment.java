@@ -8,7 +8,6 @@ import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.SpinnerAdapter;
 import com.vxfc.shenxin.ui.MainActivity;
 import com.vxfc.shenxin.util.Util;
-
 import java.util.HashMap;
 import java.util.Map;
 

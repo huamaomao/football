@@ -6,7 +6,7 @@
               android:layout_height="match_parent">
     <!-- 首页   -->
     <LinearLayout
-                      android:background="@drawable/lunbo_one"
+                      android:background="@drawable/icon_saishi"
                       android:layout_height="@dimen/lunbo_height"
                       android:padding="20px" style="@style/style_mm_h">
 

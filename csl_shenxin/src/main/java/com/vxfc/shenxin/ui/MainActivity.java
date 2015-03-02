@@ -37,12 +37,12 @@ public class MainActivity extends BaseActivity
        switch (id){
             case R.id.rbtn_left_menu_0:
                 NewsMainFragment fragment=(NewsMainFragment) Util.turnToFragment(getSupportFragmentManager(),NewsMainFragment.class,null,R.id.container);
-                fragment.setNewsTab(1);
+               // fragment.setNewsTab(1);
                 mTitle=getString(R.string.left_menu_0);
                 break;
             case R.id.rbtn_left_menu_1:
                 NewsMainFragment fragment1=(NewsMainFragment) Util.turnToFragment(getSupportFragmentManager(),NewsMainFragment.class,null,R.id.container);
-                fragment1.setNewsTab(2);
+                //fragment1.setNewsTab(2);
                 mTitle=getString(R.string.left_menu_1);
                 break;
             case R.id.rbtn_left_menu_2:

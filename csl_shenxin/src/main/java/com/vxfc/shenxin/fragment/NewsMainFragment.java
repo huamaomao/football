@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
+import com.vxfc.common.util.DateUtil;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.model.RecentGameTeam;
 import com.vxfc.shenxin.util.*;
@@ -18,30 +19,40 @@ import com.vxfc.shenxin.util.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 /****
  * 新闻/公告
  *
  */
 public class NewsMainFragment extends BaseFragment{
 
-    private GestureDetector detector;
-    /** 轮播左方view   */
-    private LinearLayout ll_lunbo,ll_lunbo_page,ll_lunbo_center;
-    /** 轮播页总数   */
-    private int pageCount=2;
-    /*** 轮播部分     **/
-    private TextView tv_type,tv_benlun,tv_benlun_against0,tv_benlun_against1,
-            tv_benlun_date,tv_benlun_score0,tv_benlun_score1;
-    private ImageView iv_against_icon0,iv_against_icon1;
+    @InjectView(R.id.tv_benlun) TextView tv_benlun;
+    @InjectView(R.id.tv_benlun_against0) TextView tv_benlun_against0;
+    @InjectView(R.id.tv_benlun_against1) TextView tv_benlun_against1;
+    @InjectView(R.id.tv_benlun_date) TextView tv_benlun_date;
+    @InjectView(R.id.tv_benlun_score0) TextView tv_benlun_score0;
+    @InjectView(R.id.tv_benlun_score1) TextView tv_benlun_score1;
+
+    @InjectView(R.id.iv_against_icon0) ImageView iv_against_icon0;
+    @InjectView(R.id.iv_against_icon1) ImageView iv_against_icon1;
+
+    @InjectView(R.id.btn_choose) Button btnChoose;
+
+
+    @InjectView(R.id.ll_lunbo_center) LinearLayout ll_lunbo_center;
+
     private  Animation mAnimationRight;
-
     private  Timer timer;
-    private int  index=1;
-
     private boolean statusFlag=false;//是否开赛
     private  UpdateTimerTask timeTask=null;
     private  TeamTimerTask teamTimerTask;
     private PlayTimerTask playTimerTask;
+
+    private PopupWindow popupWindow;
+    private ChooseDialogFragment fragment;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +60,12 @@ public class NewsMainFragment extends BaseFragment{
         mAnimationRight=AnimationUtils.loadAnimation(getActivity(),R.anim.scale);
         setLayoutId(R.layout.f_news);
         flag=true;
+        fragment=new ChooseDialogFragment();
+    }
+
+    @OnClick(R.id.btn_choose)
+    public void onChoose(){
+        fragment.show(getFragmentManager(),"choose");
     }
 
 
@@ -57,16 +74,13 @@ public class NewsMainFragment extends BaseFragment{
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what){
-                case Dict.HANDLER_CHENGE_PAGE:
-                    setNewsTab(msg.arg1);
-                    break;
                 case Dict.TIME_PLAY:
                     tv_benlun_date.setText(DateUtil.getTime());
                     break;
                 case Dict.TIME_UPDATE:
                     final  RecentGameTeam gameTeam=application.getGameTeam();
                     if (Util.notNull(gameTeam))
-                        tv_benlun_date.setText(DateUtil.timeDifference(gameTeam.getDate(),gameTeam.getTime()));
+                        tv_benlun_date.setText(DateUtil.timeDifference(gameTeam.getDate(), gameTeam.getTime()));
 
                     break;
             }
@@ -80,13 +94,12 @@ public class NewsMainFragment extends BaseFragment{
      */
     protected void  initViewData(RecentGameTeam team){
         if (null!=team){
-            ll_lunbo.setVisibility(View.VISIBLE);
             ll_lunbo_center.setVisibility(View.VISIBLE);
             application.setGameTeam(team);
             //ui 设置
-            StringBuilder builder=new StringBuilder("本轮 (");
+            StringBuilder builder=new StringBuilder("第");
             builder.append(team.getRound());
-            builder.append(")");
+            builder.append("轮");
             tv_benlun.setText(builder.toString());
             tv_benlun_against0.setText(team.getTeamAName());
             tv_benlun_against1.setText(team.getTeamBName());
@@ -216,81 +229,17 @@ public class NewsMainFragment extends BaseFragment{
      */
     @Override
     public void initView(final View view, LayoutInflater inflater) {
-        ll_lunbo=(LinearLayout)view.findViewById(R.id.ll_lunbo);
-        ll_lunbo_page=(LinearLayout)view.findViewById(R.id.ll_lunbo_page);
-        ll_lunbo_center=(LinearLayout)view.findViewById(R.id.ll_lunbo_center);
-        tv_type=(TextView)view.findViewById(R.id.tv_type);
-        tv_benlun=(TextView)view.findViewById(R.id.tv_benlun);
-        tv_benlun_against0=(TextView)view.findViewById(R.id.tv_benlun_against0);
-        tv_benlun_against1=(TextView)view.findViewById(R.id.tv_benlun_against1);
-        tv_benlun_date=(TextView)view.findViewById(R.id.tv_benlun_date);
-        tv_benlun_score0=(TextView)view.findViewById(R.id.tv_benlun_score0);
-        tv_benlun_score1=(TextView)view.findViewById(R.id.tv_benlun_score1);
-        iv_against_icon0=(ImageView)view.findViewById(R.id.iv_against_icon0);
-        iv_against_icon1=(ImageView)view.findViewById(R.id.iv_against_icon1);
-        ll_lunbo.setVisibility(View.INVISIBLE);
-        ll_lunbo_center.setVisibility(View.INVISIBLE);
-        detector=new GestureDetector(new GestureDetector.OnGestureListener() {
-            @Override
-            public boolean onDown(MotionEvent e) {
-                return false;
-            }
 
-            @Override
-            public void onShowPress(MotionEvent e) {
-
-            }
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                return false;
-            }
-
-            @Override
-            public void onLongPress(MotionEvent e) {
-
-            }
-
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                float y=velocityY<0?-velocityY:velocityY;
-                float x=velocityX<0?-velocityX:velocityX;
-                if (y>x){
-                    index++;
-                    if (index>=pageCount){
-                        index=0;
-                    }
-                    Message msg=new Message();
-                    msg.what=Dict.HANDLER_CHENGE_PAGE;
-                    msg.arg1=index;
-                    handler.sendMessage(msg);
-                }
-                return false;
-            }
-        });
-        ll_lunbo.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                detector.onTouchEvent(event);
-                return true;
-            }
-        });
         Util.turnToFragment(getChildFragmentManager(),NewsFragment.class,null,R.id.fl_news_content);
-        tv_type.setText("赛事分析");
         if (Util.notNull(application.getGameTeam())){
             initViewData(application.getGameTeam());
         }
     }
 
-    /***
+  /*  *//***
      * 改变圆点页
-     * @param index
-     */
+     * @param
+     *//*
     public void setNewsTab(int index){
         if(index==2){
             Util.turnToFragment(getChildFragmentManager(),NewsFragment.class,null,R.id.fl_news_content);
@@ -302,21 +251,21 @@ public class NewsMainFragment extends BaseFragment{
         ll_lunbo_page.getChildAt(index).setBackgroundResource(R.drawable.page_select);
         switch (index){
             case 0:
-                tv_type.setText("直播中");
+
                 tv_type.setAnimation(mAnimationRight);
                 Bundle bundle=new Bundle();
                 bundle.putSerializable(Dict.SERIALIZABLE,application.getGameTeam());
                 Util.turnToFragment(getChildFragmentManager(),LiveMainFragment.class,bundle,R.id.fl_news_content);
                 break;
             case 1:
-                tv_type.setText("赛事分析");
+
                 tv_type.setAnimation(mAnimationRight);
                 Util.turnToFragment(getChildFragmentManager(), MachanakysisFragment.class,null,R.id.fl_news_content);
                 break;
 
 
         }
-    }
+    }*/
     private void stopTask(){
         try {
             if(Util.notNull(teamTimerTask)){

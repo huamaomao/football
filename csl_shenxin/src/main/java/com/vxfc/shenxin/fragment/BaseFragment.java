@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.vxfc.common.util.Log;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.QuickAdapter;
 import com.vxfc.shenxin.ui.FootballApplication;
@@ -13,6 +15,8 @@ import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.Util;
 
 import java.io.Serializable;
+
+import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends Fragment {
     protected final String TAG="test";
@@ -26,7 +30,9 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
         application=(FootballApplication)getActivity().getApplication();
     }
-
+    protected  void setLayoutId(int layoutId){
+        this.layoutId=layoutId;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (Util.isNull(rootView)){
@@ -40,7 +46,15 @@ public abstract class BaseFragment extends Fragment {
         if (parent != null) {
             parent.removeView(rootView);
         }
+        Log.d("hua",this+"==="+this.getClass());
+       ButterKnife.inject(this,rootView);
       return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
     }
 
     protected  void doRefresh(){
@@ -50,74 +64,6 @@ public abstract class BaseFragment extends Fragment {
      * 初始化
      */
     protected    abstract void initView(View view,LayoutInflater inflater);
-
-    /**
-     * 通过类名启动activity
-     *
-     */
-    protected void openActivity(Class<?> pClass) {
-        Intent intent = new Intent(getActivity(), pClass);
-        startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.slide_in_left,0);
-    }
-
-    /**
-     * 通过类名启动activity
-     *
-     * @param pClass
-     *            要启动的类
-     * @param serializable
-     *            要传递的参数
-     */
-    protected void openActivity(Class<?> pClass, Serializable serializable) {
-        Intent intent = new Intent(getActivity(), pClass);
-        intent.putExtra(Dict.SERIALIZABLE,serializable);
-        startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.slide_in_left,R.anim.slide_t);
-    }
-    protected  void setLayoutId(int layoutId){
-        this.layoutId=layoutId;
-    }
-
-
-    /**
-     * 通过类名启动activity
-     *
-     * @param pClass
-     *            要启动的类
-     * @param id
-     *            要传递的参数 id
-     */
-    protected void openActivity(Class<?> pClass,String id,String playerName) {
-        Intent intent = new Intent(getActivity(), pClass);
-        intent.putExtra(Dict.ID,id);
-        intent.putExtra(Dict.PLAYER_NAME,playerName);
-        getActivity().startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.slide_in_left,R.anim.slide_t);
-
-    }
-
-    /**
-     * 通过类名启动activity
-     *
-     * @param pClass
-     *            要启动的类
-     * @param id
-     *            要传递的参数 id
-     */
-    protected void openActivity(Class<?> pClass,String id) {
-        Intent intent = new Intent(getActivity(), pClass);
-        intent.putExtra(Dict.ID,id);
-        getActivity().startActivity(intent);
-
-    }
-    protected void openActivityA(Class<?> pClass,String id) {
-        Intent intent = new Intent(getActivity(), pClass);
-        intent.putExtra(Dict.ID,id);
-        getActivity().startActivity(intent);
-        getActivity().overridePendingTransition(R.anim.slide_in_left,R.anim.slide_t);
-
-    }
 
     /****
      * 请求数据

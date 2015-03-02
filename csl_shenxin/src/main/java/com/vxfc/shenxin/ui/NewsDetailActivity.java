@@ -10,6 +10,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.litesuits.http.exception.HttpException;
@@ -19,6 +20,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.vxfc.common.util.Log;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.model.News;
 import com.vxfc.shenxin.util.Dict;
@@ -29,44 +31,42 @@ import com.vxfc.shenxin.util.Util;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * Created by Hua on 2014/8/13.
  */
 public class NewsDetailActivity extends BaseActivity {
     private TextView tv_content,tv_item_0,tv_item_1;
     private String newsId;
-    private News news;
-    private Handler handler=new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what){
-                case Dict.data_change:
-                    break;
-            }
-        }
-    };
+    @InjectView(R.id.web_view) WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail);
+        ButterKnife.inject(this);
+        initView();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        initView();
     }
 
     @Override
     protected void initView() {
         setBackActionBarTilte("新闻详细");
-        tv_content=(TextView)findViewById(R.id.tv_content);
-        tv_item_0=(TextView)findViewById(R.id.tv_item_0);
-        tv_item_1=(TextView)findViewById(R.id.tv_item_1);
-        newsId= getIntent().getStringExtra(Dict.ID);
-        requestData();
-        tv_content.setMovementMethod(ScrollingMovementMethod.getInstance());
+        webView.getSettings().setJavaScriptEnabled(true);//设置使用够执行JS脚本
+        webView.getSettings().setBuiltInZoomControls(false);//设置使支持缩放
+        webView.setInitialScale(39);
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        webView.requestFocus();
+        //webView.getSettings().setBlockNetworkImage(true);
+        webView.loadUrl(RequestUtil.requestHtm(getIntent().getStringExtra(Dict.ID)));
     }
 }

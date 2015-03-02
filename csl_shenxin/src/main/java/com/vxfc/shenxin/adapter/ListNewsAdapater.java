@@ -12,6 +12,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.model.News;
+import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.UrlApi;
 import com.vxfc.shenxin.util.Util;
 import java.util.List;
@@ -28,10 +29,10 @@ public class ListNewsAdapater extends BaseAdapter {
         this.data=data;
         options = new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.drawable.team_news)
+                .showImageOnFail(R.drawable.team_news)
+                .showImageForEmptyUri(R.drawable.team_news)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
-                .considerExifParams(true)
-                .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
     }
 
@@ -65,13 +66,13 @@ public class ListNewsAdapater extends BaseAdapter {
             holder=(ViewHolder)convertView.getTag();
         }
         News news=data.get(position);
-        holder.tv_item_0.setText(news.getTitle());
+        holder.tv_item_0.setText(news.title);
         StringBuilder builder=new StringBuilder("来源:");
-        builder.append(Util.initTextEmpty(news.getFromLocation()));
+        builder.append(Util.initTextEmpty(news.fromLocation));
         holder.tv_item_1.setText(builder.toString());
-        holder.tv_item_2.setText(Util.initTextEmpty(news.getCreateTime()));
-        ImageLoader.getInstance().displayImage(UrlApi.images,news.getThumbnailPath(), holder.iv_item_0,R.drawable.team_news);
-       // holder.iv_item_0.setImageResource(R.drawable.team_news);
+        holder.tv_item_2.setText(Util.initTextEmpty(news.time));
+        holder.iv_item_0.setTag(RequestUtil.getUrl(news.thumbnailPath));
+        ImageLoader.getInstance().displayImage(RequestUtil.getUrl(news.thumbnailPath), holder.iv_item_0,options);
         return convertView;
     }
 

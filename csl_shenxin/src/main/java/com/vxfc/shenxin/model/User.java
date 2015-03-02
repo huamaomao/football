@@ -4,9 +4,8 @@ package com.vxfc.shenxin.model;
  * Created by Hua on 2014/8/2.
  */
 public class User {
-    private String id;
-    private String userId;
-    private String state;
+    private int id;
+    private int state;
     private String telphone;
     private String password;
     private String nike;//昵称
@@ -16,55 +15,37 @@ public class User {
     private String goldCoins;//金币
     private String tel;//手机号
     private String mail;//邮箱
-    private String qqId;
-    private String weixinId;
-    private String sinaId;
 
-    public String getQqId() {
-        return qqId;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", state=" + state +
+                ", telphone='" + telphone + '\'' +
+                ", password='" + password + '\'' +
+                ", nike='" + nike + '\'' +
+                ", level='" + level + '\'' +
+                ", honor='" + honor + '\'' +
+                ", favoriteTeam='" + favoriteTeam + '\'' +
+                ", goldCoins='" + goldCoins + '\'' +
+                ", tel='" + tel + '\'' +
+                ", mail='" + mail + '\'' +
+                '}';
     }
 
-    public void setQqId(String qqId) {
-        this.qqId = qqId;
-    }
-
-    public String getWeixinId() {
-        return weixinId;
-    }
-
-    public void setWeixinId(String weixinId) {
-        this.weixinId = weixinId;
-    }
-
-    public String getSinaId() {
-        return sinaId;
-    }
-
-    public void setSinaId(String sinaId) {
-        this.sinaId = sinaId;
-    }
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(int state) {
         this.state = state;
     }
 

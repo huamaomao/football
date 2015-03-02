@@ -13,6 +13,8 @@ import com.vxfc.shenxin.model.AgainstVo;
 import com.vxfc.shenxin.model.Formation;
 import com.vxfc.shenxin.model.RecentGameTeam;
 import com.vxfc.shenxin.ui.TeamPlayerActivity;
+import com.vxfc.shenxin.util.ActivityModel;
+import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.Team;
 import com.vxfc.shenxin.util.Util;
@@ -50,7 +52,10 @@ public class LiveLineupFragment extends BaseFragment {
 
                     return;
                 }
-                openActivity(TeamPlayerActivity.class,item.getPlayerId(),item.getPlayerName());
+                Bundle bundle=new Bundle();
+                bundle.putString(Dict.ID,item.getPlayerId());
+                bundle.putString(Dict.PLAYER_NAME,item.getPlayerName());
+                Util.openActivity(TeamPlayerActivity.class,bundle,getActivity(),ActivityModel.ACTIVITY_MODEL_1);
             }
 
             @Override

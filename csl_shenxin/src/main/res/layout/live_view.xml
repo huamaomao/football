@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:background="@drawable/lunbo_one"
+            android:background="@drawable/icon_saishi"
             android:layout_height="@dimen/lunbo_height"
             android:padding="20px" style="@style/style_mm_h">
     <LinearLayout  android:id="@id/ll_lunbo" style="@style/style_weight_mw_v"

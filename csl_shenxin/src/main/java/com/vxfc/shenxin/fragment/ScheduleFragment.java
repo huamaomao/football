@@ -13,11 +13,13 @@ import com.alibaba.fastjson.JSON;
 import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
+import com.vxfc.common.util.DateUtil;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.QuickAdapter;
 import com.vxfc.shenxin.model.RecentGameTeam;
 import com.vxfc.shenxin.ui.LiveActivity;
 import com.vxfc.shenxin.ui.MainActivity;
+import com.vxfc.shenxin.ui.NewsDetailActivity;
 import com.vxfc.shenxin.util.*;
 import com.vxfc.shenxin.widget.SpinnerView;
 
@@ -55,7 +57,7 @@ public class ScheduleFragment extends BaseListFragment {
                     builder.setSpan(new ForegroundColorSpan(Color.RED), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
                 }
                 helper.setText(R.id.tv_item_0,builder).
-                        setText(R.id.tv_item_1,DateUtil.getStartTime(item.getDate(),item.getTime())).
+                        setText(R.id.tv_item_1, DateUtil.getStartTime(item.getDate(), item.getTime())).
                         setText(R.id.tv_item_2,item.getTeamAName()).
                         setText(R.id.tv_item_3,item.getScore()).
                         setText(R.id.tv_item_4,item.getTeamBName()).
@@ -127,7 +129,9 @@ public class ScheduleFragment extends BaseListFragment {
                       MainActivity activity =(MainActivity)getActivity();
                      // activity.getLeftFragment().setLiveMenu();
                     }else{
-                        openActivity(LiveActivity.class,team);
+                        Bundle bundle=new Bundle();
+                        bundle.putSerializable(Dict.SERIALIZABLE,team);
+                        Util.openActivity(LiveActivity.class,bundle,getActivity(), ActivityModel.ACTIVITY_MODEL_1);
                     }
 
                 }

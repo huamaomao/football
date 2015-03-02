@@ -6,7 +6,10 @@
               android:layout_width="match_parent"
               android:alpha="0.8"
               android:layout_height="match_parent">
-    <TextView android:id="@id/tv_item_0"
+    <WebView android:id="@id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
+   <!-- <TextView android:id="@id/tv_item_0"
               android:textColor="@android:color/black"
               android:textSize="@dimen/font_size_16"
               android:layout_width="fill_parent"
@@ -28,5 +31,5 @@
              android:alpha="0.8"
             android:layout_width="fill_parent"
             android:layout_weight="1"
-            android:layout_height="0px"/>
+            android:layout_height="0px"/>-->
 </LinearLayout>

@@ -8,15 +8,21 @@ import com.alibaba.fastjson.JSON;
 import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
+import com.vxfc.common.util.DateUtil;
+import com.vxfc.common.util.Log;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.ListNewsAdapater;
 import com.vxfc.shenxin.model.News;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.LinkedList;
+import com.vxfc.shenxin.model.NewsPage;
+import com.vxfc.shenxin.model.ResponseModel;
+import com.vxfc.shenxin.model.param.NewParam;
 import com.vxfc.shenxin.ui.NewsDetailActivity;
+import com.vxfc.shenxin.ui.TeamPlayerActivity;
+import com.vxfc.shenxin.util.ActivityModel;
+import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.RequestUtil;
+import com.vxfc.shenxin.util.Util;
 
 /**
  * *
@@ -24,17 +30,15 @@ import com.vxfc.shenxin.util.RequestUtil;
  */
 public class NewsFragment extends BaseListFragment {
 
-    private List<News> lsData;
-    private int page = 0;
+    private LinkedList<News> lsData;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setLayoutId(R.layout.public_listview);
     }
 
-
     protected void initView(final View view, LayoutInflater inflater) {
-        lsData = new ArrayList<News>();
+        lsData = new LinkedList<News>();
         adapter = new ListNewsAdapater(getActivity(), lsData);
         pullDownLoadListView(view);
         listView.setAdapter(adapter);
@@ -42,7 +46,9 @@ public class NewsFragment extends BaseListFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 News news = lsData.get(position);
-                openActivityA(NewsDetailActivity.class, news.getId());
+                Bundle bundle=new Bundle();
+                bundle.putString(Dict.ID,news.id);
+                Util.openActivity(NewsDetailActivity.class,bundle,getActivity(), ActivityModel.ACTIVITY_MODEL_1);
             }
         });
     }
@@ -50,16 +56,26 @@ public class NewsFragment extends BaseListFragment {
     @Override
     protected void requestData() {
         super.requestData();
-        page = 0;
-        application.execute(RequestUtil.requestNewList(application.getToken().getAccess_token(), String.valueOf(page),application.teamId), new HttpModelHandler<String>() {
+        NewParam param=new NewParam();
+        param.date= DateUtil.getDate();
+        param.team_id=application.teamId;
+        application.execute(RequestUtil.requestNewList(param), new HttpModelHandler<String>() {
             @Override
             protected void onSuccess(String data, Response res) {
-                List<News> temp = JSON.parseArray(data, News.class);
-                if (temp != null) {
-                    lsData.clear();
-                    lsData.addAll(temp);
+                NewsPage newsPage = JSON.parseObject(data, NewsPage.class);
+                if (Util.notNull(newsPage)) {
+                   int size=Integer.valueOf(newsPage.size);
+                   if (lsData.size()>0){
+                       for (int i=size-1;i>=0;i--){
+                           if (!lsData.contains(newsPage.items.get(i))){
+                               lsData.addFirst(newsPage.items.get(i));
+                           }
+                       }
+                   }else {
+                       lsData.addAll(newsPage.items);
+                   }
                     adapter.notifyDataSetChanged();
-                    if (temp.size() > 9) {
+                    if (lsData.size()>=15) {
                         pullListView.setPullLoadEnabled(true);
                         pullListView.setHasMoreData(true);
                     }
@@ -82,23 +98,32 @@ public class NewsFragment extends BaseListFragment {
 
     @Override
     protected void requestMoreLoadingData() {
-        page++;
-        application.execute(RequestUtil.requestNewList(application.getToken().getAccess_token(), String.valueOf(page),application.teamId), new HttpModelHandler<String>() {
+        NewParam param=new NewParam();
+        param.team_id=application.teamId;
+        param.date=lsData.getLast().time;
+        param.page="1";
+        application.execute(RequestUtil.requestNextNewList(param), new HttpModelHandler<String>() {
             @Override
             protected void onSuccess(String data, Response res) {
-                List<News> temp = JSON.parseArray(data, News.class);
-                if (temp != null&&temp.size()>0) {
-                    lsData.addAll(temp);
+                NewsPage newsPage = JSON.parseObject(data, NewsPage.class);
+                if (newsPage != null&&newsPage.size!="0") {
+                    lsData.addAll(newsPage.items);
                     adapter.notifyDataSetChanged();
-                } else {
-                    pullListView.setHasMoreData(false);
                 }
                 pullListView.onPullUpRefreshComplete();
             }
 
             @Override
-            protected void onFailure(HttpException e, Response res) {
-                application.networkErrorMessage(e, res);
+            protected void onFailure(HttpException e, Response res){
+                ResponseModel model=JSON.parseObject(res.getString(), ResponseModel.class);
+                Log.d("hua",res.getString());
+                if (Util.notNull(model)&&model.statusCode.equals("40005")){
+                    application.msgShow("没有新闻了...");
+                    pullListView.setHasMoreData(false);
+                }else {
+                    //application.networkErrorMessage(e, res);
+                    pullListView.setHasMoreData(false);
+                }
                 pullListView.onPullUpRefreshComplete();
             }
         });

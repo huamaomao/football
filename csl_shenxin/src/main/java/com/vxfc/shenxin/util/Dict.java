@@ -7,6 +7,8 @@ package com.vxfc.shenxin.util;
 public  interface Dict {
 
     /****************************   字典          *******************************/
+    final String MEMBER_ID="memberId";
+
     final String ACCESS_TOKEN = "access_token";
     final String STATE = "state";
     final String EXPIRES_IN = "expires_in";

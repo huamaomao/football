@@ -2,7 +2,7 @@
 
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="horizontal"
-            android:background="@drawable/lunbo_one"
+            android:background="@drawable/icon_saishi"
             android:layout_column="4"
             android:columnCount="4"
             android:alignmentMode="alignBounds"

@@ -129,9 +129,15 @@
     <item name="et_pwd"  type="id"/>
 
     <item name="btn_login"  type="id"/>
+    <item name="btn_choose"  type="id"/>
     <item name="btn_send"  type="id"/>
     <item name="btn_register"  type="id"/>
     <item name="btn_skip_login"  type="id"/>
+    <item name="btn_live"  type="id"/>
+    <item name="btn_fenxi"  type="id"/>
+    <item name="btn_quiz"  type="id"/>
+
+
     <item name="rl_first" type="id" />
     <item name="rl_next" type="id" />
     <!-- gridlayout-->
@@ -146,4 +152,7 @@
     <!-- actionbar id-->
     <item name="action_next" type="id" />
     <item name="action_login" type="id" />
+
+    <!-- webview id-->
+    <item name="web_view" type="id" />
 </resources>

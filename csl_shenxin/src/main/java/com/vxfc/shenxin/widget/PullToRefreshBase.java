@@ -11,7 +11,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import com.vxfc.shenxin.util.DateUtil;
+
+import com.vxfc.common.util.DateUtil;
 import com.vxfc.shenxin.widget.ILoadingLayout.State;
 
 public abstract class PullToRefreshBase<T extends View> extends LinearLayout implements IPullToRefresh<T> {

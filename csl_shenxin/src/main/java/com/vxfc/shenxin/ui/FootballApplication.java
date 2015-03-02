@@ -46,15 +46,14 @@ public class FootballApplication extends Application {
         }
     };
 
-
-
     public static void initImageLoader(Context context) {
+
         File cacheDir = StorageUtils.getOwnCacheDirectory(context, "vxfc/Cache");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
                 .threadPriority(Thread.NORM_PRIORITY - 2)
                 .denyCacheImageMultipleSizesInMemory()
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator())
-                .diskCacheSize(500 * 1024 * 1024) // 50 Mb
+                .diskCacheSize(5000 * 1024 * 1024) // 50 Mb
                 .diskCache(new UnlimitedDiskCache(cacheDir))
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
                 .writeDebugLogs() // Remove for release app
@@ -111,7 +110,6 @@ public class FootballApplication extends Application {
     public void execute(final Request res,final HttpModelHandler<String> UIHandler){
         asyncExecutor.execute(res,UIHandler);
     }
-
     /****
      * 网络请求
      * @param res

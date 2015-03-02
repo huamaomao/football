@@ -13,28 +13,35 @@ import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.model.RecentGameTeam;
 import com.vxfc.shenxin.model.Token;
+import com.vxfc.shenxin.presenter.WelcomePresenter;
 import com.vxfc.shenxin.service.FileService;
+import com.vxfc.shenxin.service.SharedService;
 import com.vxfc.shenxin.util.ActivityModel;
 import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.util.Util;
+import com.vxfc.shenxin.view.IWelcome;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 import io.vov.vitamio.LibsChecker;
 
-public class WelcomeActivity extends BaseActivity{
+public class WelcomeActivity extends BaseActivity implements IWelcome{
 
-    private FileService fileService;
-    private final String USER_JSON="userToken.json";
+    private WelcomePresenter presenter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        setContentView(R.layout.logo_0);
+        setContentView(R.layout.welcome);
+        presenter=new WelcomePresenter(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Util.openActivity(ChooseActivity.class,null,this, ActivityModel.ACTIVITY_MODEL_0);
+        presenter.activityWelcome();
     }
 
 }
