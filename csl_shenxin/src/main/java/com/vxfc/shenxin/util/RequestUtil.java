@@ -1,8 +1,8 @@
 package com.vxfc.shenxin.util;
 
-import com.litesuits.http.parser.BitmapParser;
 import com.litesuits.http.request.Request;
 import com.litesuits.http.request.param.HttpMethod;
+import com.vxfc.shenxin.model.param.CslParam;
 import com.vxfc.shenxin.model.param.NewParam;
 
 /**
@@ -148,16 +148,12 @@ public class RequestUtil {
 
     /****
      * 获取首发名单
-     * @param userToken
-     * @param teamId
-     * @param fixtureId
+     * @param param
      * @return
      */
-    public static Request requestFistList(String userToken,String teamId,String fixtureId){
+    public static Request requestFistList(CslParam param){
         return new Request(Util.jointUrl(UrlApi.fistList,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get).
-                addUrlParam(Dict.ACCESS_TOKEN, userToken).
-                addUrlParam(Dict.TEAM_ID,teamId).
-                addUrlParam(Dict.FXITURE_ID,fixtureId);
+              setParamModel(param);
     }
 
     /*****
@@ -340,14 +336,28 @@ public class RequestUtil {
                 addUrlParam(Dict.TEAM_ID,team_id).
                 addUrlParam(Dict.ROUND,round);
     }
+  /*  public static Request requestImage(String path,BitmapParser parser){
+      return new  Request(Util.jointUrl(UrlApi.images,UrlApi.WEB_MODEL_CSL))
+              .addUrlParam(Dict.PATH,path).setMethod(HttpMethod.Get).setDataParser(parser);
+    }*/
 
-    public static String getUrl(String images){
-        if (Util.isEmpty(images)) return null;
+    /*****
+     * 预备队 一线队
+     * @param url
+     * @return
+     */
+    public static String getUrl(String url){
+        if (Util.isEmpty(url)) return null;
         StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
-        builder.append(UrlApi.WEB_MODEL_CSL).append("/").append(images);
+        builder.append(UrlApi.WEB_MODEL_CSL).append("/").append(url);
         return builder.toString();
     }
 
+    /****
+     *教练组
+     * @param id
+     * @return
+     */
     public static String requestHtm(String id){
         if (Util.isEmpty(id)) return "";
         StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);

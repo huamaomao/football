@@ -8,6 +8,11 @@ public  interface Dict {
 
     /****************************   字典          *******************************/
     final String MEMBER_ID="memberId";
+    final String TYPE="type";
+    /***赛事直播**/
+    final int TYPE_LIVE=0;
+    /***赛事分析**/
+    final int TYPE_FENXI=1;
 
     final String ACCESS_TOKEN = "access_token";
     final String STATE = "state";

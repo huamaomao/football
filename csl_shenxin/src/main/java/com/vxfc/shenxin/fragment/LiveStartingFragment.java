@@ -13,6 +13,7 @@ import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.ListLiveStartingAdapater;
 import com.vxfc.shenxin.model.FistPlayerVo;
 import com.vxfc.shenxin.model.RecentGameTeam;
+import com.vxfc.shenxin.model.param.CslParam;
 import com.vxfc.shenxin.ui.TeamPlayerActivity;
 import com.vxfc.shenxin.util.ActivityModel;
 import com.vxfc.shenxin.util.Dict;
@@ -54,7 +55,10 @@ public class LiveStartingFragment extends BaseListFragment{
         refreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-                application.execute(RequestUtil.requestFistList(application.getToken().getAccess_token(), team.getTeamBId(),team.getId()),
+                CslParam param=new CslParam();
+                param.team_id=team.getTeamBId();
+                param.fixture_id=team.getId();
+                application.execute(RequestUtil.requestFistList(param),
                         new HttpModelHandler<String>() {
                             @Override
                             protected void onSuccess(String data, Response res) {
@@ -114,8 +118,10 @@ public class LiveStartingFragment extends BaseListFragment{
 
     @Override
     protected void requestData() {
-        super.requestData();
-        application.execute(RequestUtil.requestFistList(application.getToken().getAccess_token(),team.getTeamAId(), team.getId()),
+        CslParam param=new CslParam();
+        param.team_id=team.getTeamBId();
+        param.fixture_id=team.getId();
+        application.execute(RequestUtil.requestFistList(param),
                 new HttpModelHandler<String>() {
                     @Override
                     protected void onSuccess(String data, Response res) {

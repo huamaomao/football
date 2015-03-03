@@ -20,6 +20,7 @@ public class LiveMainFragment extends BaseFragment{
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         setLayoutId(R.layout.f_live_main);
+        Bundle bundle=getArguments();
         team=(RecentGameTeam)getArguments().getSerializable(Dict.SERIALIZABLE);
 
     }

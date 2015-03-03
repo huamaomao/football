@@ -11,14 +11,14 @@ import com.alibaba.fastjson.JSON;
 import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
+import com.vxfc.common.util.CommonUtil;
 import com.vxfc.common.util.DateUtil;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.model.RecentGameTeam;
+import com.vxfc.shenxin.ui.LiveActivity;
 import com.vxfc.shenxin.util.*;
-
 import java.util.Timer;
 import java.util.TimerTask;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -41,7 +41,6 @@ public class NewsMainFragment extends BaseFragment{
 
     @InjectView(R.id.btn_choose) Button btnChoose;
 
-
     @InjectView(R.id.ll_lunbo_center) LinearLayout ll_lunbo_center;
 
     private  Animation mAnimationRight;
@@ -54,6 +53,8 @@ public class NewsMainFragment extends BaseFragment{
     private PopupWindow popupWindow;
     private ChooseDialogFragment fragment;
 
+    private RecentGameTeam team;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         timer=new Timer();
@@ -61,6 +62,40 @@ public class NewsMainFragment extends BaseFragment{
         setLayoutId(R.layout.f_news);
         flag=true;
         fragment=new ChooseDialogFragment();
+        fragment.setOnClickListener(new ChooseDialogFragment.OnClickListener() {
+            @Override
+            public void onLive() {
+                if (CommonUtil.isNull(team)){
+                    application.msgShow("数据获取失败,请检查网络是否流畅...");
+                    return;
+                }
+                Bundle bundle=new Bundle();
+                bundle.putSerializable(Dict.SERIALIZABLE,team);
+                bundle.putInt(Dict.TYPE,Dict.TYPE_LIVE);
+                Util.openActivity(LiveActivity.class,bundle,getActivity(),ActivityModel.ACTIVITY_MODEL_1);
+            }
+
+            @Override
+            public void onFenxi() {
+                if (CommonUtil.isNull(team)){
+                    application.msgShow("数据获取失败,请检查网络是否流畅...");
+                    return;
+                }
+                Bundle bundle=new Bundle();
+                bundle.putSerializable(Dict.SERIALIZABLE,team);
+                bundle.putInt(Dict.TYPE,Dict.TYPE_FENXI);
+                Util.openActivity(LiveActivity.class,bundle,getActivity(),ActivityModel.ACTIVITY_MODEL_1);
+            }
+
+            @Override
+            public void onQuiz() {
+                application.msgShow("暂未开放...");
+               /* Bundle bundle=new Bundle();
+                bundle.putSerializable(Dict.SERIALIZABLE,team);
+                Util.openActivity(LiveActivity.class,bundle,getActivity(),ActivityModel.ACTIVITY_MODEL_1);*/
+
+            }
+        });
     }
 
     @OnClick(R.id.btn_choose)
@@ -96,6 +131,7 @@ public class NewsMainFragment extends BaseFragment{
         if (null!=team){
             ll_lunbo_center.setVisibility(View.VISIBLE);
             application.setGameTeam(team);
+            this.team=team;
             //ui 设置
             StringBuilder builder=new StringBuilder("第");
             builder.append(team.getRound());

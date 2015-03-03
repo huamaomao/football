@@ -25,27 +25,7 @@ import java.util.regex.Pattern;
  * 工具
  * Created by Hua on 2014/7/31.
  */
-public class Util {
-
-    /****
-     *获取单个比分（0-0）0
-     * @param score
-     * @param model 0(表示A队) or !0（表示B队）
-     * @return
-     */
-   public static String getScoreAorB(String score,int model){
-       if (!isEmpty(score)){
-           String[] strs=score.split("-");
-           if (strs!=null&&strs.length==2){
-                return model==0?strs[0]:strs[1];
-           }
-       }
-       return "0";
-
-   }
-
-
-
+public class CommonUtil {
 
     /************************************************数据 method ******************************************************************/
     /***

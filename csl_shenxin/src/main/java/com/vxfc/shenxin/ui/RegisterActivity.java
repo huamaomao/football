@@ -10,14 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
-
 import com.vxfc.common.util.ActivityModel;
-import com.vxfc.common.util.Util;
+import com.vxfc.common.util.CommonUtil;
 import com.vxfc.common.util.ViewUtil;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.presenter.RegisterPresenter;
 import com.vxfc.shenxin.view.IRegisterView;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -101,7 +99,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
             @Override
             public void afterTextChanged(Editable s) {
                if (s.length()==11){
-                   if(Util.isMobileNO(s.toString())){
+                   if(CommonUtil.isMobileNO(s.toString())){
                        nextMenu.setEnabled(true);
                    }else{
                        showMsg("手机格式错误...");

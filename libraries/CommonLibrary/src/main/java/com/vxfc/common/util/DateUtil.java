@@ -56,7 +56,7 @@ public class DateUtil {
         lock.lock();
         StringBuilder builder=new StringBuilder(date);
 
-        if (!Util.isEmpty(time)){
+        if (time!=null){
             builder.append(" ");
             builder.append(time);
         }

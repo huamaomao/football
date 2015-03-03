@@ -106,7 +106,7 @@ public class Util {
     }
 
     public static void openActivity(Class<?> pClass, Bundle pBundle,Activity activity,ActivityModel type) {
-        openActivity(pClass,null,activity,type,false);
+        openActivity(pClass,pBundle,activity,type,false);
     }
 
     /**
