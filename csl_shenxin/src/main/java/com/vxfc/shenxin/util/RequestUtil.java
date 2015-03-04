@@ -5,6 +5,7 @@ import com.litesuits.http.request.param.HttpMethod;
 import com.vxfc.shenxin.domian.param.CslParam;
 import com.vxfc.shenxin.domian.param.MemberParam;
 import com.vxfc.shenxin.domian.param.NewParam;
+import com.vxfc.shenxin.domian.param.SignParam;
 
 /**
  *  请求api
@@ -344,37 +345,109 @@ public class RequestUtil {
 
     /*****
      * 预备队 一线队
-     * @param url
+     * @param param
      * @return
      */
-    public static String getUrl(String url){
-        if (Util.isEmpty(url)) return null;
-        StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
-        builder.append(UrlApi.WEB_MODEL_CSL).append("/").append(url);
-        return builder.toString();
+    public static Request requestFirstTeamPlayer(CslParam param){
+        return new  Request(Util.jointUrl(UrlApi.firstTeamPlayer,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get)
+                .setParamModel(param);
     }
 
     /****
      *教练组
-     * @param id
+     * @param param
      * @return
      */
-    public static String requestHtm(String id){
-        if (Util.isEmpty(id)) return "";
-        StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
-        builder.append(UrlApi.WEB_MODEL_CSL).
-                append("/").append(id).append(".htm");
-        return builder.toString();
+    public static Request requestCoachTeamList(CslParam param){
+        return new  Request(Util.jointUrl(UrlApi.coachTeamList,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get)
+                .setParamModel(param);
     }
 
-    /******************MEMBER API***************/
-   /* public static String requestHtm(MemberParam param){
-        if (Util.isEmpty(id)) return "";
-        StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
-        builder.append(UrlApi.WEB_MODEL_CSL).
-                append("/").append(id).append(".htm");
-        return builder.toString();
-    }*/
+
+    /*********MEMBER  会员****************/
+    /****
+     * 会员注册
+     * @param param
+     * @return
+     */
+    public static Request requestRegister(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.REGISTER,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+             setParamModel(param);
+    }
+    /****
+     * 3rd会员注册
+     * @param param
+     * @return
+     */
+    public static Request requestRegister3rd(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.REGISTER_3RD,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
+    }
+    /****
+     * request sms code
+     * @param param
+     * @return
+     */
+    public static Request requestSms(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.SMS,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
+    }
+    /****
+     * login
+     * @param param
+     * @return
+     */
+    public static Request requestLogin(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.LOGIN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
+    }
+    /****
+     * 用户信息
+     * @param param
+     * @return
+     */
+    public static Request requestMemberInfo(MemberParam param) {
+        return new Request(Util.jointUrl(UrlApi.MEMBER_INFO,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Get).
+                setParamModel(param);
+    }
+
+    /****
+     * 是否签到
+     * @param param
+     * @return
+     */
+    public static Request requestIsSign(SignParam param) {
+        return new Request(Util.jointUrl(UrlApi.IS_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Get).
+                setParamModel(param);
+    }
+    /****
+     * 签到
+     * @param param
+     * @return
+     */
+    public static Request requestSign(SignParam param) {
+        return new Request(Util.jointUrl(UrlApi.SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
+    }
+
+    /****
+     * 是否主场签到
+     * @param param
+     * @return
+     */
+    public static Request requestIsTeamSign(SignParam param) {
+        return new Request(Util.jointUrl(UrlApi.IS_TEAM_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Get).
+                setParamModel(param);
+    }
+    /****
+     * 主场签到
+     * @param param
+     * @return
+     */
+    public static Request requestTeamSign(SignParam param) {
+        return new Request(Util.jointUrl(UrlApi.TEAM_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
+                setParamModel(param);
+    }
 
     public static Request postRegister(){
         return new Request("http://192.168.1.104/member-api-server/register").setMethod(HttpMethod.Post).
