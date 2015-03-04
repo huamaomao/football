@@ -76,8 +76,8 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.android.support:support-v13:21'
     compile 'com.vxfc.3rd:qq_lite:2.8'
+    compile 'com.vxfc.3rd:weixin:1.0'
     compile 'com.jakewharton:butterknife:6.1.0'
-
 
    /* compile 'com.github.johnkil.android-progressfragment:progressfragment:1.4.+'*/
     /********project***********/
