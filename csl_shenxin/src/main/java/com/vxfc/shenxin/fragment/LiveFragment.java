@@ -13,7 +13,7 @@ import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.common.util.DateUtil;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.model.RecentGameTeam;
+import com.vxfc.shenxin.domian.RecentGameTeam;
 import com.vxfc.shenxin.util.*;
 /****
  * 新闻/公告

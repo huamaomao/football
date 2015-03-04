@@ -20,8 +20,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-import com.vxfc.shenxin.model.RecentGameTeam;
-import com.vxfc.shenxin.model.Token;
+import com.vxfc.shenxin.domian.RecentGameTeam;
+import com.vxfc.shenxin.domian.Token;
 import com.vxfc.shenxin.util.Team;
 import java.io.File;
 

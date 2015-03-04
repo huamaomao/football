@@ -1,7 +1,6 @@
 package com.vxfc.shenxin.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +10,8 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.model.News;
+import com.vxfc.shenxin.domian.News;
 import com.vxfc.shenxin.util.RequestUtil;
-import com.vxfc.shenxin.util.UrlApi;
 import com.vxfc.shenxin.util.Util;
 import java.util.List;
 

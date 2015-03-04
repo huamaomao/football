@@ -11,8 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.model.AgainstVo;
-import com.vxfc.shenxin.model.Formation;
+import com.vxfc.shenxin.domian.AgainstVo;
+import com.vxfc.shenxin.domian.Formation;
 import com.vxfc.shenxin.util.Team;
 import com.vxfc.shenxin.util.Util;
 

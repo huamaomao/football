@@ -12,7 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
 import android.view.WindowManager;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.model.Token;
+import com.vxfc.shenxin.domian.Token;
 
 import java.lang.reflect.Field;
 import java.util.*;

@@ -16,10 +16,9 @@ import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.common.util.DateUtil;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.QuickAdapter;
-import com.vxfc.shenxin.model.RecentGameTeam;
+import com.vxfc.shenxin.domian.RecentGameTeam;
 import com.vxfc.shenxin.ui.LiveActivity;
 import com.vxfc.shenxin.ui.MainActivity;
-import com.vxfc.shenxin.ui.NewsDetailActivity;
 import com.vxfc.shenxin.util.*;
 import com.vxfc.shenxin.widget.SpinnerView;
 

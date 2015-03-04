@@ -14,12 +14,12 @@ import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.common.util.CommonUtil;
 import com.vxfc.common.util.DateUtil;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.model.RecentGameTeam;
+import com.vxfc.shenxin.domian.RecentGameTeam;
 import com.vxfc.shenxin.ui.LiveActivity;
 import com.vxfc.shenxin.util.*;
 import java.util.Timer;
 import java.util.TimerTask;
-import butterknife.ButterKnife;
+
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -50,9 +50,7 @@ public class NewsMainFragment extends BaseFragment{
     private  TeamTimerTask teamTimerTask;
     private PlayTimerTask playTimerTask;
 
-    private PopupWindow popupWindow;
     private ChooseDialogFragment fragment;
-
     private RecentGameTeam team;
 
     public void onCreate(Bundle savedInstanceState) {

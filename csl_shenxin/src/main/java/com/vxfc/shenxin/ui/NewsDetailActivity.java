@@ -1,35 +1,12 @@
 package com.vxfc.shenxin.ui;
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.Html;
-import android.text.Spanned;
-import android.text.method.ScrollingMovementMethod;
-import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
-import com.alibaba.fastjson.JSON;
-import com.litesuits.http.exception.HttpException;
-import com.litesuits.http.response.Response;
-import com.litesuits.http.response.handler.HttpModelHandler;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.nostra13.universalimageloader.utils.StorageUtils;
-import com.vxfc.common.util.Log;
+
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.model.News;
 import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.RequestUtil;
-import com.vxfc.shenxin.util.UrlApi;
-import com.vxfc.shenxin.util.Util;
-
-import java.io.File;
-import java.io.FileOutputStream;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

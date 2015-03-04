@@ -29,14 +29,14 @@
                   android:layout_gravity="center_horizontal"
                   android:layout_marginBottom="20px"
                   android:text="@string/msg_3rd"/>
-        <ImageButton android:id="@id/ib_1" android:background="@drawable/s_btn_login"
+        <ImageButton android:id="@id/ib_1" android:background="@android:color/transparent"
                      android:src="@drawable/icon_qq"/>
-        <ImageButton android:id="@id/ib_2" android:background="@drawable/s_btn_login"
+        <ImageButton android:id="@id/ib_2" android:background="@android:color/transparent"
                      android:layout_marginLeft="40px"
                      android:layout_marginRight="40px"
                      android:src="@drawable/icon_weixin"/>
         <ImageButton android:id="@id/ib_3"
-                     android:background="@drawable/s_btn_login"
+                     android:background="@android:color/transparent"
                      android:src="@drawable/icon_sina"/>
     </GridLayout>
 </LinearLayout>

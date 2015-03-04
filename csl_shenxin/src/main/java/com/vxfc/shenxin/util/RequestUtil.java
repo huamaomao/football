@@ -2,8 +2,9 @@ package com.vxfc.shenxin.util;
 
 import com.litesuits.http.request.Request;
 import com.litesuits.http.request.param.HttpMethod;
-import com.vxfc.shenxin.model.param.CslParam;
-import com.vxfc.shenxin.model.param.NewParam;
+import com.vxfc.shenxin.domian.param.CslParam;
+import com.vxfc.shenxin.domian.param.MemberParam;
+import com.vxfc.shenxin.domian.param.NewParam;
 
 /**
  *  请求api
@@ -365,6 +366,15 @@ public class RequestUtil {
                 append("/").append(id).append(".htm");
         return builder.toString();
     }
+
+    /******************MEMBER API***************/
+   /* public static String requestHtm(MemberParam param){
+        if (Util.isEmpty(id)) return "";
+        StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
+        builder.append(UrlApi.WEB_MODEL_CSL).
+                append("/").append(id).append(".htm");
+        return builder.toString();
+    }*/
 
     public static Request postRegister(){
         return new Request("http://192.168.1.104/member-api-server/register").setMethod(HttpMethod.Post).

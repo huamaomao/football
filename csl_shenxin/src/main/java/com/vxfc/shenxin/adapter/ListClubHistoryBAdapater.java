@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.vxfc.shenxin.model.HistoricalRankingsVo;
+import com.vxfc.shenxin.domian.HistoricalRankingsVo;
 import com.vxfc.shenxin.util.Util;
 import java.util.List;
 

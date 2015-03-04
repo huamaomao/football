@@ -13,8 +13,8 @@ import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.ListLiveLanqiuAdapater;
-import com.vxfc.shenxin.model.RecentGameTeam;
-import com.vxfc.shenxin.model.TeamDataVo;
+import com.vxfc.shenxin.domian.RecentGameTeam;
+import com.vxfc.shenxin.domian.TeamDataVo;
 import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.RequestUtil;
 

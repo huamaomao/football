@@ -1,5 +1,6 @@
 package com.vxfc.shenxin.presenter;
 
+import com.vxfc.shenxin.util.RequestUtil;
 import com.vxfc.shenxin.view.IRegisterView;
 
 /**
@@ -11,7 +12,7 @@ public class RegisterPresenter {
         this.registerView=registerView;
     }
    public void  doRegisterFirst(String tel){
-
+      // registerView.request(RequestUtil.);
    }
    public void doRegisterCheck(int code){
 

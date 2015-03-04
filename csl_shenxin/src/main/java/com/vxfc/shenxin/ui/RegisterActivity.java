@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+
+import com.litesuits.http.request.Request;
+import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.common.util.ActivityModel;
 import com.vxfc.common.util.CommonUtil;
 import com.vxfc.common.util.ViewUtil;
@@ -48,13 +51,6 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
         ViewUtil.openActivity(ChooseActivity.class, this, ActivityModel.ACTIVITY_MODEL_1);
     }
 
-    /**********
-     * 初始化数据
-     */
-    @Override
-    protected void requestData(){
-
-    }
 
     @Override
     protected void onMenuItemSelected(int id) {

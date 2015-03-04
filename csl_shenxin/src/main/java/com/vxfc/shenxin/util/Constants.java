@@ -13,6 +13,10 @@ public interface Constants {
 
     public static final String REDIRECT_URL = "http://www.vxfc.net";
 
-
     public static final String DESCRIPTOR = "com.umeng.share";
+
+    /*********weixin********/
+    public static final String  WEIXIN_ID="wxc3e3b4be4ca07d4b";
+
+
 }

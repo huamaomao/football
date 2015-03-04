@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.tencent.connect.UserInfo;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 import com.vxfc.common.util.Log;
+import com.vxfc.shenxin.domian.AppInfo;
 import com.vxfc.shenxin.util.Constants;
 import com.vxfc.shenxin.view.IChooseView;
 
@@ -37,12 +39,12 @@ public class ChoosePresenter {
                     public void onComplete(Object o) {
                         Log.i(o);
                         chooseView.msgShow("授权成功");
-
                         UserInfo info = new UserInfo((Activity)chooseView,tencent.getQQToken());
                         info.getUserInfo(new IUiListener() {
                             @Override
                             public void onComplete(Object o) {
-                                Log.i(o);
+                                AppInfo appInfo= JSON.parseObject(o.toString(),AppInfo.class);
+                                //chooseView.request();
                             }
 
                             @Override
@@ -55,10 +57,12 @@ public class ChoosePresenter {
                                 Log.i("onCancel");
                             }
                         });
+
                     }
 
                     @Override
                     public void onError(UiError uiError) {
+                        chooseView.msgShow("授权失败");
                         Log.i(uiError);
                     }
 

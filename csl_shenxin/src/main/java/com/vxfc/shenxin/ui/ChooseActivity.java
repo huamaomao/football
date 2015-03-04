@@ -69,7 +69,7 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
                 toRegisterActivity();
                 break;
             case R.id.ib_1:/**qq***/
-                application.execute(RequestUtil.postRegister(),new HttpModelHandler<String>() {
+               /* application.execute(RequestUtil.postRegister(),new HttpModelHandler<String>() {
                     @Override
                     protected void onSuccess(String data, Response res) {
                         Log.i(data);
@@ -79,8 +79,8 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
                     protected void onFailure(HttpException e, Response res) {
                         Log.i(e);
                     }
-                });
-                //presenter.login(ChoosePresenter.QQ);
+                });*/
+                presenter.login(ChoosePresenter.QQ);
                 break;
             case R.id.ib_2:/**weixin***/
                presenter.login(ChoosePresenter.WEIXIN);

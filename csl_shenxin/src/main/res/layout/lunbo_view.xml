@@ -7,16 +7,16 @@
         <LinearLayout  android:id="@id/ll_lunbo" style="@style/style_weight_mw_v"
                        android:layout_gravity="left"
                        android:layout_marginLeft="10dp"
-                       android:layout_weight="1.6">
+                       android:layout_weight="1.7">
 
              <Button android:id="@id/btn_choose"
                  android:background="@drawable/icon_choose"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content" />
             <TextView android:id="@id/tv_benlun"
-                      android:textSize="35px"
-                      android:layout_marginTop="30px"
-                      android:text=""
+                      android:textSize="@dimen/font_size_13"
+                      android:layout_marginTop="5px"
+                      android:layout_marginLeft="10px"
                       android:textColor="@android:color/white"
                       android:gravity="center"
                       android:layout_width="wrap_content"

@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.model.FistPlayerVo;
+import com.vxfc.shenxin.domian.FistPlayerVo;
 import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.Team;
 

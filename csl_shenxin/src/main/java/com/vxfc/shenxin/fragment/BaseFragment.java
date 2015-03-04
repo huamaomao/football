@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.litesuits.http.request.Request;
+import com.litesuits.http.response.handler.HttpModelHandler;
 import com.vxfc.common.util.Log;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.QuickAdapter;
@@ -70,6 +72,10 @@ public abstract class BaseFragment extends Fragment {
      */
     protected   void  requestData(){
 
+    }
+
+    public void execute(final Request res,final HttpModelHandler<String> UIHandler){
+        application.execute(res,UIHandler);
     }
 
 }

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.vxfc.shenxin.R;
-import com.vxfc.shenxin.model.RecentGameTeam;
+import com.vxfc.shenxin.domian.RecentGameTeam;
 
 /****
  *文字直播
