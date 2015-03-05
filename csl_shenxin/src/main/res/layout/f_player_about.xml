@@ -148,6 +148,8 @@
     </FrameLayout>
 
     <TextView android:id="@id/tv_item_11"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_14"
             android:background="@drawable/schedule_title_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

@@ -7,4 +7,6 @@ public class CslParam implements RequestParam {
     public String fixture_id;
     public String team_id;
     public String type;
+    public String year;
+    public String round;
 }

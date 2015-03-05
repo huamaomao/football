@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 dependencies {
-    compile 'com.sina.weibo.sdk:weibosdkcore:1'
+    compile 'com.vxfc.3rd:weibo:1.0'
 }
 
 android {

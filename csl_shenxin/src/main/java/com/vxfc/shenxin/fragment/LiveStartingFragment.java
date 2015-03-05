@@ -119,7 +119,7 @@ public class LiveStartingFragment extends BaseListFragment{
     @Override
     protected void requestData() {
         CslParam param=new CslParam();
-        param.team_id=team.getTeamBId();
+        param.team_id=team.getTeamAId();
         param.fixture_id=team.getId();
         application.execute(RequestUtil.requestFistList(param),
                 new HttpModelHandler<String>() {

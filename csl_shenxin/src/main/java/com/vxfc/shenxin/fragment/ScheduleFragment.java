@@ -13,10 +13,12 @@ import com.alibaba.fastjson.JSON;
 import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
+import com.vxfc.common.util.CommonUtil;
 import com.vxfc.common.util.DateUtil;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.adapter.QuickAdapter;
 import com.vxfc.shenxin.domian.RecentGameTeam;
+import com.vxfc.shenxin.domian.param.CslParam;
 import com.vxfc.shenxin.ui.LiveActivity;
 import com.vxfc.shenxin.ui.MainActivity;
 import com.vxfc.shenxin.util.*;
@@ -30,13 +32,13 @@ import java.util.*;
  */
 public class ScheduleFragment extends BaseListFragment {
 
-   private SpinnerView spinner_team,spinner_round;
+   private SpinnerView spinner_team,spinner_round,spinner_year;
    private List<RecentGameTeam> lsData;
    private String fixtureId=null;
    private Team team=Team.ShenXin;
    public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-        lsData=new ArrayList<RecentGameTeam>();
+	    super.onCreate(savedInstanceState);
+       lsData=new ArrayList<RecentGameTeam>();
        if (Util.notNull(application.getGameTeam())){
            fixtureId=application.getGameTeam().getId();
        }
@@ -92,11 +94,22 @@ public class ScheduleFragment extends BaseListFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 spinner_team.setSelection(position);
-                if (position==0){
+                if (position == 0) {
                     spinner_round.setSelection(Integer.valueOf(application.getGameTeam().getRound()));
                 }
-                team=(Team)spinner_team.getSelectionItem();
+                team = (Team) spinner_team.getSelectionItem();
                 spinner_team.dismiss();
+                doPullRefreshing();
+            }
+        });
+        spinner_year=(SpinnerView)view.findViewById(R.id.spinner_year);
+        spinner_year.setItems(CommonUtil.getYearList(2012));
+        spinner_year.setSelection(0);
+        spinner_year.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                spinner_year.setSelection(position);
+                spinner_year.dismiss();
                 doPullRefreshing();
             }
         });
@@ -124,9 +137,6 @@ public class ScheduleFragment extends BaseListFragment {
                 if (Util.notNull(team)){
                     if (Dict.STATUS_N.equals(team.getStatus())){
                         return;
-                    }else if (team.getId().equals(fixtureId)){
-                      MainActivity activity =(MainActivity)getActivity();
-                     // activity.getLeftFragment().setLiveMenu();
                     }else{
                         Bundle bundle=new Bundle();
                         bundle.putSerializable(Dict.SERIALIZABLE,team);
@@ -143,7 +153,11 @@ public class ScheduleFragment extends BaseListFragment {
     protected   void  requestData(){
         final Team team=(Team)spinner_team.getSelectionItem();
         String round=spinner_round.getSelectionIndex()==0?"":String.valueOf(spinner_round.getSelectionIndex());
-        application.execute(RequestUtil.requestFixtureList(application.getToken().getAccess_token(),team.id.equals(Team.All.id)?null:team.id,round,"2014"),new HttpModelHandler<String>() {
+        CslParam param=new CslParam();
+        param.round=round;
+        param.team_id=team.id.equals(Team.All.id)?null:team.id;
+        param.year=spinner_year.getSelectionItem().toString();
+        application.execute(RequestUtil.requestFixtureList(param),new HttpModelHandler<String>() {
             @Override
             protected void onSuccess(String data, Response res) {
                 List<RecentGameTeam> temp= JSON.parseArray(data, RecentGameTeam.class);

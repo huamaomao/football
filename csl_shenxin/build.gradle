@@ -44,37 +44,48 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
             proguardFiles 'proguard-project.txt'
             signingConfig signingConfigs.myConfig
         }
-        /*hiapk {
-            packageNameSuffix ".hiapk"
-        }
-        playstore {
-            packageNameSuffix ".playstore"
-        }*/
         debug {
-           /* minifyEnabled true
-            proguardFiles 'proguard-project.txt'*/
+            proguardFiles 'proguard-project.txt'
+            minifyEnabled true
             signingConfig signingConfigs.myConfig
         }
     }
+    productFlavors {
+        channel {
+            manifestPlaceholders = [ channel:"placeholder" ]
+        }
+    }
+    channels()
 
-  /*  productFlavors {
-        playstore {
-            packageName='com.weixuan.team.play'
+}
+// 多渠道打包
+def channels() {
+    if (project.hasProperty("channel")) {
+        // 渠道号配置文件路径
+        def path = "./build-types/channels.txt"
+        file(path).eachLine { line ->
+            if(!line.startsWith("//")){ //剔除注释行
+                android.buildTypes.create(line, {
+                    manifestPlaceholders = [ channel:line ]
+                    signingConfig android.buildTypes.release.signingConfig
+                    minifyEnabled android.buildTypes.release.minifyEnabled
+                    proguardFiles android.buildTypes.release.proguardFiles
+                })
+            }
         }
-        hiapk {
-            packageName='com.weixuan.hiapk'
-        }
-    }*/
+    }
 }
 
 dependencies {
     /********jar***********/
     compile 'com.alibaba:fastjson:1.1.41'
     compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.android.support:support-v13:21'
+    compile 'com.android.support:support-v13:21.0.+'
     compile 'com.vxfc.3rd:qq_lite:2.8'
     compile 'com.vxfc.3rd:weixin:1.0'
     compile 'com.jakewharton:butterknife:6.1.0'
@@ -86,5 +97,5 @@ dependencies {
     compile project(':libraries:LiteLibrary')
     compile project(':libraries:VitamioLibrary')
     compile project(':libraries:CommonLibrary')
-    compile project(':libraries:WeiboLibrary')
+   compile project(':libraries:WeiboLibrary')
 }

@@ -82,53 +82,6 @@ public class BaseActivity extends FragmentActivity implements IRequestView,IMess
 
     }
 
-    /**
-     * 通过类名启动activity
-     *
-     */
-    protected void openActivity(Class<?> pClass) {
-        openActivity(pClass, null);
-    }
-
-    /**
-     * 通过类名启动activity
-     *
-     * @param pClass
-     *            要启动的类
-     * @param pBundle
-     *            要传递的参数
-     */
-    protected void openActivity(Class<?> pClass, Bundle pBundle) {
-        Intent intent = new Intent(this, pClass);
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        if (pBundle != null) {
-            intent.putExtra(Dict.BUNDLE, pBundle);
-        }
-       overridePendingTransition(R.anim.slide_in_left, 0);
-        startActivity(intent);
-    }
-
-    /**
-     * 通过类名启动activity
-     *
-     * @param pClass
-     *            要启动的类
-     *            要传递的参数
-     */
-    protected void startActivity(Class<?> pClass) {
-        Intent intent = new Intent(this, pClass);
-        startActivity(intent);
-    }
-
-    protected void openActivityRight(Class<?> pClass){
-        openActivity(pClass);
-    }
-
-    protected void openActivitySlide(Class<?> pClass){
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
-        openActivity(pClass);
-    }
-
     /*****
      * 键盘
      * @param isShowSoft
