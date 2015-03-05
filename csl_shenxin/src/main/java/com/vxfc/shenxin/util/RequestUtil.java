@@ -2,6 +2,7 @@ package com.vxfc.shenxin.util;
 
 import com.litesuits.http.request.Request;
 import com.litesuits.http.request.param.HttpMethod;
+import com.vxfc.common.util.CommonUtil;
 import com.vxfc.shenxin.domian.param.CslParam;
 import com.vxfc.shenxin.domian.param.MemberParam;
 import com.vxfc.shenxin.domian.param.NewParam;
@@ -447,6 +448,22 @@ public class RequestUtil {
     public static Request requestTeamSign(SignParam param) {
         return new Request(Util.jointUrl(UrlApi.TEAM_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
                 setParamModel(param);
+    }
+
+    public static String getUrl(String path){
+        if(!CommonUtil.isEmpty(path)){
+            return null;
+        }
+        StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
+        builder.append(UrlApi.WEB_MODEL_CSL).append("/").append(path);
+        return builder.toString();
+    }
+    public static String requestHtm(String id){
+        if (Util.isEmpty(id)) return "";
+        StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
+        builder.append(UrlApi.WEB_MODEL_CSL).
+                append("/").append(id).append(".htm");
+        return builder.toString();
     }
 
     public static Request postRegister(){

@@ -14,6 +14,8 @@ public  interface Dict {
     /***赛事分析**/
     final int TYPE_FENXI=1;
 
+    final  String RESULT="OK";
+
     final String ACCESS_TOKEN = "access_token";
     final String STATE = "state";
     final String EXPIRES_IN = "expires_in";

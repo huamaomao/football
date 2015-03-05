@@ -15,15 +15,18 @@ import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.request.Request;
+import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
+import com.vxfc.common.view.IMessageView;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.util.ActivityModel;
 import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.Util;
 import com.vxfc.shenxin.view.IRequestView;
 
-public class BaseActivity extends FragmentActivity implements IRequestView{
+public class BaseActivity extends FragmentActivity implements IRequestView,IMessageView {
     protected FootballApplication application;
     protected InputMethodManager imm;
 
@@ -172,5 +175,20 @@ public class BaseActivity extends FragmentActivity implements IRequestView{
     @Override
     public void request(Request res, HttpModelHandler<String> UIHandler) {
         application.execute(res,UIHandler);
+    }
+
+    @Override
+    public void responseFailure(HttpException e, Response res) {
+        application.networkErrorMessage(e,res);
+    }
+
+    @Override
+    public void msgShow(String msg) {
+        application.msgShow(msg);
+    }
+
+    @Override
+    public void msgLongShow(String msg) {
+        application.msgLongShow(msg);
     }
 }
