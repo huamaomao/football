@@ -68,10 +68,10 @@ public class ListLiveStartingAdapater extends BaseAdapter {
             holder.tv_item_1.setTextColor(context.getResources().getColor(R.color.white));
             holder.tv_item_2.setTextColor(context.getResources().getColor(R.color.white));
         }else {
-            convertView.setBackgroundResource(R.drawable.shen_bg_0);
-            holder.tv_item_0.setTextColor(context.getResources().getColor(R.color.white_0));
-            holder.tv_item_1.setTextColor(context.getResources().getColor(R.color.white_0));
-            holder.tv_item_2.setTextColor(context.getResources().getColor(R.color.white_0));
+            convertView.setBackgroundResource(R.drawable.shen_bg_1);
+            holder.tv_item_0.setTextColor(context.getResources().getColor(R.color.white_d));
+            holder.tv_item_1.setTextColor(context.getResources().getColor(R.color.white_d));
+            holder.tv_item_2.setTextColor(context.getResources().getColor(R.color.white_d));
         }
 
         LinearLayout layout= (LinearLayout) convertView;

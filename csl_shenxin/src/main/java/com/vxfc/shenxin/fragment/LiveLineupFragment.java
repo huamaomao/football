@@ -48,14 +48,13 @@ public class LiveLineupFragment extends BaseFragment {
         fl_view.setOnItemClickListener(new FormationView.OnItemClickListener() {
             @Override
             public void onItemClick( AgainstVo.Item item, boolean flag) {
-                if (Util.isNull(item)||(Util.isEmpty(item.getFormationPlace()))){
-
-                    return;
-                }
-                Bundle bundle=new Bundle();
-                bundle.putString(Dict.ID,item.getPlayerId());
-                bundle.putString(Dict.PLAYER_NAME,item.getPlayerName());
-                Util.openActivity(TeamPlayerActivity.class,bundle,getActivity(),ActivityModel.ACTIVITY_MODEL_1);
+                    if (Util.isNull(item)||(Util.isEmpty(item.getFormationPlace()))){
+                        return;
+                    }
+                    Bundle bundle=new Bundle();
+                    bundle.putString(Dict.ID,item.getPlayerId());
+                    bundle.putString(Dict.PLAYER_NAME,item.getPlayerName());
+                    Util.openActivity(TeamPlayerActivity.class,bundle,getActivity(),ActivityModel.ACTIVITY_MODEL_1);
             }
 
             @Override

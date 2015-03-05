@@ -126,20 +126,20 @@ public class Util {
         if (pBundle != null) {
             intent.putExtras(pBundle);
         }
+        activity.startActivity(intent);
         switch (type.value){
             case 0:
                 break;
             case 1:
-                activity.overridePendingTransition(R.anim.slide_t,R.anim.slide_out_right);
-                break;
-            case 2:
                 activity.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_t);
                 break;
+            case 2:
+                activity.overridePendingTransition(R.anim.slide_out_right,R.anim.slide_t);
+                break;
             case 3:
-                activity.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_left);
+                activity.overridePendingTransition(R.anim.slide_t,R.anim.slide_in_right);
                 break;
         }
-        activity.startActivity(intent);
         if (flag){
             activity.finish();
         }

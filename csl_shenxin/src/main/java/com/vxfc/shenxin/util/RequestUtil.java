@@ -327,16 +327,12 @@ public class RequestUtil {
     }
     /*****
      *  赛程
-     * @param userToken
-     * @param team_id
-     * @param year
+     * @param param
      * @return
      */
-    public static Request requestFixtureList(String userToken,String team_id,String round,String year){
+    public static Request requestFixtureList(CslParam param){
         return new Request(Util.jointUrl(UrlApi.fixtureList,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get).
-                addUrlParam(Dict.ACCESS_TOKEN, userToken).
-                addUrlParam(Dict.TEAM_ID,team_id).
-                addUrlParam(Dict.ROUND,round);
+              setParamModel(param);
     }
   /*  public static Request requestImage(String path,BitmapParser parser){
       return new  Request(Util.jointUrl(UrlApi.images,UrlApi.WEB_MODEL_CSL))

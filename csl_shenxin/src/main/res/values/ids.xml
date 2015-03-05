@@ -28,9 +28,13 @@
     <!-- Spinner   id -->
     <item name="spinner_team" type="id" />
     <item name="spinner_round" type="id" />
+    <item name="spinner_year" type="id" />
 
     <!-- 标题id   textview-->
     <item name="tv_title" type="id"/>
+    <item name="tv_player" type="id" />
+    <item name="tv_number" type="id" />
+
     <!-- 轮播 类型id   textview-->
     <item name="tv_type" type="id" />
     <item name="tv_spinner" type="id" />

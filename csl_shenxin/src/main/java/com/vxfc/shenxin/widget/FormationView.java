@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -50,12 +51,13 @@ public class FormationView extends FrameLayout{
     private boolean flag=true;
     private int mWidth=120;
     /**球衣的宽高****/
-    private int mHeight=153;
+    private int mHeight=120;
     /**  控件的宽高****/
     private int width;
     private int height;
     private float textSize=14f;
 
+    private LayoutInflater inflater;
     /***
      * 初始化控件和数据
      */
@@ -368,6 +370,7 @@ public class FormationView extends FrameLayout{
     }
 
     private void init(){
+        inflater=LayoutInflater.from(getContext());
         ViewGroup.LayoutParams params=new ViewGroup.LayoutParams(mWidth,mHeight);
         for (int i=0;i<11;i++){
             createView(params);
@@ -396,12 +399,16 @@ public class FormationView extends FrameLayout{
      * @param key
      */
     private void  changeFormation(int index,float x,float y,int key){
-        TextView view=(TextView)getChildAt(index);
+        View view=(View)getChildAt(index);
         view.setX(x);
         view.setY(y);
         AgainstVo.Item item=teamMap.get(key);
+        TextView player=(TextView)view.findViewById(R.id.tv_player);
+        TextView playerNumber=(TextView)view.findViewById(R.id.tv_number);
+
         if (Util.notNull(item)){
-            view.setText(item.getPlayerNo());
+            player.setText(item.getPlayerName());
+            playerNumber.setText(item.getPlayerNo());
             view.setTag(item);
         }else {
             AgainstVo vo=new AgainstVo();
@@ -413,21 +420,22 @@ public class FormationView extends FrameLayout{
     }
 
     private void createView(ViewGroup.LayoutParams params){
-        TextView textView=new TextView(getContext());
+        View view= inflater.inflate(R.layout.formation_player,null);
+        view.setLayoutParams(params);
+       /* TextView textView=new TextView(getContext());
         textView.setTextColor(Color.WHITE);
         textView.setTextSize(textSize);
         if (flag) {
-            textView.setBackgroundResource(R.drawable.yang);
+            textView.setBackgroundResource(R.drawable.shape_round_lineup);
         }else {
             textView.setBackgroundResource(R.drawable.icon_yellow_team);
         }
         textView.setLayoutParams(params);
         textView.setX(-params.width);
         textView.setY(-params.height);
-        textView.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);
-
-        addView(textView);
-        textView.setOnClickListener(new OnClickListener() {
+        textView.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);*/
+        addView(view);
+        view.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemClickListener!=null)
