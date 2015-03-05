@@ -16,6 +16,7 @@ import com.vxfc.common.R;
  * Created by Hua_ on 2015/2/6.
  */
 public class ViewUtil {
+
     /************************************************View 控制  method ******************************************************************/
 
     public static void openActivity(Class<?> pClass,Activity activity,ActivityModel model){
