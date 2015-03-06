@@ -8,7 +8,7 @@ public class MemberParam implements RequestParam {
     private String memberId;
     private String nickName;
     private String password;
-    private String code;
+    private String smsCode;
     private String telphone;
     private String photo;
     private String deviceId;
@@ -46,14 +46,6 @@ public class MemberParam implements RequestParam {
         this.type = type;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -76,5 +68,13 @@ public class MemberParam implements RequestParam {
 
     public void setTelphone(String telphone) {
         this.telphone = telphone;
+    }
+
+    public String getSmsCode() {
+        return smsCode;
+    }
+
+    public void setSmsCode(String smsCode) {
+        this.smsCode = smsCode;
     }
 }

@@ -66,46 +66,38 @@
         <activity
             android:name=".ui.MainActivity"
             android:hardwareAccelerated="true"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.TeamPlayerActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppBackTheme" />
         <activity
             android:name=".ui.NewsDetailActivity"
             android:hardwareAccelerated="true"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppBackTheme" />
         <activity
             android:name=".ui.LiveActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppBackTheme" />
         <activity
             android:name=".ui.VideoPlayerActivity"
             android:hardwareAccelerated="true"
-            android:launchMode="singleTask"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
         <activity
             android:name=".ui.LoginActivity"
             android:hardwareAccelerated="true"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppBackTheme" />
         <activity
             android:name=".ui.ChooseActivity"
             android:hardwareAccelerated="true"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppBackTheme" />
         <activity
             android:name=".ui.RegisterActivity"
             android:alwaysRetainTaskState="true"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppBackTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />

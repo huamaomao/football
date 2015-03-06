@@ -478,11 +478,35 @@ public class ApacheHttpClient extends LiteHttpClient {
                         } else {
                             throw new HttpServerException(ServerException.RedirectTooMany);
                         }
-                    } else if (status.getStatusCode() <= 499) {
+                    }/*****499 or  599 *****/
+                    else if (status.getStatusCode() <= 499) {
                         // 客户端被拒
+                        HttpEntity entity = response.getEntity();
+                        if (entity != null) {
+                            // charset
+                            String charSet = getCharsetFromEntity(entity, request.getCharSet());
+                            innerResponse.setCharSet(charSet);
+                            // length
+                            long len = innerResponse.getContentLength();
+                            DataParser<?> parser = innerResponse.getDataParser();
+                           if (parser!=null){
+                               parser.setRequest(request);
+                               parser.setHttpReadingListener(request.getHttpListener());
+                               if (!Thread.currentThread().isInterrupted()) {
+                                   if (listener != null) listener.onPreRead(request);
+                                   if (doStatistics)
+                                       innerResponse.getHttpInnerListener().onPreRead(request);
+                                   parser.readInputStream(entity.getContent(), len, charSet);
+                                   if (doStatistics)
+                                       innerResponse.getHttpInnerListener().onAfterRead(request);
+                                   innerResponse.setReadedLength(parser.getReadedLength());
+                                   if (listener != null) listener.onAfterRead(request);
+                               }
+                               throw new HttpServerException(httpStatus,parser.getData().toString());
+                           }
+                        }
                         throw new HttpServerException(httpStatus);
-                    } else if (status.getStatusCode() < 599) {
-                        // 服务器有误
+                    }else if(status.getStatusCode() <= 599){
                         throw new HttpServerException(httpStatus);
                     }
                 } else {

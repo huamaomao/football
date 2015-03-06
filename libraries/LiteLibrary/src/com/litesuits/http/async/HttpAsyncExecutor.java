@@ -76,6 +76,7 @@ public class HttpAsyncExecutor extends AsyncExecutor {
             @SuppressWarnings("unchecked")
             @Override
             public T doInBackground() {
+                //  hua1
                 res = client.execute(req);
                 res.printInfo();
                 Type type = ((ParameterizedType) UIHandler.getClass().getGenericSuperclass()).getActualTypeArguments()[0];

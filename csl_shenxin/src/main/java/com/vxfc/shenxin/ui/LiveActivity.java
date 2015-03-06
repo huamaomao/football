@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,7 +38,7 @@ public class LiveActivity extends BaseActivity{
     @InjectView(R.id.iv_against_icon0) ImageView iv_against_icon0;
     @InjectView(R.id.iv_against_icon1) ImageView iv_against_icon1;
 
-    @InjectView(R.id.btn_choose) Button btnChoose;
+    @InjectView(R.id.btn_choose)ImageButton btnChoose;
 
     @InjectView(R.id.ll_lunbo_center) LinearLayout ll_lunbo_center;
 

@@ -82,9 +82,9 @@ public class InternalResponse implements Response {
                 e.printStackTrace();
                 if (exception == null) setException(new HttpClientException(e));
             }
-        } else {
+        } /*else {
             throw new RuntimeException("Json To Java Object , your Request must use BinaryParser or StringParser");
-        }
+        }*/
         return null;
     }
 
@@ -307,8 +307,10 @@ public class InternalResponse implements Response {
         Log.d(TAG, msg);
 
         //data
-        msg = "\t" + dataParser != null ? "" + dataParser.getData() : "null";
+        //msg = "\t" + dataParser != null ? "" + dataParser.getData() : "null";
+
         Log.i(TAG, "  -----reponse data----- ↓ \n");
+        Log.d(TAG, dataParser+"===="+dataParser != null);
         Log.d(TAG, msg);
 
         //exception

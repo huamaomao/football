@@ -63,7 +63,7 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
                 toLoginActivity();
                 break;
             case R.id.btn_skip_login:
-                Util.openActivity(MainActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_2,true);
+                Util.openActivity(MainActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_1,true);
                 break;
             case R.id.btn_register:
                 toRegisterActivity();
@@ -96,12 +96,12 @@ public class ChooseActivity extends BaseActivity implements IChooseView, View.On
 
     @Override
     public void toLoginActivity() {
-        Util.openActivity(LoginActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_2,true);
+        Util.openActivity(LoginActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_1,true);
     }
 
     @Override
     public void toRegisterActivity() {
-        Util.openActivity(RegisterActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_2,true);
+        Util.openActivity(RegisterActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_1,true);
     }
 
     @Override

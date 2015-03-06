@@ -462,30 +462,7 @@ public class RequestUtil {
         return builder.toString();
     }
 
-    /*****
-     *
-     * @param url
-     * @return
-     */
-    public static String getUrl(String url){
-        if (Util.isEmpty(url)) return null;
-        StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
-        builder.append(UrlApi.WEB_MODEL_CSL).append("/").append(url);
-        return builder.toString();
-    }
 
-    /****
-     *
-     * @param id
-     * @return
-     */
-    public static String requestHtm(String id){
-        if (Util.isEmpty(id)) return "";
-        StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
-        builder.append(UrlApi.WEB_MODEL_CSL).
-                append("/").append(id).append(".htm");
-        return builder.toString();
-    }
 
 
 }

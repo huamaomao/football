@@ -40,6 +40,7 @@ public abstract class BaseFragment extends Fragment {
         if (Util.isNull(rootView)){
             rootView=inflater.inflate(layoutId,container,false);
             initView(rootView,inflater);
+            ButterKnife.inject(this,rootView);
             doRefresh();
         }else if (flag){
             doRefresh();
@@ -48,8 +49,6 @@ public abstract class BaseFragment extends Fragment {
         if (parent != null) {
             parent.removeView(rootView);
         }
-        Log.d("hua",this+"==="+this.getClass());
-       ButterKnife.inject(this,rootView);
       return rootView;
     }
 

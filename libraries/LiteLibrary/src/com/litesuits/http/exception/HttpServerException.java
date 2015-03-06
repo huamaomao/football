@@ -12,10 +12,29 @@ public class HttpServerException extends HttpException {
     private static final long serialVersionUID = 3695887939006497385L;
     private ServerException exceptionType;
     private HttpStatus      status;
-
+    private String  data;
     public HttpServerException(ServerException e) {
         super(useChinese ? e.chiReason : e.reason);
         exceptionType = e;
+    }
+
+    public HttpServerException(HttpStatus status,String data) {
+        super(useChinese ? status.getDescriptionInChinese() : status.getDescription());
+        this.status = status;
+        if (status.getCode() >= 500) {
+            exceptionType = ServerException.ServerInner;
+        } else {
+            exceptionType = ServerException.ServerReject;
+        }
+        this.data=data;
+    }
+
+    /*******
+     * 获取数据
+     * @return
+     */
+    public String getData() {
+        return data;
     }
 
     public HttpServerException(HttpStatus status) {

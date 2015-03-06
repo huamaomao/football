@@ -11,7 +11,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Display;
 import android.view.WindowManager;
+
+import com.alibaba.fastjson.JSON;
+import com.litesuits.http.exception.HttpNetException;
+import com.litesuits.http.exception.HttpServerException;
+import com.vxfc.common.util.CommonUtil;
+import com.vxfc.common.util.Log;
+import com.vxfc.common.view.IMessageView;
 import com.vxfc.shenxin.R;
+import com.vxfc.shenxin.domian.ResponseModel;
 import com.vxfc.shenxin.domian.Token;
 
 import java.lang.reflect.Field;
@@ -346,5 +354,23 @@ public class Util {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    /****
+     * 异常处理
+     */
+    public static ResponseModel handleServerException(Exception e,IMessageView view){
+        if (e instanceof HttpServerException){
+            HttpServerException exception=(HttpServerException)e;
+            String data=exception.getData();
+            Log.i(data);
+            if (!CommonUtil.isEmpty(data)){
+               return  JSON.parseObject(data, ResponseModel.class);
+            }
+        }else if (e instanceof HttpNetException){
+            HttpNetException netException=(HttpNetException)e;
+            view.msgLongShow(netException.getExceptionType().chiReason);
+        }
+        return null;
     }
 }

@@ -8,9 +8,8 @@
                        android:layout_gravity="left"
                        android:layout_marginLeft="10dp"
                        android:layout_weight="1.7">
-
-             <Button android:id="@id/btn_choose"
-                 android:background="@drawable/icon_choose"
+             <ImageButton android:id="@id/btn_choose"
+                 android:src="@drawable/icon_choose"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content" />
             <TextView android:id="@id/tv_benlun"

@@ -8,7 +8,7 @@ import java.util.List;
 public class Test {
    
    public static void main(String[] arg){
-       System.out.println("sss".length());
+       System.out.println("2单".length());
       /* java.io.FileInputStream fis = null;
        try {
            KeyStore ks = KeyStore.getInstance("JKS");

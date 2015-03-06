@@ -22,12 +22,17 @@
 
 
     </LinearLayout>
-
+    <TextView android:id="@id/tv_number"
+        android:textSize="@dimen/font_size_10"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="30px"
+        android:layout_marginRight="30px"
+        android:layout_height="wrap_content" android:layout_width="wrap_content" />
     <GridLayout
         android:id="@+id/gl_next"
         android:columnCount="2"
         style="@style/loginBgStyle"
-        android:visibility="visible"
+        android:visibility="gone"
         android:paddingBottom="60px"
         android:layout_gravity="center_vertical"
         android:orientation="horizontal">
@@ -56,7 +61,7 @@
         <EditText
             android:id="@id/et_name"
             style="@style/et_style"
-            android:hint="@string/msg_tel_code"
+            android:hint="@string/msg_nicename"
             android:inputType="textPersonName"
             android:layout_columnSpan="2"
             android:maxLength="16" />
@@ -65,7 +70,7 @@
         <EditText
             android:id="@id/et_pwd"
             style="@style/et_style"
-            android:hint="@string/msg_tel_code"
+            android:hint="@string/msg_pwd"
             android:inputType="textPassword"
             android:layout_columnSpan="2"
             android:maxLength="16" />

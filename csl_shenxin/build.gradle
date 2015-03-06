@@ -51,7 +51,7 @@ android {
         }
         debug {
             proguardFiles 'proguard-project.txt'
-            minifyEnabled true
+            //minifyEnabled true
             signingConfig signingConfigs.myConfig
         }
     }
@@ -60,7 +60,7 @@ android {
             manifestPlaceholders = [ channel:"placeholder" ]
         }
     }
-    channels()
+    //channels()
 
 }
 // 多渠道打包

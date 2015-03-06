@@ -188,4 +188,11 @@ public class CommonUtil {
         Matcher m = p.matcher(email);
         return m.matches();
     }
+    public static boolean checkName(String name){
+        String str="^([\\w]|[\\u4e00-\\u9fa5])+";
+        Pattern p = Pattern.compile(str);
+        Matcher m = p.matcher(name);
+        return m.matches();
+    }
+
 }

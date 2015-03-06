@@ -39,9 +39,9 @@ public class NewsMainFragment extends BaseFragment{
     @InjectView(R.id.iv_against_icon0) ImageView iv_against_icon0;
     @InjectView(R.id.iv_against_icon1) ImageView iv_against_icon1;
 
-    @InjectView(R.id.btn_choose) Button btnChoose;
+    @InjectView(R.id.btn_choose) ImageButton btnChoose;
 
-    @InjectView(R.id.ll_lunbo_center) LinearLayout ll_lunbo_center;
+     @InjectView(R.id.ll_lunbo_center) LinearLayout ll_lunbo_center;
 
     private  Animation mAnimationRight;
     private  Timer timer;

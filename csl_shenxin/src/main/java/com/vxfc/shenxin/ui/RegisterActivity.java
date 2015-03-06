@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.litesuits.http.request.Request;
 import com.litesuits.http.response.handler.HttpModelHandler;
@@ -21,6 +22,7 @@ import com.vxfc.shenxin.presenter.RegisterPresenter;
 import com.vxfc.shenxin.view.IRegisterView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class RegisterActivity extends BaseActivity implements IRegisterView{
 
@@ -28,7 +30,10 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
     @InjectView(R.id.gl_next) GridLayout glNext;
     @InjectView(R.id.et_tel) EditText etTel;
     @InjectView(R.id.et_pwd)  EditText etPwd;
+    @InjectView(R.id.et_name)  EditText etNickName;
+    @InjectView(R.id.et_code)  EditText etCode;
 
+    @InjectView(R.id.tv_number)TextView  tvNumber;
     private RegisterPresenter presenter;
     /****标志是否第一步***/
     private boolean flag=true;
@@ -48,7 +53,18 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
 
     @Override
     protected void onHomeClick() {
-        ViewUtil.openActivity(ChooseActivity.class, this, ActivityModel.ACTIVITY_MODEL_1);
+        if (!flag){
+            llTel.setVisibility(View.VISIBLE);
+            glNext.setVisibility(View.GONE);
+            etCode.getText().clear();
+            etPwd.getText().clear();
+            etNickName.getText().clear();
+            etPwd.getText().clear();
+            tvNumber.setText("");
+        }else {
+            ViewUtil.openActivity(ChooseActivity.class, this, ActivityModel.ACTIVITY_MODEL_1);
+            finish();
+        }
     }
 
 
@@ -57,10 +73,10 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
         switch (id){
             case R.id.action_next:
                 if (flag){
-                    llTel.setVisibility(View.GONE);
-                    glNext.setVisibility(View.VISIBLE);
-                    flag=true;
                     presenter.doRegisterFirst(etTel.getText().toString());
+                }else {
+                   presenter.doRegister(etTel.getText().toString(),etNickName.getText().toString().trim(),etCode.getText().toString(),
+                           etPwd.getText().toString());
                 }
                 break;
             default:
@@ -74,13 +90,22 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
         nextMenu=menu.findItem(R.id.action_next);
         return true;
     }
+
+    /****
+     * 重发验证码
+     */
+    @OnClick(R.id.btn_send)
+    public void repeatSms(){
+        presenter.repeatSms(etTel.getText().toString());
+    }
+
 	@Override
     protected void initView(){
         //重发验证码
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                presenter.repeatSms(etTel.getText().toString());
             }
         });
         etTel.addTextChangedListener(new TextWatcher() {
@@ -113,5 +138,15 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
     @Override
     public void toMainActivity() {
         ViewUtil.openActivity(MainActivity.class,null,this,ActivityModel.ACTIVITY_MODEL_2,true);
+    }
+
+    @Override
+    public void setTelRemarks(String remarks) {
+        tvNumber.setText(remarks);
+    }
+
+    @Override
+    public void setRegisterStatus() {
+        flag=false;
     }
 }
