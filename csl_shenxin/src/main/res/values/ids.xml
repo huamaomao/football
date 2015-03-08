@@ -34,6 +34,10 @@
     <item name="tv_title" type="id"/>
     <item name="tv_player" type="id" />
     <item name="tv_number" type="id" />
+    <item name="tv_level" type="id" />
+    <item name="tv_name" type="id" />
+    <item name="tv_xuanbi" type="id" />
+
 
     <!-- 轮播 类型id   textview-->
     <item name="tv_type" type="id" />
@@ -98,6 +102,7 @@
     <item name="iv_item_0" type="id" />
     <item name="iv_item_1" type="id" />
     <item name="iv_item_2" type="id" />
+    <item name="iv_photo" type="id" />
 
    <!-- View  -->
     <item name="view_home" type="id" />
@@ -140,7 +145,9 @@
     <item name="btn_live"  type="id"/>
     <item name="btn_fenxi"  type="id"/>
     <item name="btn_quiz"  type="id"/>
-
+    <item name="btn_sign"  type="id"/>
+    <item name="btn_loginout"  type="id"/>
+    <item name="btn_chongzhi"  type="id"/>
 
     <item name="rl_first" type="id" />
     <item name="rl_next" type="id" />
@@ -156,6 +163,7 @@
     <!-- actionbar id-->
     <item name="action_next" type="id" />
     <item name="action_login" type="id" />
+    <item name="action_member" type="id" />
 
     <!-- webview id-->
     <item name="web_view" type="id" />

@@ -101,6 +101,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppBackTheme"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".ui.MemberInfoActivity"
+            android:alwaysRetainTaskState="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppBackTheme"
+            />
+
+
         <!-- 3rd -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"

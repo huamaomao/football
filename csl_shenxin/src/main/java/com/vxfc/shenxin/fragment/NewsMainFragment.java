@@ -127,7 +127,6 @@ public class NewsMainFragment extends BaseFragment{
      */
     protected void  initViewData(RecentGameTeam team){
         if (null!=team){
-            ll_lunbo_center.setVisibility(View.VISIBLE);
             application.setGameTeam(team);
             this.team=team;
             //ui 设置
@@ -164,10 +163,10 @@ public class NewsMainFragment extends BaseFragment{
                         timeTask.cancel();
                     timeTask=new UpdateTimerTask();
                     timer.schedule(timeTask, 1000, 1000);
-                    if (Util.isNull(teamTimerTask)){
+                   /* if (Util.isNull(teamTimerTask)){
                         teamTimerTask=new TeamTimerTask();
                         timer.schedule(teamTimerTask,DateUtil.getDate(team.getDate(),team.getTime()),60000);
-                    }
+                    }*/
                     break;
                 case Dict.STATUS_F:
                     tv_benlun_date.setText("已完赛");

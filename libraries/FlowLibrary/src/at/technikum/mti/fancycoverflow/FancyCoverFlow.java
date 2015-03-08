@@ -132,7 +132,6 @@ public class FancyCoverFlow extends Gallery {
         int mSelectedPosition = computeHorizontalScrollOffset();
         int selectedIndex = mSelectedPosition - mFirstPosition;
         // Just to be safe
-       Log.d("getChildDrawingOrder",childCount+"===="+order+"==="+getFirstVisiblePosition());
         if (order == childCount - 1) {
             // Draw the selected child last
             return selectedIndex;

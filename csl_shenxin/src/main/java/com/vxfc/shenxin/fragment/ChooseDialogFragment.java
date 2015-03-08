@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.ui.LiveActivity;
@@ -22,9 +23,9 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class ChooseDialogFragment extends DialogFragment {
-    @InjectView(R.id.btn_live)Button btnLive;
-    @InjectView(R.id.btn_fenxi) Button btnFenxi;
-    @InjectView(R.id.btn_quiz) Button btnQuiz;
+    @InjectView(R.id.btn_live)ImageButton btnLive;
+    @InjectView(R.id.btn_fenxi) ImageButton btnFenxi;
+    @InjectView(R.id.btn_quiz) ImageButton btnQuiz;
     private OnClickListener onClickListener;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

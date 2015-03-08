@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
-package com.vxfc.shenxin.fragment;
+package com.vxfc.common.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.*;
-import com.vxfc.shenxin.R;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.vxfc.common.R;
 
 
 public class CustomLayoutProgressFragment extends ProgressFragment {
@@ -36,8 +39,7 @@ public class CustomLayoutProgressFragment extends ProgressFragment {
     };
 
     public static CustomLayoutProgressFragment newInstance() {
-        CustomLayoutProgressFragment fragment = new CustomLayoutProgressFragment();
-        return fragment;
+        return new CustomLayoutProgressFragment();
     }
 
     @Override

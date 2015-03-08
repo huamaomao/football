@@ -6,26 +6,29 @@
     android:padding="30px"
     >
 
-    <Button
+    <ImageButton
         android:id="@id/btn_live"
-        android:text="1"
+        android:src="@drawable/icon_live"
+        android:background="@android:color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="39dp" />
 
-    <Button
+    <ImageButton
         android:id="@id/btn_fenxi"
-        android:text="2"
+        android:src="@drawable/icon_fenxi"
+        android:background="@android:color/transparent"
         android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_live"
        />
 
-    <Button
+    <ImageButton
         android:id="@id/btn_quiz"
-        android:text="3"
+        android:src="@drawable/icon_quiz"
+        android:background="@android:color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_live"

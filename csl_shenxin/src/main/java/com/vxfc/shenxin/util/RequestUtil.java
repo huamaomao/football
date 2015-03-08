@@ -6,6 +6,7 @@ import com.vxfc.common.util.CommonUtil;
 import com.vxfc.shenxin.domian.param.CslParam;
 import com.vxfc.shenxin.domian.param.MemberParam;
 import com.vxfc.shenxin.domian.param.NewParam;
+import com.vxfc.shenxin.domian.param.PublicParam;
 import com.vxfc.shenxin.domian.param.SignParam;
 
 /**
@@ -345,7 +346,7 @@ public class RequestUtil {
      * @param param
      * @return
      */
-    public static Request requestFirstTeamPlayer(CslParam param){
+    public static Request requestFirstTeamPlayer(PublicParam param){
         return new  Request(Util.jointUrl(UrlApi.firstTeamPlayer,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get)
                 .setParamModel(param);
     }
@@ -355,7 +356,7 @@ public class RequestUtil {
      * @param param
      * @return
      */
-    public static Request requestCoachTeamList(CslParam param){
+    public static Request requestCoachTeamList(PublicParam param){
         return new  Request(Util.jointUrl(UrlApi.coachTeamList,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get)
                 .setParamModel(param);
     }
@@ -447,7 +448,7 @@ public class RequestUtil {
     }
 
     public static String getUrl(String path){
-        if(!CommonUtil.isEmpty(path)){
+        if(CommonUtil.isEmpty(path)){
             return null;
         }
         StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);

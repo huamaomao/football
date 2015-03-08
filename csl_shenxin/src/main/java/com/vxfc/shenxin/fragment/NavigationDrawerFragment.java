@@ -198,7 +198,6 @@ public class NavigationDrawerFragment extends BaseFragment implements View.OnCli
      */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-       // inflater.inflate(R.menu.global, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

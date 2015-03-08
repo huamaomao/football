@@ -40,8 +40,16 @@ public class PopMenu {
     }
 
     //设置菜单项点击监听器
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        gridView.setOnItemClickListener(listener);
+    public void setOnItemClickListener(final OnItemClickListener listener) {
+        //gridView.setOnItemClickListener(listener);
+        gridView.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                listener.onItemClick(parent,view,position,id);
+                dismiss();
+            }
+        });
+
     }
 
     //下拉式 弹出 pop菜单 parent 右下角

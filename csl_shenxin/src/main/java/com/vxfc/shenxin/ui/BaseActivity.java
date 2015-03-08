@@ -19,23 +19,28 @@ import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.request.Request;
 import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
+import com.vxfc.common.fragment.CustomLayoutProgressFragment;
+import com.vxfc.common.fragment.LoadingFragment;
+import com.vxfc.common.fragment.ProgressFragment;
 import com.vxfc.common.view.IMessageView;
+import com.vxfc.common.view.IView;
 import com.vxfc.shenxin.R;
 import com.vxfc.shenxin.util.ActivityModel;
 import com.vxfc.shenxin.util.Dict;
 import com.vxfc.shenxin.util.Util;
 import com.vxfc.shenxin.view.IRequestView;
 
-public class BaseActivity extends FragmentActivity implements IRequestView,IMessageView {
+public class BaseActivity extends FragmentActivity implements IRequestView,IMessageView,IView{
     protected FootballApplication application;
     protected InputMethodManager imm;
+    private LoadingFragment progressFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         application=(FootballApplication)getApplication();
         imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-
+        progressFragment=LoadingFragment.newInstance();
 	}
 
     public void setBackActionBarTilte(CharSequence str){
@@ -143,5 +148,20 @@ public class BaseActivity extends FragmentActivity implements IRequestView,IMess
     @Override
     public void msgLongShow(String msg) {
         application.msgLongShow(msg);
+    }
+
+    @Override
+    public void showLoading() {
+        progressFragment.show(getSupportFragmentManager(),"loading");
+    }
+
+    @Override
+    public void hideLoading() {
+        progressFragment.dismiss();
+    }
+
+    @Override
+    public void toMainActivity() {
+
     }
 }

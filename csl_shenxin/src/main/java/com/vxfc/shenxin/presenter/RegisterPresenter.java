@@ -32,6 +32,7 @@ public class RegisterPresenter {
         service=new SharedService((Activity)registerView);
     }
    public void  doRegisterFirst(final String tel){
+       registerView.showLoading();
        MemberParam param=new MemberParam();
        param.setTelphone(tel);
       registerView.request(RequestUtil.requestSms(param),new HttpModelHandler<String>(){
@@ -39,6 +40,7 @@ public class RegisterPresenter {
           protected void onSuccess(String data, Response res) {
               Log.i(data);
               Result result= JSON.parseObject(data,Result.class);
+              registerView.hideLoading();
               if (CommonUtil.notNull(result)&& Dict.RESULT.equals(result.result)){
                    StringBuilder builder=new StringBuilder("我们已给你的手机号码");
                    builder.append(tel);
@@ -54,25 +56,30 @@ public class RegisterPresenter {
           @Override
           protected void onFailure(HttpException e, Response res) {
               ResponseModel model=Util.handleServerException(e,registerView);
+              registerView.hideLoading();
               if (CommonUtil.notNull(model)){
                   if ("40003".equals(model.statusCode)||"10040".equals(model.statusCode)){
                       registerView.msgShow(model.msg);
                       return;
                   }
+              }else {
+                  registerView.msgShow("短信验证码发送失败...");
               }
-              registerView.msgShow("短信验证码发送失败...");
+
+
               //registerView.responseFailure(e,res);
           }
       });
    }
 
   public   void repeatSms(String tel){
+      registerView.showLoading();
       MemberParam param=new MemberParam();
       param.setTelphone(tel);
       registerView.request(RequestUtil.requestSms(param),new HttpModelHandler<String>(){
           @Override
           protected void onSuccess(String data, Response res) {
-              Log.i(data);
+              registerView.hideLoading();
               Result result= JSON.parseObject(data,Result.class);
               if (CommonUtil.notNull(result)&& Dict.RESULT.equals(result.result)){
                   registerView.msgShow("短信验证码已发送...");
@@ -83,6 +90,7 @@ public class RegisterPresenter {
 
           @Override
           protected void onFailure(HttpException e, Response res) {
+              registerView.hideLoading();
               ResponseModel model=Util.handleServerException(e,registerView);
               if (CommonUtil.notNull(model)){
                   if ("40003".equals(model.statusCode)||"10040".equals(model.statusCode)){
@@ -117,6 +125,7 @@ public class RegisterPresenter {
            registerView.msgShow("密码长度需符合6位至16位");
            return;
        }
+       registerView.showLoading();
        MemberParam param=new MemberParam();
        param.setSmsCode(code);
        param.setDeviceId(UUID.randomUUID().toString());
@@ -126,18 +135,19 @@ public class RegisterPresenter {
        registerView.request(RequestUtil.requestRegister(param),new HttpModelHandler<String>() {
            @Override
            protected void onSuccess(String data, Response res) {
-                Log.i(data);
                 if (!CommonUtil.isEmpty(data)){
                     User user=JSON.parseObject(data,User.class);
                     if (CommonUtil.notNull(user)){
                         service.putString(Dict.MEMBER_ID,user.getUserId());
                     }
                 }
+               registerView.hideLoading();
            }
 
            @Override
            protected void onFailure(HttpException e, Response res) {
                ResponseModel model=Util.handleServerException(e,registerView);
+               registerView.hideLoading();
                if (CommonUtil.notNull(model)){
                    if ("40003".equals(model.statusCode)||"10040".equals(model.statusCode)){
                        registerView.msgShow(model.msg);

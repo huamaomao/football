@@ -39,10 +39,11 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (Util.isNull(rootView)){
             rootView=inflater.inflate(layoutId,container,false);
-            initView(rootView,inflater);
             ButterKnife.inject(this,rootView);
+            initView(rootView,inflater);
             doRefresh();
         }else if (flag){
+            ButterKnife.inject(this,rootView);
             doRefresh();
         }
         ViewGroup parent=(ViewGroup)rootView.getParent();
@@ -55,7 +56,12 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
         ButterKnife.reset(this);
+        super.onDestroy();
     }
 
     protected  void doRefresh(){

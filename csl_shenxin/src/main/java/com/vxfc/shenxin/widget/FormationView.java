@@ -49,9 +49,9 @@ public class FormationView extends FrameLayout{
     /***** 白红阵型 ****/
     private Formation formation;
     private boolean flag=true;
-    private int mWidth=120;
+    private int mWidth=160;
     /**球衣的宽高****/
-    private int mHeight=120;
+    private int mHeight=160;
     /**  控件的宽高****/
     private int width;
     private int height;

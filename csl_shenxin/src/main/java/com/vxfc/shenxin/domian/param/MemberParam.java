@@ -13,6 +13,7 @@ public class MemberParam implements RequestParam {
     private String photo;
     private String deviceId;
     private String type;
+    private String userId;
 
     public String getMemberId() {
         return memberId;
@@ -76,5 +77,13 @@ public class MemberParam implements RequestParam {
 
     public void setSmsCode(String smsCode) {
         this.smsCode = smsCode;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

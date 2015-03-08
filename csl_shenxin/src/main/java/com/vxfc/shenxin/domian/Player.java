@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @author Hua
  *
  */
-public class PlayerVo implements Serializable {
+public class Player implements Serializable {
 	private static final long serialVersionUID = 4682855977038893176L;
 	private String id;
 	private String teamId;
@@ -22,6 +22,8 @@ public class PlayerVo implements Serializable {
 	private String number;
 	private String description;
     private String position;
+    private String bigPhoto;
+    private String photo;
 
     public String getPosition() {
         return position;
@@ -133,5 +135,21 @@ public class PlayerVo implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getBigPhoto() {
+        return bigPhoto;
+    }
+
+    public void setBigPhoto(String bigPhoto) {
+        this.bigPhoto = bigPhoto;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

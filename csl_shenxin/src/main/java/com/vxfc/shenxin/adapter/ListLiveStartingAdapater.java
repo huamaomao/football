@@ -102,7 +102,6 @@ public class ListLiveStartingAdapater extends BaseAdapter {
         LinearLayout.LayoutParams params=null;
         switch (type){
             case "1":
-                view.setBackgroundResource(R.drawable.icon_football);
                 view.setBackgroundColor(context.getResources().getColor(R.color.yellow));
                 params=new LinearLayout.LayoutParams(25,40);
                 break;

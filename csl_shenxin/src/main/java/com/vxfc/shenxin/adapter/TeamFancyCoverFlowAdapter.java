@@ -23,20 +23,35 @@ import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
 
-public class TeamFancyCoverFlowAdapter extends BaseAdapter {
-    private int[] images;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.vxfc.shenxin.R;
+import com.vxfc.shenxin.domian.Player;
+import com.vxfc.shenxin.util.RequestUtil;
 
-    public TeamFancyCoverFlowAdapter(int[] images) {
-        this.images = images;
+import java.util.List;
+
+public class TeamFancyCoverFlowAdapter extends BaseAdapter {
+    private List<Player> data;
+    private DisplayImageOptions options;
+    public TeamFancyCoverFlowAdapter(List<Player> data) {
+        this.data=data;
+        options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.zhenrong_moren)
+                .showImageOnFail(R.drawable.zhenrong_moren)
+                .showImageForEmptyUri(R.drawable.zhenrong_moren)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .build();
     }
     @Override
     public int getCount() {
-        return images.length;
+        return data.size();
     }
 
     @Override
-    public Integer getItem(int i) {
-        return images[i];
+    public Object getItem(int i) {
+        return data.get(i);
     }
 
     @Override
@@ -55,28 +70,13 @@ public class TeamFancyCoverFlowAdapter extends BaseAdapter {
             imageView.setLayoutParams(new Gallery.LayoutParams(240, 720));
         }
         try {
-            imageView.setImageResource(this.getItem(i));
+           Player player=data.get(i);
+           imageView.setTag(RequestUtil.getUrl(player.getBigPhoto()));
+           ImageLoader.getInstance().displayImage(RequestUtil.getUrl(RequestUtil.getUrl(player.getBigPhoto())),imageView, options);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return imageView;
     }
 
-
-    public View getCoverFlowItem(int i, View reuseableView, ViewGroup viewGroup) {
-        ImageView imageView = null;
-        if (reuseableView != null) {
-            imageView = (ImageView) reuseableView;
-        } else {
-            imageView = new ImageView(viewGroup.getContext());
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            imageView.setLayoutParams(new Gallery.LayoutParams(240, 680));
-        }
-        try {
-            imageView.setImageResource(this.getItem(i));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return imageView;
-    }
 }

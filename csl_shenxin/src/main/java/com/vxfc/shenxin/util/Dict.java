@@ -76,19 +76,19 @@ public  interface Dict {
     /**
      * 门将
      */
-    public static final int POSITION_GOALKEEPER = 1;
+    public static final String POSITION_GOALKEEPER = "1";
     /**
      * 后卫
      */
-    public static final int POSITION_DEFENDER = 2;
+    public static final String POSITION_DEFENDER = "2";
     /**
      * 前卫/中场
      */
-    public static final int POSITION_MIDFIELDER = 3;
+    public static final String POSITION_MIDFIELDER = "3";
     /**
      * 前锋/中锋
      */
-    public static final int POSITION_STRIKER = 4;
+    public static final String POSITION_STRIKER = "4";
 
 
     /************************handle***code********************************/

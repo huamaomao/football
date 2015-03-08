@@ -46,6 +46,7 @@ public class ScheduleFragment extends BaseListFragment {
             @Override
             protected void convert(ViewHolderHelp helper, RecentGameTeam item) {
                 SpannableStringBuilder builder=new SpannableStringBuilder(item.getRound());
+                com.vxfc.common.util.Log.i(item);
                 builder.append(" ");
                 int length=builder.length();
                 builder.append(Team.getPlayStatus(item.getStatus()));

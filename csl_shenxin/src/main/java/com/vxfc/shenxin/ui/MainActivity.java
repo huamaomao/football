@@ -70,6 +70,7 @@ public class MainActivity extends BaseActivity
     }
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
        /* if (!mNavigationDrawerFragment.isDrawerOpen()) {
@@ -83,6 +84,10 @@ public class MainActivity extends BaseActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.action_member) {
+            Util.openActivity(MemberInfoActivity.class, this);
+            return true;
+        }
         return mNavigationDrawerFragment.onOptionsItemSelected(item);
     }
 

@@ -16,11 +16,16 @@
 
 package com.vxfc.common.fragment;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
@@ -38,11 +43,16 @@ public class ProgressFragment extends DialogFragment {
     public ProgressFragment() {
     }
 
+    public static  ProgressFragment newInstance(){
+        return  new ProgressFragment();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.fragment_progress, container, false);
     }
+
 
     /**
      * Attach to view once the view hierarchy has been created.
@@ -86,6 +96,11 @@ public class ProgressFragment extends DialogFragment {
         LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
         View contentView = layoutInflater.inflate(layoutResId, null);
         setContentView(contentView);
+    }
+
+
+    public void setMessage(String msg){
+        ((ProgressDialog) getDialog()).setMessage(msg);
     }
 
     /**

@@ -4,8 +4,8 @@ package com.vxfc.shenxin.domian;
  * Created by Hua on 2014/8/2.
  */
 public class Member {
-    private int id;
-    private int state;
+    private String id;
+    private String state;
     private String telphone;
     private String password;
     private String nike;//昵称
@@ -18,9 +18,9 @@ public class Member {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Member{" +
                 "id='" + id + '\'' +
-                ", state=" + state +
+                ", state='" + state + '\'' +
                 ", telphone='" + telphone + '\'' +
                 ", password='" + password + '\'' +
                 ", nike='" + nike + '\'' +
@@ -33,19 +33,19 @@ public class Member {
                 '}';
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(String state) {
         this.state = state;
     }
 

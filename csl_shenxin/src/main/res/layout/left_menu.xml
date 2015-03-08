@@ -9,11 +9,11 @@
 				android:background="@android:color/transparent"
 				android:dividerPadding="10px"
 				android:orientation="vertical" android:scrollbars="none">
-		<RadioButton android:id="@id/rbtn_left_menu_8" style="@style/left_menu_item" android:text="@string/left_menu_8"/>
-		<View android:layout_width="fill_parent" android:layout_height="1px"
+		<!--<RadioButton android:id="@id/rbtn_left_menu_8" style="@style/left_menu_item" android:text="@string/left_menu_8"/>-->
+		<!--<View android:layout_width="fill_parent" android:layout_height="1px"
 			  android:background="@color/white_d"/>
 		<RadioButton android:id="@id/rbtn_left_menu_0" style="@style/left_menu_item"
-					 android:text="@string/left_menu_0"/>
+					 android:text="@string/left_menu_0"/>-->
 		<View android:layout_width="fill_parent" android:layout_height="1px"
 			  android:background="@color/white_d"/>
 		<RadioButton android:id="@id/rbtn_left_menu_1" style="@style/left_menu_item"
@@ -30,7 +30,9 @@
 			  android:background="@color/white_d"/>
 		<RadioButton android:id="@id/rbtn_left_menu_4" style="@style/left_menu_item"
 					 android:text="@string/left_menu_4"/>
-		<View android:layout_width="fill_parent" android:layout_height="1px"
+        <View android:layout_width="fill_parent" android:layout_height="1px"
+            android:background="@color/white_d"/>
+		<!--<View android:layout_width="fill_parent" android:layout_height="1px"
 			  android:background="@color/white_d"/>
 		<RadioButton android:id="@id/rbtn_left_menu_5" style="@style/left_menu_item" android:text="@string/left_menu_5"/>
 		<View android:layout_width="fill_parent" android:layout_height="1px"
@@ -40,6 +42,6 @@
 			  android:background="@color/white_d"/>
 		<RadioButton android:id="@id/rbtn_left_menu_7" style="@style/left_menu_item" android:text="@string/left_menu_7"/>
 		<View android:layout_width="fill_parent" android:layout_height="1px"
-			  android:background="@color/white_d"/>
+			  android:background="@color/white_d"/>-->
 	</RadioGroup>
 </ScrollView>

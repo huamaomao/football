@@ -11,10 +11,11 @@
             android:layout_width="match_parent"
             android:layout_height="325dp">
 
-        <ImageView
-                android:src="@drawable/player_yangjiawei"
+        <ImageView android:id="@id/iv_photo"
+                android:src="@drawable/player_defualt"
                 android:layout_gravity="left|bottom"
-                android:layout_width="wrap_content"
+                android:layout_marginLeft="20px"
+                android:layout_width="240dp"
                 android:layout_height="match_parent"/>
 
         <TableLayout

@@ -1,6 +1,8 @@
 package com.vxfc.shenxin.util;
 
 
+import com.vxfc.common.util.CommonUtil;
+import com.vxfc.common.util.Log;
 import com.vxfc.shenxin.R;
 
 /***
@@ -96,6 +98,7 @@ public enum Team {
 
     public static String getPlayStatus(String type){
         String str=null;
+        if(CommonUtil.isEmpty(type)) return "";
         switch (type){
             case "N":
                 str="未赛";

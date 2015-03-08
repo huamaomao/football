@@ -53,6 +53,7 @@ public class PlayerGameStatsFragment extends BaseListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 tv_spinner.setSelection(position);
                 doPullRefreshing();
+                tv_spinner.dismiss();
             }
         });
 

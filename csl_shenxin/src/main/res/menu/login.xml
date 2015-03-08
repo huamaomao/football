@@ -1,8 +1,10 @@
 <menu  xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context=".LoginActivity" >
-    <item   android:id="@id/action_login"
-            android:icon="@color/yellow"
-          android:title="@string/login"  android:showAsAction="ifRoom|withText"
+      tools:context=".RegisterActivity" >
+    <item android:id="@id/action_login"
+            android:icon="@null"
+          android:title="完成"
+        android:showAsAction="withText|ifRoom"
              />
+
 </menu>
