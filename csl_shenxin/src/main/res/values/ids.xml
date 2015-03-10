@@ -148,6 +148,7 @@
     <item name="btn_sign"  type="id"/>
     <item name="btn_loginout"  type="id"/>
     <item name="btn_chongzhi"  type="id"/>
+    <item name="btn_version"  type="id"/>
 
     <item name="rl_first" type="id" />
     <item name="rl_next" type="id" />

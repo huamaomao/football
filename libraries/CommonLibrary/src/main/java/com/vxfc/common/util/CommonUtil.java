@@ -3,14 +3,12 @@ package com.vxfc.common.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.view.Display;
-import android.view.WindowManager;
+import com.vxfc.common.domain.Version;
 import java.lang.reflect.Field;
 import java.util.Calendar;
 import java.util.Collections;
@@ -27,6 +25,31 @@ import java.util.regex.Pattern;
 public class CommonUtil {
 
     /************************************************数据 method ******************************************************************/
+    /***
+     * 获取版本信息 渠道
+     * @param context
+     * @return
+     */
+     public static Version getVersion(Context context){
+              try {
+                  PackageManager packageManager = context.getPackageManager();
+                  // 0代表是获取版本信息
+                  Version version=new Version();
+                  PackageInfo info=packageManager.getPackageInfo(context.getPackageName(),0);
+                  ApplicationInfo applicationInfo = packageManager.getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+                  version.code=info.versionCode;
+                  version.versionName=info.versionName;
+                  if (notNull(applicationInfo)&&notNull(applicationInfo.metaData)){
+               version.channel=applicationInfo.metaData.getString("UMENG_CHANNEL");
+           }
+         return version;
+      }catch (Exception e){
+
+      }
+      return null;
+    }
+
+
     /***
      * 判断是否可用
      * @param context

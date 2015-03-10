@@ -14,6 +14,7 @@ public class MemberParam implements RequestParam {
     private String deviceId;
     private String type;
     private String userId;
+    private String appId;
 
     public String getMemberId() {
         return memberId;
@@ -85,5 +86,13 @@ public class MemberParam implements RequestParam {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 }

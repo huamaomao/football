@@ -62,46 +62,6 @@ public class Util {
 
    }
 
-    /***
-     * token 解析
-     * @param url
-     * @return
-     */
-    public static Token convertToken(String url){
-          if (isEmpty(url)) return  null;
-          url=url.substring(url.indexOf("#")+1);
-          String str[]=url.split("&");
-        if (str==null)return null;
-         Token token=new Token();
-         String str0[]=null;
-         try {
-             for (String s:str){
-                 str0=s.split("=");
-
-                 if (Dict.ACCESS_TOKEN.equals(str0[0])){
-                     token.setAccess_token(str0[1]);
-                 }else if(Dict.EXPIRES_IN.equals(str0[0])){
-                      try {
-                          token.setExpires_in(Long.valueOf(str0[1]));
-                      }catch (Exception e){
-
-                      }
-                 }else if (Dict.REFRESH_TOKEN.equals(str0[0])){
-                      token.setRefresh_token(str0[1]);
-                 }else if(Dict.STATE.equals(str0[0])){
-                     try {
-                         token.setState(Integer.parseInt(str0[1]));
-                     }catch (Exception e){
-                         token.setState(0);
-                     }
-                 }
-             }
-             return token;
-         }catch (Exception e){
-           return null;
-         }
-
-    }
 
     /************************************************View 控制  method ******************************************************************/
 

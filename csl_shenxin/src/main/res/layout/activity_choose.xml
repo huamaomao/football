@@ -22,7 +22,6 @@
 
     <GridLayout android:layout_width="wrap_content" android:layout_height="match_parent"
                 android:columnCount="3"
-                 android:visibility="gone"
                 android:layout_margin="15dip"
                 android:layout_gravity="center_horizontal">
         <TextView android:layout_columnSpan="3"
@@ -30,14 +29,16 @@
                   android:layout_gravity="center_horizontal"
                   android:layout_marginBottom="20px"
                   android:text="@string/msg_3rd"/>
-        <ImageButton android:id="@id/ib_1" android:background="@android:color/transparent"
-                     android:src="@drawable/icon_qq"/>
-        <ImageButton android:id="@id/ib_2" android:background="@android:color/transparent"
+        <ImageButton android:id="@id/ib_1"
+
+            android:background="@drawable/s_btn_qq"
+                   />
+        <ImageButton android:id="@id/ib_2"
                      android:layout_marginLeft="40px"
                      android:layout_marginRight="40px"
-                     android:src="@drawable/icon_weixin"/>
+                    android:background="@drawable/s_btn_weixin"/>
         <ImageButton android:id="@id/ib_3"
-                     android:background="@android:color/transparent"
-                     android:src="@drawable/icon_sina"/>
+            android:background="@drawable/s_btn_sina"
+                     />
     </GridLayout>
 </LinearLayout>

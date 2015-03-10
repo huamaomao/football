@@ -464,6 +464,20 @@ public class RequestUtil {
     }
 
 
+    /*******************第三方 weixin*********************/
+    public static Request requestWeixinAuth(String code){
+        return new Request(UrlApi.WEIXIN_AUTH).setMethod(HttpMethod.Get).addUrlParam("appid",Constants.APP_KEY_WEIXIN).
+                addUrlParam("secret",Constants.SECRET).addUrlParam("code",code).addUrlParam("grant_type","authorization_code");
+    }
 
+    /***
+     *
+     * @param access_token
+     * @return
+     */
+    public static Request requestWeixinUserinfo(String access_token){
+        return new Request(UrlApi.WEIXIN_USERINFO).setMethod(HttpMethod.Get). addUrlParam("access_token",access_token).
+                addUrlParam("appid",Constants.APP_KEY_WEIXIN);
+    }
 
 }

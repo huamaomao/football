@@ -8,4 +8,6 @@ import java.io.Serializable;
 public class AppInfo implements Serializable {
     public String nickname;
     public String figureurl_qq_1;
+
+
 }

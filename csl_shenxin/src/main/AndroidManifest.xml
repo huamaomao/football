@@ -108,7 +108,12 @@
             android:theme="@style/AppBackTheme"
             />
 
-
+        <!--weixin  -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent"
+            android:launchMode="singleTop"  />
         <!-- 3rd -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"

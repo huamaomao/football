@@ -13,7 +13,7 @@
         android:layout_height="35dp" />
     <TextView android:id="@id/tv_player"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="@dimen/font_size_13"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

@@ -100,14 +100,6 @@ public class BaseActivity extends FragmentActivity implements IRequestView,IMess
         }
     }
 
-    // 获得当前程序版本信息
-    protected String getVersionName() throws Exception {
-        PackageManager packageManager = getPackageManager();
-        // 0代表是获取版本信息
-        PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(),
-                0);
-        return packInfo.versionName;
-    }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
