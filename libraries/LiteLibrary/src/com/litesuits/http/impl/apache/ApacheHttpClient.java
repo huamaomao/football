@@ -32,6 +32,7 @@ import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.message.BasicHeader;
@@ -265,8 +266,8 @@ public class ApacheHttpClient extends LiteHttpClient {
     @Override
     public <T> T get(String uri, HttpParam model, Class<T> claxx) {
         Response res = execute(new Request(uri, model, new StringParser(), null, HttpMethod.Get));
-        return res.getObject(claxx);
-    }
+    return res.getObject(claxx);
+}
 
     @Override
     public String put(String uri) {

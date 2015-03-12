@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,6 +13,9 @@ import com.alibaba.fastjson.JSON;
 import com.litesuits.http.exception.HttpException;
 import com.litesuits.http.response.Response;
 import com.litesuits.http.response.handler.HttpModelHandler;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.vxfc.common.domain.Version;
 import com.vxfc.common.util.CommonUtil;
 import com.vxfc.common.util.Log;
@@ -40,7 +44,7 @@ public class MemberInfoActivity extends BaseActivity{
 
 
    @InjectView(R.id.btn_chongzhi) Button btnChongzhi;
-
+   @InjectView(R.id.iv_item_0) ImageView ivPhoto;
 
    @InjectView(R.id.tv_name)  TextView  tv_name;
    @InjectView(R.id.tv_level)  TextView  tv_level;
@@ -51,6 +55,7 @@ public class MemberInfoActivity extends BaseActivity{
     private List<InfoList> data;
     private SharedService service;
     private String memberId=null;
+    private DisplayImageOptions options;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,6 +63,14 @@ public class MemberInfoActivity extends BaseActivity{
         ButterKnife.inject(this);
         setBackActionBarTilte("我的账户");
         service=new SharedService(this);
+        options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.icon_membert)
+                .showImageOnFail(R.drawable.icon_membert)
+                .showImageForEmptyUri(R.drawable.icon_membert)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .displayer(new RoundedBitmapDisplayer(20))
+                .build();
         initView();
         requestData();
 
@@ -88,6 +101,9 @@ public class MemberInfoActivity extends BaseActivity{
                     tv_name.setText(member.getNike());
                     tv_level.setText(member.getLevel());
                     tv_xuanbi.setText(Util.initTextValue(member.getGoldCoins()));
+                    ivPhoto.setTag(member.getPhoto());
+                    ImageLoader.getInstance().displayImage(RequestUtil.getUrl(member.getPhoto()), ivPhoto,options);
+
 
                 }
             }

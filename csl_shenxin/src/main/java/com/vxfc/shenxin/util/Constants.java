@@ -12,8 +12,14 @@ public interface Constants {
     /*********weixin********/
     public static final String APP_KEY_WEIXIN="wxc3e3b4be4ca07d4b";
     public static final String WEXIN_SCOPE="snsapi_userinfo";
-
-    public static final String SECRET="db02120b1b6a3c5f5a97c838f9e1c335";
+    public static final String SECRET="64420e720e5106fb23e507f464f247b2";
+    /*****sina  ******/
+    public static final String APP_KEY_SINA="2099570167";
+    public static final String SINA_SECRET="dc52c6cf00b5f591e352091ced63e4b6";
+    /***,direct_messages_read,direct_messages_write,"
+     + "friendships_groups_read,friendships_groups_write,statuses_to_me_read,"
+     + "follow_app_official_microblog," + "invitation_write";***/
+    public static final String SCOPE ="email";
 
     public static final String REDIRECT_URL = "http://www.vxfc.net";
     public static final String DESCRIPTOR = "com.umeng.share";

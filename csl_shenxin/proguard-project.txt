@@ -171,3 +171,25 @@
 -keep class com.tencent.mm.sdk.openapi.WXMediaMessage {*;}
 -keep class com.tencent.mm.sdk.openapi.** implements com.tencent.mm.sdk.openapi.WXMediaMessage$IMediaObject {*;}
 
+## sina
+-dontwarn com.weibo.sdk.android.WeiboDialog
+-dontwarn android.net.http.SslError
+-dontwarn android.webkit.WebViewClient
+-keep public class android.net.http.SslError{
+     *;
+}
+-keep public class android.webkit.WebViewClient{
+    *;
+}
+-keep public class android.webkit.WebChromeClient{
+    *;
+}
+-keep public interface android.webkit.WebChromeClient$CustomViewCallback {
+    *;
+}
+-keep public interface android.webkit.ValueCallback {
+    *;
+}
+-keep class * implements android.webkit.WebChromeClient {
+    *;
+}

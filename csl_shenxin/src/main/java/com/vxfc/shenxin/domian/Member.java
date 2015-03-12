@@ -15,23 +15,10 @@ public class Member {
     private String goldCoins;//金币
     private String tel;//手机号
     private String mail;//邮箱
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id='" + id + '\'' +
-                ", state='" + state + '\'' +
-                ", telphone='" + telphone + '\'' +
-                ", password='" + password + '\'' +
-                ", nike='" + nike + '\'' +
-                ", level='" + level + '\'' +
-                ", honor='" + honor + '\'' +
-                ", favoriteTeam='" + favoriteTeam + '\'' +
-                ", goldCoins='" + goldCoins + '\'' +
-                ", tel='" + tel + '\'' +
-                ", mail='" + mail + '\'' +
-                '}';
-    }
+    private String photo;
+    private String qqId;
+    private String weixinId;
+    private String sinaId;
 
     public String getId() {
         return id;
@@ -119,5 +106,58 @@ public class Member {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getQqId() {
+        return qqId;
+    }
+
+    public void setQqId(String qqId) {
+        this.qqId = qqId;
+    }
+
+    public String getWeixinId() {
+        return weixinId;
+    }
+
+    public void setWeixinId(String weixinId) {
+        this.weixinId = weixinId;
+    }
+
+    public String getSinaId() {
+        return sinaId;
+    }
+
+    public void setSinaId(String sinaId) {
+        this.sinaId = sinaId;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id='" + id + '\'' +
+                ", state='" + state + '\'' +
+                ", telphone='" + telphone + '\'' +
+                ", password='" + password + '\'' +
+                ", nike='" + nike + '\'' +
+                ", level='" + level + '\'' +
+                ", honor='" + honor + '\'' +
+                ", favoriteTeam='" + favoriteTeam + '\'' +
+                ", goldCoins='" + goldCoins + '\'' +
+                ", tel='" + tel + '\'' +
+                ", mail='" + mail + '\'' +
+                ", photo='" + photo + '\'' +
+                ", qqId='" + qqId + '\'' +
+                ", weixinId='" + weixinId + '\'' +
+                ", sinaId='" + sinaId + '\'' +
+                '}';
     }
 }

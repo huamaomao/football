@@ -75,25 +75,28 @@ public class WXEntryActivity extends BaseActivity implements IWXAPIEventHandler 
             request(RequestUtil.requestWeixinAuth(resp.code),new HttpModelHandler<String>() {
                 @Override
                 protected void onSuccess(String data, Response res) {
+                    Log.d(data);
                     Token token= JSON.parseObject(data,Token.class);
-                    if(CommonUtil.notNull(token)){
+                    if(CommonUtil.notNull(token)&&!CommonUtil.isEmpty(token.getAccess_token())){
                         // get  userinfo
-                        request(RequestUtil.requestWeixinUserinfo(token.getAccess_token()),new HttpModelHandler<String>() {
+                        request(RequestUtil.requestWeixinUserinfo(token.getAccess_token(),token.getOpenid()),new HttpModelHandler<String>() {
                             @Override
                             protected void onSuccess(String data, Response res) {
                                 WeixinInfo info=JSON.parseObject(data,WeixinInfo.class);
-                                if(CommonUtil.notNull(info)&&!CommonUtil.isEmpty(info.appid)){
+                                if(CommonUtil.notNull(info)&&!CommonUtil.isEmpty(info.openid)){
                                     //ok
+                                    Log.d(info);
                                     MemberParam param=new MemberParam();
-                                    param.setAppId(info.appid);
-                                    param.setPhoto(info.niceName);
+                                    param.setAppId(info.openid);
+                                    param.setPhoto(info.headimgurl);
                                     param.setType(String.valueOf(ChoosePresenter.WEIXIN));
                                     param.setDeviceId(UUID.randomUUID().toString());
-                                    param.setNickName(info.niceName);
+                                    param.setNickName(info.nickname);
                                     request(RequestUtil.requestRegister3rd(param), new HttpModelHandler<String>() {
                                         @Override
                                         protected void onSuccess(String data, Response res) {
                                             User user= JSON.parseObject(data, User.class);
+                                            Log.d(user);
                                             if (CommonUtil.notNull(user)){
                                                 service.putString(Dict.MEMBER_ID,user.getUserId());
                                                 Util.openActivity(MainActivity.class, null,  WXEntryActivity.this, ActivityModel.ACTIVITY_MODEL_1, true);
@@ -103,11 +106,13 @@ public class WXEntryActivity extends BaseActivity implements IWXAPIEventHandler 
 
                                         @Override
                                         protected void onFailure(HttpException e, Response res) {
-                                            Log.i(e) ;
+                                            Log.d(e.getMessage()) ;
                                             showMsg("授权失败");
                                         }
                                     });
 
+                                }else {
+                                    showMsg("授权失败");
                                 }
                             }
 
@@ -126,7 +131,7 @@ public class WXEntryActivity extends BaseActivity implements IWXAPIEventHandler 
             });
 
         }else {
-            Toast.makeText(this,"授权失败",Toast.LENGTH_LONG).show();
+            showMsg("授权失败");
 
         }
         finish();

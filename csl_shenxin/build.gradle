@@ -60,7 +60,7 @@ android {
             manifestPlaceholders = [ channel:"placeholder" ]
         }
     }
-    //channels()
+    channels()
 
 }
 // 多渠道打包
@@ -88,6 +88,7 @@ dependencies {
     compile 'com.android.support:support-v13:21.0.+'
     compile 'com.vxfc.3rd:qq_lite:2.8'
     compile 'com.vxfc.3rd:weixin:1.0'
+    compile 'com.vxfc.3rd:sina:3.0'
     compile 'com.jakewharton:butterknife:6.1.0'
 
    /* compile 'com.github.johnkil.android-progressfragment:progressfragment:1.4.+'*/
@@ -97,5 +98,4 @@ dependencies {
     compile project(':libraries:LiteLibrary')
     compile project(':libraries:VitamioLibrary')
     compile project(':libraries:CommonLibrary')
-   compile project(':libraries:WeiboLibrary')
 }

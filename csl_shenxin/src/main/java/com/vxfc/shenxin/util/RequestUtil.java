@@ -1,6 +1,8 @@
 package com.vxfc.shenxin.util;
 
 import com.litesuits.http.request.Request;
+import com.litesuits.http.request.content.ModelParamBody;
+import com.litesuits.http.request.content.UrlEncodedFormBody;
 import com.litesuits.http.request.param.HttpMethod;
 import com.vxfc.common.util.CommonUtil;
 import com.vxfc.shenxin.domian.param.CslParam;
@@ -8,6 +10,8 @@ import com.vxfc.shenxin.domian.param.MemberParam;
 import com.vxfc.shenxin.domian.param.NewParam;
 import com.vxfc.shenxin.domian.param.PublicParam;
 import com.vxfc.shenxin.domian.param.SignParam;
+
+import org.apache.http.protocol.HTTP;
 
 /**
  *  请求api
@@ -334,7 +338,7 @@ public class RequestUtil {
      */
     public static Request requestFixtureList(CslParam param){
         return new Request(Util.jointUrl(UrlApi.fixtureList,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get).
-              setParamModel(param);
+                setHttpBody(new ModelParamBody(param));
     }
   /*  public static Request requestImage(String path,BitmapParser parser){
       return new  Request(Util.jointUrl(UrlApi.images,UrlApi.WEB_MODEL_CSL))
@@ -348,7 +352,7 @@ public class RequestUtil {
      */
     public static Request requestFirstTeamPlayer(PublicParam param){
         return new  Request(Util.jointUrl(UrlApi.firstTeamPlayer,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get)
-                .setParamModel(param);
+                .setHttpBody(new ModelParamBody(param));
     }
 
     /****
@@ -358,7 +362,7 @@ public class RequestUtil {
      */
     public static Request requestCoachTeamList(PublicParam param){
         return new  Request(Util.jointUrl(UrlApi.coachTeamList,UrlApi.WEB_MODEL_CSL)).setMethod(HttpMethod.Get)
-                .setParamModel(param);
+                .setHttpBody(new ModelParamBody(param));
     }
 
 
@@ -370,7 +374,7 @@ public class RequestUtil {
      */
     public static Request requestRegister(MemberParam param) {
         return new Request(Util.jointUrl(UrlApi.REGISTER,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
-             setParamModel(param);
+                setHttpBody(new ModelParamBody(param));
     }
     /****
      * 3rd会员注册
@@ -379,7 +383,7 @@ public class RequestUtil {
      */
     public static Request requestRegister3rd(MemberParam param) {
         return new Request(Util.jointUrl(UrlApi.REGISTER_3RD,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
-                setParamModel(param);
+                setHttpBody(new ModelParamBody(param));
     }
     /****
      * request sms code
@@ -388,7 +392,7 @@ public class RequestUtil {
      */
     public static Request requestSms(MemberParam param) {
         return new Request(Util.jointUrl(UrlApi.SMS,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
-                setParamModel(param);
+                setHttpBody(new ModelParamBody(param));
     }
     /****
      * login
@@ -397,7 +401,7 @@ public class RequestUtil {
      */
     public static Request requestLogin(MemberParam param) {
         return new Request(Util.jointUrl(UrlApi.LOGIN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
-                setParamModel(param);
+               setHttpBody(new ModelParamBody(param));
     }
     /****
      * 用户信息
@@ -406,7 +410,7 @@ public class RequestUtil {
      */
     public static Request requestMemberInfo(MemberParam param) {
         return new Request(Util.jointUrl(UrlApi.MEMBER_INFO,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Get).
-                setParamModel(param);
+                setHttpBody(new ModelParamBody(param));
     }
 
     /****
@@ -416,7 +420,7 @@ public class RequestUtil {
      */
     public static Request requestIsSign(SignParam param) {
         return new Request(Util.jointUrl(UrlApi.IS_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Get).
-                setParamModel(param);
+                setHttpBody(new ModelParamBody(param));
     }
     /****
      * 签到
@@ -425,7 +429,7 @@ public class RequestUtil {
      */
     public static Request requestSign(SignParam param) {
         return new Request(Util.jointUrl(UrlApi.SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
-                setParamModel(param);
+                setHttpBody(new ModelParamBody(param));
     }
 
     /****
@@ -435,7 +439,7 @@ public class RequestUtil {
      */
     public static Request requestIsTeamSign(SignParam param) {
         return new Request(Util.jointUrl(UrlApi.IS_TEAM_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Get).
-                setParamModel(param);
+                setHttpBody(new ModelParamBody(param));
     }
     /****
      * 主场签到
@@ -444,12 +448,15 @@ public class RequestUtil {
      */
     public static Request requestTeamSign(SignParam param) {
         return new Request(Util.jointUrl(UrlApi.TEAM_SIGN,UrlApi.WEB_MODEL_MEMBER)).setMethod(HttpMethod.Post).
-                setParamModel(param);
+                setHttpBody(new ModelParamBody(param));
     }
 
     public static String getUrl(String path){
         if(CommonUtil.isEmpty(path)){
             return null;
+        }
+        if (path.startsWith("http")){
+            return path;
         }
         StringBuilder builder=new StringBuilder(UrlApi.SERVER_IP);
         builder.append(UrlApi.WEB_MODEL_CSL).append("/").append(path);
@@ -475,9 +482,21 @@ public class RequestUtil {
      * @param access_token
      * @return
      */
-    public static Request requestWeixinUserinfo(String access_token){
+    public static Request requestWeixinUserinfo(String access_token,String openid){
         return new Request(UrlApi.WEIXIN_USERINFO).setMethod(HttpMethod.Get). addUrlParam("access_token",access_token).
-                addUrlParam("appid",Constants.APP_KEY_WEIXIN);
+                addUrlParam("openid",openid);
     }
+
+    /***
+     *
+     * @param access_token
+     * @return
+     */
+    public static Request requestSinaUserinfo(String access_token,String uid){
+        return new Request(UrlApi.SINA_INFO).setMethod(HttpMethod.Get). addUrlParam("access_token",access_token).
+                addUrlParam("source",Constants.SINA_KEY).
+                addUrlParam("uid",uid);
+    }
+
 
 }

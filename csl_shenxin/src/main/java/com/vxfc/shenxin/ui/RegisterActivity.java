@@ -61,6 +61,8 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
             etNickName.getText().clear();
             etPwd.getText().clear();
             tvNumber.setText("");
+            setBackActionBarTilte("注册");
+            flag=true;
         }else {
             ViewUtil.openActivity(ChooseActivity.class, this, ActivityModel.ACTIVITY_MODEL_1);
             finish();
@@ -73,6 +75,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
         switch (id){
             case R.id.action_next:
                 if (flag){
+                    setBackActionBarTilte("上一步");
                     presenter.doRegisterFirst(etTel.getText().toString());
                 }else {
                    presenter.doRegister(etTel.getText().toString(),etNickName.getText().toString().trim(),etCode.getText().toString(),
@@ -148,5 +151,7 @@ public class RegisterActivity extends BaseActivity implements IRegisterView{
     @Override
     public void setRegisterStatus() {
         flag=false;
+        llTel.setVisibility(View.GONE);
+        glNext.setVisibility(View.VISIBLE);
     }
 }

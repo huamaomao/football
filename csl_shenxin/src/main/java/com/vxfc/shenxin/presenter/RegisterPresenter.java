@@ -45,7 +45,7 @@ public class RegisterPresenter {
                    StringBuilder builder=new StringBuilder("我们已给你的手机号码");
                    builder.append(tel);
                    builder.append("发送一条验证码(5分钟有效)");
-                  registerView.setRegisterStatus();
+                   registerView.setRegisterStatus();
                   registerView.setTelRemarks(builder.toString());
               }else {
                   registerView.msgShow("短信验证码发送失败...");
@@ -72,7 +72,7 @@ public class RegisterPresenter {
       });
    }
 
-  public   void repeatSms(String tel){
+  public void repeatSms(String tel){
       registerView.showLoading();
       MemberParam param=new MemberParam();
       param.setTelphone(tel);
@@ -92,11 +92,11 @@ public class RegisterPresenter {
           protected void onFailure(HttpException e, Response res) {
               registerView.hideLoading();
               ResponseModel model=Util.handleServerException(e,registerView);
-              if (CommonUtil.notNull(model)){
-                  if ("40003".equals(model.statusCode)||"10040".equals(model.statusCode)){
-                      registerView.msgShow(model.msg);
-                      return;
-                  }
+                  if (CommonUtil.notNull(model)){
+                      if ("40003".equals(model.statusCode)||"10040".equals(model.statusCode)){
+                          registerView.msgShow(model.msg);
+                          return;
+                      }
               }
               registerView.msgShow("短信验证码发送失败...");
               //registerView.responseFailure(e,res);
@@ -139,6 +139,10 @@ public class RegisterPresenter {
                     User user=JSON.parseObject(data,User.class);
                     if (CommonUtil.notNull(user)){
                         service.putString(Dict.MEMBER_ID,user.getUserId());
+                        registerView.msgShow("注册成功");
+                        registerView.toMainActivity();
+                    }else {
+                        registerView.msgShow("注册失败");
                     }
                 }
                registerView.hideLoading();

@@ -38,6 +38,9 @@ public final class Log {
     public static int d(String tag, String msg) {
         return isPrint && msg != null ? android.util.Log.d(tag, msg) : -1;
     }
+    public static int d(Object msg) {
+        return isPrint && msg != null ? android.util.Log.d(defaultTag, msg.toString()) : -1;
+    }
 
     public static int i(String tag, String msg) {
         return isPrint && msg != null ? android.util.Log.i(tag, msg) : -1;

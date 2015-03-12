@@ -17,9 +17,14 @@ import com.litesuits.http.request.query.AbstractQueryBuilder;
 import com.litesuits.http.request.query.JsonQueryBuilder;
 import com.litesuits.http.utils.UriUtil;
 
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.protocol.HTTP;
+
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -213,6 +218,22 @@ public class Request {
 
     public String getRawUrl() {
         return url;
+    }
+
+    public UrlEncodedFormEntity getEntity() throws HttpClientException{
+        if (url == null) throw new HttpClientException(ClientException.UrlIsNull);
+        try {
+            StringBuilder sb = new StringBuilder();
+            LinkedHashMap<String, String> map = getBasicParams();
+            int i = 0, size = map.size();
+            List<org.apache.http.NameValuePair> ls=new ArrayList<org.apache.http.NameValuePair>();
+            for (Entry<String, String> v : map.entrySet()) {
+                  sb.append(v.getKey()).append(v.getValue()).append(++i == size ? "" : "&");
+            }
+            return new UrlEncodedFormEntity(ls,charSet);
+        } catch (Exception e) {
+            throw new HttpClientException(e);
+        }
     }
 
     public String getUrl() throws HttpClientException {

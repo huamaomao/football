@@ -4,4 +4,3 @@ include ':libraries:ImageLibrary';
 include ':libraries:LiteLibrary';
 include ':libraries:VitamioLibrary';
 include ':libraries:CommonLibrary';
-include ':libraries:WeiboLibrary'

@@ -5,6 +5,17 @@ package com.vxfc.shenxin.domian;
  */
 public class WeixinInfo {
     public String appid;
-    public String niceName;
+    public String nickname;
     public String headimgurl;
+    public String openid;
+
+    @Override
+    public String toString() {
+        return "WeixinInfo{" +
+                "appid='" + appid + '\'' +
+                ", niceName='" + nickname + '\'' +
+                ", headimgurl='" + headimgurl + '\'' +
+                ", openid='" + openid + '\'' +
+                '}';
+    }
 }

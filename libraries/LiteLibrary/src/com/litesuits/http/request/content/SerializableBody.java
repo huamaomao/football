@@ -20,11 +20,11 @@ public class SerializableBody extends ByteArrayBody {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = null;
             oos = new ObjectOutputStream(baos);
-            oos.writeObject(ser);
-            return baos.toByteArray();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        oos.writeObject(ser);
+        return baos.toByteArray();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
         return null;
     }
 }

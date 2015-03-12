@@ -60,8 +60,10 @@ public interface UrlApi {
     final static String firstTeamPlayer = "firstTeamPlayer";//一线队/预备队接口
     final static String coachTeamList = "coachTeamList";//教练组接口
 
-    final static String WEIXIN_AUTH="https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
-    final static String WEIXIN_USERINFO="https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID";
+    final static String WEIXIN_AUTH="https://api.weixin.qq.com/sns/oauth2/access_token";
+    final static String WEIXIN_USERINFO="https://api.weixin.qq.com/sns/userinfo";
+
+    final static String SINA_INFO="https://api.weibo.cn/2/users/show";
 
     // final static String images=SERVER_IP+WEB_MODEL_CSL;
 
